@@ -2,7 +2,7 @@ import React from 'react'
 
 const Page = () => {
   return (
-    <div>Zca trabajo yo evin</div>
+    <div>Desde cuenta del user</div>
   )
 }
 
