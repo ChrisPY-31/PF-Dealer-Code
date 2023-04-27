@@ -1,10 +1,10 @@
-import React from 'react'
 
+// import NavUser from "../../Comonents/NavUser/NavUser"
 const Page = () => {
   return (
-    <div className=''>
-    Hola  
-    </div>
+    <>
+
+    </>
   )
 }
 
