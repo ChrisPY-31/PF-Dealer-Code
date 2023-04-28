@@ -4,12 +4,14 @@ import {RxMagnifyingGlass} from "react-icons/rx"
 import {BsCart4} from "react-icons/bs"
 import {BsPersonCircle} from "react-icons/bs"
 import {MdOutlineKeyboardArrowDown} from"react-icons/md"
+import Image from 'next/image'
+import Logo from "../../src/Imagenes/Logo.png"
 export default function NavBar() {
   return (
 
     <div className=" bg-tarawera-700 flex flex-wrap items-center justify-around ">
-        <h1>Logo</h1>
-        <div className="flex ">
+       <Image className="absolute p-0 left-0 mt-1" src={Logo} alt="Logo" width={200} height={200}></Image>
+        <div className="flex ml-32">
             <Link href="/course">
             <ul className="mr-5 hover:underline  decoration-white">Explorar Cursos</ul>
             </Link>
@@ -29,7 +31,7 @@ export default function NavBar() {
         <div className="flex flex-wrap items-center">
             <button className='mr-5 p-1 rounded-xl hover:bg-tarawera-600'><BsCart4/></button>
             <div className="flex flex-wrap items-center p-2 rounded-xl bg-green-600 hover:bg-green-700"><p className='mr-1'><MdOutlineKeyboardArrowDown/></p><BsPersonCircle/></div>
-            
+
         </div>
     </div>
   )
