@@ -28,9 +28,8 @@ export default function NavBar() {
         </div>
         <div className="flex flex-wrap items-center">
             <button className='mr-5 p-1 rounded-xl hover:bg-tarawera-600'><BsCart4/></button>
-            <Link href="/Account">
             <div className="flex flex-wrap items-center p-2 rounded-xl bg-green-600 hover:bg-green-700"><p className='mr-1'><MdOutlineKeyboardArrowDown/></p><BsPersonCircle/></div>
-            </Link>
+            
         </div>
     </div>
   )
