@@ -1,14 +1,14 @@
 import React from 'react'
-import NavBar from '../../../components/Nav/NavBar'
+import NavBar from './components/Nav/NavBar'
 import { DB } from './db'
 import {TiPlus} from "react-icons/ti"
 const Page = () => {
-  const numeroAleatorio = Math.floor(Math.random() * 11);
+const numeroAleatorio = Math.floor(Math.random() * 11);
 let db=DB[numeroAleatorio]
 
   return (
     <div>
-  <NavBar></NavBar>
+  <NavBar ></NavBar>
   <div>
     <div>
       <h1 className="m-5 text-2xl">Curso Destacado</h1>
