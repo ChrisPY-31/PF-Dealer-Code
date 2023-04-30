@@ -9,7 +9,7 @@ let db=DB[numeroAleatorio]
 
   return (
     <div>
-  <NavBar></NavBar>
+  <NavBar/>
   <div>
     <div>
       <h1 className="m-5 text-2xl">Curso Destacado</h1>
