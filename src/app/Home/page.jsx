@@ -1,3 +1,4 @@
+
 import React from 'react'
 import NavBar from '../../../components/Nav/NavBar'
 import { DB } from './db'

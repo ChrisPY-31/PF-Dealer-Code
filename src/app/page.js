@@ -1,8 +1,9 @@
+import Menu from "@/Comonents/Menu/Menu";
 
 export default function Home() {
   return (
     <main className="">
-      <h1>Hola</h1>
+    Hola
     </main>
   )
 }
