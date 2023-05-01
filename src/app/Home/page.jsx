@@ -1,12 +1,21 @@
-
-import React from 'react'
-import NavBar from '../../../components/Nav/NavBar'
+"use client"
+import React,{useEffect} from 'react'
+import NavBar from './components/Nav/NavBar'
 import { DB } from './db'
 import {TiPlus} from "react-icons/ti"
+import { useDispatch, useSelector } from 'react-redux'
+import {get_Courses} from "../redux/accions/accions"
 const Page = () => {
-  const numeroAleatorio = Math.floor(Math.random() * 11);
-let db=DB[numeroAleatorio]
+const dispatch= useDispatch()
+useEffect(() => { 
+  dispatch(get_Courses())  
+  
+   }, []);
+  const Courses=useSelector(s=>s.Courses)
+const numeroAleatorio = Math.floor(Math.random() * 11);
+let db=Courses[numeroAleatorio]
 
+ 
   return (
     <div>
   <NavBar/>
