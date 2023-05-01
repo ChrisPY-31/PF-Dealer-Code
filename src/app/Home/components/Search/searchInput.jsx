@@ -2,12 +2,13 @@
 import { useState } from "react"
 import {RxMagnifyingGlass} from "react-icons/rx"
 import Link from "next/link"
-export function SearchInput({Allcourses,setFilter}) {
-    console.log("desde el search",Allcourses,setFilter)
+import { useDispatch } from "react-redux"
+import {search_Courses} from "../../../redux/accions/accions"
+export function SearchInput() {
+   const dispatch=useDispatch
     const [icourses,setIcourses]=useState("")
 function search(){
-    const filter= Allcourses.filter(c=>c.name.includes(icourses))
-    setFilter(filter)
+    dispatch(search_Courses(icourses))
 }
 return(
  <div className="flex flex-wrap items-center p-2 ml-5 m-2 rounded-xl bg-tarawera-500"> 

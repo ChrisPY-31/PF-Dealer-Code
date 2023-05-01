@@ -2,13 +2,13 @@
 import React, { useState } from 'react'
 import { DB } from '../db'
 import NavBar from '../components/Nav/NavBar'
+import { useSelector } from 'react-redux'
 const Course = () => {
-  const [Allcourses,setCourse]= useState([...DB])
-  const [filter,setFilter]=useState([])
-
-  return (
+const filter = useSelector(s=>s.Course)
+ return (
+   
     <div>
-      <NavBar Allcourses={Allcourses} setFilter={setFilter}></NavBar>
+      <NavBar></NavBar>
       <div>
       <h1>ordenamiento </h1>
       
@@ -19,15 +19,7 @@ const Course = () => {
   filtros
       </div>
     <div>
-  {filter.length?filter.map((c,index)=>(
-  <div>
-    <div>{c.image}</div>
-<h1 key={index}>{c.name}</h1>
-<h2>{c.subtitle}</h2>
-<p>{c.rating}</p>
-<h1>{c.price}</h1>
-</div>
-)):Allcourses.map((c,index)=>(
+  {filter.map((c,index)=>(
   <div>
     <div>{c.image}</div>
 <h1 key={index}>{c.name}</h1>
@@ -36,7 +28,6 @@ const Course = () => {
 <h1>{c.price}</h1>
 </div>
 ))
-
   }
     </div>
     </div>

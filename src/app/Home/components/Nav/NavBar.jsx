@@ -6,7 +6,8 @@ import {MdOutlineKeyboardArrowDown} from"react-icons/md"
 import Image from 'next/image'
 import Logo from "../../../../Imagenes/Logo.png"
 import { SearchInput } from '../Search/searchInput'
-export default function NavBar({Allcourses,setFilter}) {
+
+export default function NavBar() {
   return (
 
     <div className=" bg-tarawera-700 flex flex-wrap items-center justify-around ">
@@ -23,7 +24,7 @@ export default function NavBar({Allcourses,setFilter}) {
             <Link href="/Home">
         <h1 className="bg-green-400  pl-3 pr-3 rounded-md hover:bg-green-500">Inicio</h1>
         </Link>
-           <SearchInput Allcourses={Allcourses} setFilter={setFilter}/>
+           <SearchInput Allcourses={Allcourses} setFilter={setFilter} />
         </div>
         <div className="flex flex-wrap items-center">
             <button className='mr-5 p-1 rounded-xl hover:bg-tarawera-600'><BsCart4/></button>
