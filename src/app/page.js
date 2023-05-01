@@ -1,10 +1,9 @@
-
 import Landing from "@/components/Landing/Landing";
 
 export default function Home() {
   return (
-    <main className="">
-      <Landing/>
-    </main>
-  )
+    <div>
+      <Landing />
+    </div>
+  );
 }
