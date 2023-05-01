@@ -1,8 +1,11 @@
 import React from 'react'
+import NavBar from '../../../components/Nav/NavBar';
 
  const Favorits = () => {
   return (
-    <div>Desde favoritos</div>
+    <>
+    <NavBar/>
+    </>
   )
 }
 export default Favorits;

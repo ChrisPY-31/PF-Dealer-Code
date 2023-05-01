@@ -16,9 +16,10 @@ module.exports = {
         base: ['11px', '21px'],
         lg: ['20px', '28px'],
         xl: ['35px', '52px'],
+        medio: ['16px', '26px'],
       },
       colors: {
-        black: colors.black,
+        verde: "#16c57c",
         gray: {
           '50':  '#f9faf9',
           '100': '#f0f2f2',
