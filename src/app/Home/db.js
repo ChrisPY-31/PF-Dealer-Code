@@ -7,63 +7,63 @@ rating:"Rating: 4.5 out of 5",
 price:"$12.99"
 },
 {
-    name:"UX Strategy1 Fundamentals",
+    name:"Innovation Master Class",
     subtitle:"Practical principles and simple methods to make sure your app, site or system delivers GREAT UX!",
     image:"UX",
     rating:"Rating: 4.5 out of 5",
     price:"$12.99"
     }
     ,{
-        name:"UX Strategy2 Fundamentals",
+        name:"Unit Testing for Typescript & NodeJs Developers with Jest",
         subtitle:"Practical principles and simple methods to make sure your app, site or system delivers GREAT UX!",
         image:"UX",
         rating:"Rating: 4.5 out of 5",
         price:"$12.99"
         }
         ,{
-            name:"UX Strategy3 Fundamentals",
+            name:"UX Requirements Made Simple",
             subtitle:"Practical principles and simple methods to make sure your app, site or system delivers GREAT UX!",
             image:"UX",
             rating:"Rating: 4.5 out of 5",
             price:"$12.99"
             }
             ,{
-                name:"UX Strategy4 Fundamentals",
+                name:"Learn and Understand NodeJS",
                 subtitle:"Practical principles and simple methods to make sure your app, site or system delivers GREAT UX!",
                 image:"UX",
                 rating:"Rating: 4.5 out of 5",
                 price:"$12.99"
                 }
                 ,{
-                    name:"UX Strategy5 Fundamentals",
+                    name:"Master NestJS 9 - Node.js Framework 2023",
                     subtitle:"Practical principles and simple methods to make sure your app, site or system delivers GREAT UX!",
                     image:"UX",
                     rating:"Rating: 4.5 out of 5",
                     price:"$12.99"
                     }
                     ,{
-                        name:"UX Strategy6 Fundamentals",
+                        name:"Advanced Typescript programming with NodeJs and Webpack",
                         subtitle:"Practical principles and simple methods to make sure your app, site or system delivers GREAT UX!",
                         image:"UX",
                         rating:"Rating: 4.5 out of 5",
                         price:"$12.99"
                         },
                         {
-                            name:"UX Strategy7 Fundamentals",
+                            name:"ChatGPT Complete Guide: Learn Midjourney, ChatGPT 4 & More",
                             subtitle:"Practical principles and simple methods to make sure your app, site or system delivers GREAT UX!",
                             image:"UX",
                             rating:"Rating: 4.5 out of 5",
                             price:"$12.99"
                             },
                             {
-                                name:"UX Strategy8 Fundamentals",
+                                name:"The Ultimate 2023 Fullstack Web Development Bootcamp",
                                 subtitle:"Practical principles and simple methods to make sure your app, site or system delivers GREAT UX!",
                                 image:"UX",
                                 rating:"Rating: 4.5 out of 5",
                                 price:"$12.99"
                                 },
                                 {
-                                    name:"UX Strategy9 Fundamentals",
+                                    name:"ESP32: Arduino + FreeRTOS (in VSCode/PlatformIO)",
                                     subtitle:"Practical principles and simple methods to make sure your app, site or system delivers GREAT UX!",
                                     image:"UX",
                                     rating:"Rating: 4.5 out of 5",

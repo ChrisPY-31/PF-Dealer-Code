@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useRef, useState } from "react";
 import Cuenta from "./Cuenta";
 import Pagos from "./Pagos";
