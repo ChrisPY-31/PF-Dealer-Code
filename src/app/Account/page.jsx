@@ -1,6 +1,4 @@
-'use client';
- 
- 
+
  import NavUser from "../../Comonents/NavUser/NavUser"
 const Page = () => {
   return (
