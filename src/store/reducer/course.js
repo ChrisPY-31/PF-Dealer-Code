@@ -1,18 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
-    increment : 0
+    nav:[],
+    login: false,
 }
 
 export const courseSlice = createSlice({
     name: 'course',
     initialState,
     reducers: {
-        increment: (state, /* action */ ) => {
-            state.counter += 1;
-        },
+        getlogin:(state) =>{
+            state.login = !state.login
+        }
+       
     }
 });
 
 
 // Action creators are generated for each case reducer function
-export const { increment } = courseSlice.actions;
+export const { increment , getlogin} = courseSlice.actions;

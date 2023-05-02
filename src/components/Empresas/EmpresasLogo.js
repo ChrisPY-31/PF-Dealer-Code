@@ -1,0 +1,81 @@
+export const Asociados = [
+    {
+        id:1,
+        name:'google',
+        image:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Google_logo_%282010-2013%29.svg/2560px-Google_logo_%282010-2013%29.svg.png'
+    },
+    {
+        id:2,
+        name:'amazon',
+        image:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Google_logo_%282010-2013%29.svg/2560px-Google_logo_%282010-2013%29.svg.png'
+    },
+    {
+        id:3,
+        name:'rappi',
+        image:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Rappi_logo.svg/2560px-Rappi_logo.svg.png'
+    },
+    {
+        id:4,
+        name:'facebook',
+        image:'https://1000marcas.net/wp-content/uploads/2019/12/Facebook-logo.png'
+    },
+    {
+        id:5,
+        name:'linkedin',
+        image:'https://1000marcas.net/wp-content/uploads/2020/01/Logo-Linkedin.png'
+    },
+    {
+        id:6,
+        name:'apple',
+        image:'https://www.vectorlogo.zone/logos/apple/apple-ar21.png'
+    },
+    {
+        id:7,
+        name:'instagram',
+        image:'https://www.shutterstock.com/image-photo/bangkok-thailand-may-14-2016-260nw-435629701.jpg'
+    },
+    
+]
+
+export const Asociados2 = [
+    {
+        id:1,
+        name:'globant',
+        image:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Google_logo_%282010-2013%29.svg/2560px-Google_logo_%282010-2013%29.svg.png'
+    },
+    {
+        id:2,
+        name:'uber',
+        image:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Google_logo_%282010-2013%29.svg/2560px-Google_logo_%282010-2013%29.svg.png'
+    },
+    {
+        id:3,
+        name:'platzi',
+        image:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Rappi_logo.svg/2560px-Rappi_logo.svg.png'
+    },
+    {
+        id:4,
+        name:'mercado libre',
+        image:'https://1000marcas.net/wp-content/uploads/2019/12/Facebook-logo.png'
+    },
+    {
+        id:5,
+        name:'fizer',
+        image:'https://1000marcas.net/wp-content/uploads/2020/01/Logo-Linkedin.png'
+    },
+    {
+        id:6,
+        name:'adcenture',
+        image:'https://www.vectorlogo.zone/logos/apple/apple-ar21.png'
+    },
+    {
+        id:7,
+        name:'doulingo',
+        image:'https://1000marcas.net/wp-content/uploads/2021/02/Logo-Duolingo.png'
+    },
+    {
+        id:8,
+        name:'doulingo',
+        image:'https://1000marcas.net/wp-content/uploads/2021/02/Logo-Duolingo.png'
+    },
+]
