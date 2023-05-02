@@ -16,6 +16,7 @@ module.exports = {
         base: ['11px', '21px'],
         lg: ['20px', '28px'],
         xl: ['35px', '52px'],
+        xl: ['55px', '62px'],
         medio: ['16px', '26px'],
       },
       colors: {

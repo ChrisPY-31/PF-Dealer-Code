@@ -3,9 +3,9 @@ import { useState } from "react"
 import {RxMagnifyingGlass} from "react-icons/rx"
 import Link from "next/link"
 import { useDispatch } from "react-redux"
-import {search_Courses} from "../../../redux/accions/accions"
+import {search_Courses} from "../../../../store/reducer/course"
 export function SearchInput() {
-   const dispatch=useDispatch
+   const dispatch=useDispatch()
     const [icourses,setIcourses]=useState("")
 function search(){
     dispatch(search_Courses(icourses))
