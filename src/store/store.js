@@ -5,7 +5,7 @@ import { useMemo } from "react";
 
 export const store = configureStore({
     reducer: {
-        courses: courseSlice.reducer
+        course: courseSlice.reducer
     }   
 }
 )

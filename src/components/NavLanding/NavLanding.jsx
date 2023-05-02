@@ -4,8 +4,29 @@ import Link from "next/link";
 import React, {useState} from "react";
 import Logo from "../../Imagenes/Logo.png"
 const NavLanding = () => {
+   
 
   return (
+// <<<<<<< HEAD
+//     <header className="bg-red-600">
+//       <nav className="h-24 w-11/12  mx-auto flex justify-between items-center">
+//         <div className="logo text-3xl cursor-pointer" >Dealer Code</div>
+
+//         <ul className="flex w-1/4 justify-around">
+//           <li className="font-bold text-lg bg-red-400 py-2 px-2 rounded hover:bg-red-600 cursor-pointer">
+//             <Link href="/sing-in" >
+//               Iniciar Sesion
+//             </Link>
+//           </li>
+//           <li className="font-bold text-lg bg-indigo-400 py-2 px-2 rounded hover:bg-indigo-600 cursor-pointer">
+//             <Link href='/sing-up' >
+//             Registarse
+//             </Link>
+//           </li>
+//         </ul>
+//       </nav>
+//     </header>
+// =======
     <header aria-label="Site Header" class="">
     <div class="mx-auto mr-5  max-w-screen-xl px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
@@ -42,6 +63,7 @@ const NavLanding = () => {
       </div>
     </div>
   </header>
+// >>>>>>> 9ff1ed36b8183d6ba944a9e125653535712fca23
   );
 };
 

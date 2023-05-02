@@ -12,6 +12,7 @@ export const courseSlice = createSlice({
     name: 'course',
     initialState,
     reducers: {
+
         increment: (state, /* action */ ) => {
             state.counter += 1;
         },
@@ -34,4 +35,5 @@ export const courseSlice = createSlice({
 
 
 // Action creators are generated for each case reducer function
+
 export const { increment,getCourses,search_Courses,reset } = courseSlice.actions;
