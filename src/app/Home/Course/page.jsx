@@ -1,43 +1,24 @@
 "use client"
-import React, { useState } from 'react'
-import Link from 'next/link'
+import React from 'react'
 import NavBar from '../components/Nav/NavBar'
 import { useSelector } from 'react-redux'
+import CardC from '../components/Cards/CardC'
 const Course = () => {
-const filter = useSelector(s=>s.courses.courses)
+const filter = useSelector(s=>s.course.courses)
  return (
     <div>
       <NavBar></NavBar>
     <div className='m-5'>
       <div className='flex justify-between'>
-     <div><h1>ordenamiento </h1></div>
+     <div><h1>ordenamiento</h1></div>
      <div>{filter.length?<h2>Resultados encontrados: {filter.length}</h2>:null}</div>
       </div>
-     
-      <div className='flex m-5 shadow-md shadow-indigo-900'>
+      {filter.length?<div className='flex m-5 shadow-md shadow-indigo-900'>
       <div className=' w-1/3 text-center'>
         <h1>Categorias</h1>
       </div>
-    <div>
-  {filter.map((c,index)=>(
-  <div className='flex m-2 p-3 rounded-xl bg-slate-400'>
-    <div className='p-10'>{c.image}</div>
-    <div>
-<h1 key={index}>{c.name}</h1>
-<h2>{c.subtitle}</h2>
-<p>{c.rating}</p>
-
-<div className="flex justify-between"><h1>{c.price}</h1>
-<Link href="/Detail">
-<button className="bg-green-500 p-2 rounded-xl hover:bg-green-600">Detalle</button>
-</Link>
-</div>
-</div>
-</div>
-))
-  }
-     </div>
-    </div>
+<CardC filter={filter}></CardC>
+    </div>: <div><h1>No hay Coincidencias encontradas</h1></div>}
   </div>
 </div>
   )
