@@ -28,12 +28,11 @@ export const courseSlice = createSlice({
         },
         reset:(state,/* action */ )=>{
             const save= [...state.reset];
-         state.courses=save;
+            state.courses=save;
         }
     }
 });
 
 
 // Action creators are generated for each case reducer function
-
 export const { increment,getCourses,search_Courses,reset } = courseSlice.actions;

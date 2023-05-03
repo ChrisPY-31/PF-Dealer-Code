@@ -11,12 +11,11 @@ function search(){
     dispatch(search_Courses(icourses))
 }
 return(
- <div className="flex flex-wrap items-center p-2 ml-5 m-2 rounded-xl bg-tarawera-500"> 
+    <div className="flex flex-wrap items-center  ml-5 m-2 rounded-lg bg-[#052345]">
  {<Link href="/Home/Course">   
-    {icourses.length?<button onClick={search} className="p-1 mr-2 top-5 text-gray-950 rounded-full"><RxMagnifyingGlass/></button>:null}
+    <button onClick={search} className="p-1 ml-2 mr-1 text-lg text-verde top-5 rounded-full"><RxMagnifyingGlass/></button>
     </Link>}
-    <input value={icourses} onChange={(e)=>setIcourses(e.target.value)} placeholder='¿Que buscas aprender?' type="text" className="p-1 placeholder-black bg-transparent"></input>
-    
+    <input value={icourses} onChange={(e)=>setIcourses(e.target.value)} placeholder='¿Que buscas aprender?' type="text" className="p-1 w-80 text-sm outline-none placeholder-gray-400 bg-transparent"></input>
  </div>
 )
 }
