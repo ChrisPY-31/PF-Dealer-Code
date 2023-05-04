@@ -5,7 +5,7 @@ export default function CardC({filter}) {
   return (
     <div>
     {filter.map((c,index)=>(
-    <div className='flex m-2 p-3 rounded-xl bg-slate-400'>
+    <div id="container" className='flex m-2 p-3 rounded-xl bg-slate-400'>
       <div className='p-10'>{c.image}</div>
       <div>
   <h1 key={index}>{c.name}</h1>

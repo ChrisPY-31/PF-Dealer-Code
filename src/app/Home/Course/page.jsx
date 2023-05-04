@@ -3,13 +3,14 @@ import React from 'react'
 import NavBar from '../components/Nav/NavBar'
 import { useSelector } from 'react-redux'
 import CardC from '../components/Cards/CardC'
+import ItemsPaginate from '../components/Paginate/itemsPaginate'
 const Course = () => {
 const filter = useSelector(s=>s.course.courses)
  return (
     <div>
       <NavBar></NavBar>
-    <div className='m-5'>
-      <div className='flex justify-between'>
+       <div className='m-5'>
+         <div className='flex justify-between'>
      <div><h1>ordenamiento</h1></div>
      <div>{filter.length?<h2>Resultados encontrados: {filter.length}</h2>:null}</div>
       </div>
@@ -17,8 +18,11 @@ const filter = useSelector(s=>s.course.courses)
       <div className=' w-1/3 text-center'>
         <h1>Categorias</h1>
       </div>
-<CardC filter={filter}></CardC>
+      <ItemsPaginate filter={filter}></ItemsPaginate>
     </div>: <div><h1>No hay Coincidencias encontradas</h1></div>}
+   
+      
+    
   </div>
 </div>
   )

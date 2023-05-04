@@ -46,8 +46,10 @@ import Image from 'next/image'
 import Logo from "../../../../Imagenes/Logo.png"
 import Menu from '@/Comonents/Menu/Menu'
 import { SearchInput } from '../Search/searchInput'
+import { useLocation } from 'react-router-dom'
 
 export default function NavBar() {
+  const location= useLocation()
   return (
     <div className=" flex flex-wrap items-center justify-around shadow-amber-50 shadow p-1">
        <Image className="absolute p-0 left-0" src={Logo} alt="Logo" width={80} height={80}></Image>
@@ -56,14 +58,15 @@ export default function NavBar() {
        <h1 className='text-lg font-bold mr-32'>DealerCode</h1>
        </div>
        </Link>
-       
+
         <div className="flex text-medio">
         
-        <Link href="/Home">
-        <ul className="mr-5 hover:underline decoration-white">Inicio</ul>
-        </Link>
+       {location.pathname!=="/Home"?
+       <div><Link href="/Home">
+          <ul className="mr-5 hover:underline  decorat:null}ion-white">Inicio</ul>
+        </Link></div>:null}
             <Link href="/Home/Course">
-            <ul className="mr-5 hover:underline  decoration-white">Explorar Cursos</ul>
+            <ul className="mr-5 hover:underline decoration-white">Explorar Cursos</ul>
             </Link>
             <Link href="/Favorits">
             <ul className="hover:underline decoration-white">Favoritos</ul>
