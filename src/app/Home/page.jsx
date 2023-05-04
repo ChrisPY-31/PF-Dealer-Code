@@ -40,7 +40,7 @@ var db=Courses[numeroAleatorio]
   <NavBar/>
   <div>
     <div>
-      <h1 className="m-5 text-2xl">Curso Destacado</h1>
+      <h1 className="mt-5 ml-5 text-2xl">Curso Destacado</h1>
       <CardP Courses={Courses} db={db}></CardP>
     </div>
     <div className='flex'>
