@@ -1,27 +1,38 @@
+import Image from 'next/image'
 import React from 'react'
+import logo from "../../Imagenes/Logo.png"
+import Link from 'next/link'
 
 function Nav() {
   return (
     <nav
     aria-label="Site Nav"
-    className="mx-auto flex max-w-3xl items-center justify-between p-4"
+    className="mx-auto flex max-w-3xl text-white items-center justify-between p-4 "
   >
-    <a
-      href="/"
-      className="inline-flex h-10 w-10 items-center justify-center  text-gray-500 rounded-lg"
+    <div
+  className=' gap-0'
+     
     >
-      <span className="sr-only">Logo</span>
-      Logo
-    </a>
+     <Image
+     src={logo}
+     alt='logo'
+     width={100}
+     height={100}
+     className="inline-flex m-0  items-center justify-center   rounded-lg"
+     />
+   
+    </div>
   
-    <ul className="flex items-center gap-2 text-sm font-medium text-gray-500">
-      <li className="hidden lg:block">
-        <a className="rounded-lg px-3 py-2" href="/Home">Home </a>
+    <ul className="flex items-center gap-2 text-sm font-medium">
+      <li className="hidden lg:block hover:rounded-sm hover:bg-verde hover:text-black hover:transition-all">
+      <Link href="/Home">
+       <span className="rounded-lg px-3 py-2" href="/Home">Home </span>
+       </Link>
       </li>
   
-      <li><a className="rounded-lg px-3 py-2" href="/Home"> Cancelar </a></li>
+     
   
-      <li>
+      <li className="hidden lg:block hover:rounded-sm hover:bg-verde hover:text-black">
         <a
           className="inline-flex items-center gap-2 rounded-lg px-3 py-2"
           href=""
