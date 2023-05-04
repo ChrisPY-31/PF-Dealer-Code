@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import NavLanding from "../NavLanding/NavLanding";
 import Slider from "../SliderCourse/Slider";
@@ -7,9 +7,11 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { FirebaseAuth } from "@/firebase/credenciales";
 import { useRouter } from "next/navigation";
+import RouteOfCourse from "../RouteOfCourse/RouteOfCourse";
+import Footer from "../Footer/Footer";
 
 const Landing = () => {
-  const router = useRouter()
+  const router = useRouter();
   // useEffect(() =>{
   //   onAuthStateChanged(FirebaseAuth , usuariofirebase => {
   //     if(usuariofirebase){
@@ -33,14 +35,17 @@ const Landing = () => {
               Cambia tu vida con el conocimiento. descubre nuestros cursos y
               enpieza a aprender hoy
             </p>
-
           </div>
         </div>
       </section>
       <div className="w-full flex justify-center">
         <Slider />
       </div>
+      <div className="mx-auto w-3/4">
+        <RouteOfCourse />
+      </div>
       <Empresas />
+      <Footer/>
     </div>
   );
 };
