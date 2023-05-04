@@ -1,10 +1,8 @@
 'use client'
-import { onAuthStateChanged } from 'firebase/auth'
 import registerUser from '../../functions/registerUser'
 import Link from 'next/link'
 import React from 'react'
-import { useState } from 'react'
-import { FirebaseAuth } from '@/firebase/credenciales'
+import { useState , useEffect} from 'react'
 import Logo from "../../Imagenes/Logo.png";
 
 import Image from 'next/image'
@@ -12,20 +10,11 @@ import Image from 'next/image'
 const page = () => {
   const [correo , setCorreo] = useState('')
   const [password , setPassword] = useState('')
-  const [user , setUser] = useState(null)
   const handleSubmit = async(e) =>{
     e.preventDefault()
-    
     await registerUser(correo , password)
   }
   
-  onAuthStateChanged(FirebaseAuth , usuariofirebase => {
-    if(usuariofirebase){
-      setUser(usuariofirebase)
-    }else{
-      setUser(null)
-    }
-  })
   return (
     <div className="h-screen">
       <div className="flex items-center justify-center  ">
@@ -46,7 +35,7 @@ const page = () => {
 
       <div className="flex justify-center h-full items-center flex-col ">
         <div className="w-1/2 h-3/4 flex flex-col items-center ">
-          <form className="w-10/12 m-auto " >
+          <form className="w-10/12 m-auto "onSubmit={handleSubmit} >
             <h2 className="text-5xl text-white font-bold text-center">
               Registrate
             </h2>
@@ -88,6 +77,7 @@ const page = () => {
                 type="text"
                 className="w-full text-black rounded py-1 pl-3"
                 placeholder='Correo'
+                onChange={(e) => setCorreo(e.target.value)}
               />
             </div>
             <div className="h-20 flex flex-col justify-around">
@@ -98,6 +88,7 @@ const page = () => {
                 type="password"
                 className="w-full text-black py-1 pl-3 rounded"
                 placeholder='Contraseña'
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <button className="rounded-md bg-teal-600 px-5 py-2.5 text-lg uppercase font-medium text-white shadow w-full mt-6 hover:bg-teal-800">

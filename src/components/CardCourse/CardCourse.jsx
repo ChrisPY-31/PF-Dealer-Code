@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const CardCourse = () => {
   return (
@@ -16,7 +17,7 @@ const CardCourse = () => {
             <p>Descuento</p>
           </div>
           <div>
-            <button className="py-2.5 w-full bg-lime-500">Comprar Curso</button>
+            <Link href='/checkaut' className="py-2.5 w-full bg-lime-500">Comprar Curso</Link>
             <button className="py-2.5 w-full bg-slate-600">Agregar a la Cesta</button>
           </div>
           <div>

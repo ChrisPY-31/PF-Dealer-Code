@@ -7,9 +7,10 @@ import Logo from "../../Imagenes/Logo.png";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { FirebaseAuth } from "@/firebase/credenciales";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
+
 const Page = () => {
-  const navigate = useNavigate()
+  const router = useRouter()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleClick = () => {
@@ -20,15 +21,7 @@ const Page = () => {
     e.preventDefault();
     await loginWithEmailPassword(email, password);
   };
-  useEffect(() =>{
-    onAuthStateChanged(FirebaseAuth , usuariofirebase => {
-      if(usuariofirebase){
-        console.log('hola')
-        navigate('/Home')
-      }
-    })
-  },[])
-
+  
   return (
     <div className="h-screen">
       <div className="flex items-center justify-center  ">
