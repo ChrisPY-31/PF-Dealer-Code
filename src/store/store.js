@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { courseSlice } from "./reducer/course";
 import { useDispatch } from "react-redux";
+import {pasarela} from "./reducer/addPagos/addPago"
 import { useMemo } from "react";
 
 export const store = configureStore({
     reducer: {
-        course: courseSlice.reducer
+        course: courseSlice.reducer,
+        pagos: pasarela.reducer
     }   
 }
 )
