@@ -55,15 +55,6 @@ function Menu() {
             <hr className="border-gray-200 dark:border-gray-700 "></hr>
             
             
-<<<<<<< HEAD
-            <Link href="/" legacyBehavior>
-           <Link href="/">
-           <span href="#" className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-                Cerrar sesion 
-            </span>
-           </Link>
-            </Link>
-=======
             <p href="#" onClick={handleClick} className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
                 Cerrar sesion 
             </p>
