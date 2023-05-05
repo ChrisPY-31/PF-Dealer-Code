@@ -8,20 +8,28 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { FirebaseAuth } from "@/firebase/credenciales";
 import { useRouter } from "next/navigation";
+import githudAuth from "@/functions/githudLogin";
 
 const Page = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handleClick = () => {
-    const result = singInWithGoogle();
-    console.log(result);
-  };
+
   const handleSubtmit = async (e) => {
     e.preventDefault();
     await loginWithEmailPassword(email, password);
   };
-  
+
+  useEffect(() => {
+    onAuthStateChanged(FirebaseAuth, (usuarioFirebase) => {
+      if (usuarioFirebase) {
+        return router.push("/Home");
+      } else {
+        return;
+      }
+    });
+  }, []);
+
   return (
     <div className="h-screen">
       <div className="flex items-center justify-center  ">
@@ -39,30 +47,45 @@ const Page = () => {
           DealerCode
         </Link>
       </div>
-
       <div className="flex justify-center h-full items-center flex-col ">
-        <div className="w-1/2 h-3/4 flex flex-col items-center ">
+        <div className="w-2/5 h-3/4 flex flex-col items-center ">
           <form className="w-10/12 m-auto " onSubmit={handleSubtmit}>
             <h2 className="text-5xl text-white font-bold text-center">
               Iniciar Sesion
             </h2>
 
-            <div className="flex flex-row my-5">
-              <button
-                type="submit"
-                value="Ingresar con Google"
-                className="bg-indigo-600 m-2 h-12 rounded-lg uppercase w-1/2"
-                onClick={handleClick}
-              >
-                Google
-              </button>
-              <button
-                type="submit"
-                value="Ingresar con Git hud"
-                className="bg-blue-600 m-2 h-12 rounded-lg uppercase w-1/2"
-              >
-                Githud
-              </button>
+            <div className="flex justify-evenly w-full my-5 cursor-pointer">
+              <div className="border-2 border-teal-600 py-2 px-16 rounded flex hover:bg-teal-600">
+                <img
+                  className="w-6 mr-2"
+                  src="https://rotulosmatesanz.com/wp-content/uploads/2017/09/2000px-Google_G_Logo.svg_.png"
+                  alt=""
+                />
+                <button
+                  type="submit"
+                  value="Ingresar con Google"
+                  className="uppercase font-medium"
+                  onClick={singInWithGoogle}
+                >
+                  Google
+                </button>
+              </div>
+
+              <div className=" py-2 px-16 rounded cursor-pointer flex hover:border-cyan-600 hover:border-2 bg-cyan-600 hover:bg-transparent">
+                <img
+                  className="w-6 mr-2"
+                  src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+                  alt=""
+                />
+                <button
+                  type="submit"
+                  value="Ingresar con Git hud"
+                  className="uppercase font-medium"
+                  onClick={githudAuth}
+                >
+                  Git-hud
+                </button>
+              </div>
             </div>
 
             <div className="h-20 flex flex-col justify-around">
@@ -71,8 +94,10 @@ const Page = () => {
               </label>
               <input
                 type="text"
-                className="w-full text-black rounded py-1 pl-3"
+                placeholder="Contraseña"
+                className="w-full text-black rounded py-1 pl-3 outline-none"
                 onChange={(e) => setEmail(e.target.value)}
+                autoFocus
               />
             </div>
             <div className="h-20 flex flex-col justify-around">
@@ -81,7 +106,8 @@ const Page = () => {
               </label>
               <input
                 type="password"
-                className="w-full text-black py-1 pl-3 rounded"
+                placeholder="***************"
+                className="w-full text-black py-1 pl-3 rounded outline-none"
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
@@ -89,14 +115,13 @@ const Page = () => {
               Accerder
             </button>
             <p className="text-end mt-2 mr-10">
-              No tienes cuenta { }
+              No tienes cuenta {}
               <Link href="sing-up" className="cursor-pointer text-blue-400 ">
-                 ¿Registrate?
+                ¿Registrate?
               </Link>
             </p>
           </form>
-          <div>
-          </div>
+          <div></div>
         </div>
       </div>
     </div>
