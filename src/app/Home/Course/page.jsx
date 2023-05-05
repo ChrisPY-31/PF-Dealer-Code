@@ -6,16 +6,11 @@ import { getCategories,filters } from '@/store/reducer'
 import { categorias } from '../db'
 
 import ItemsPaginate from '../components/Paginate/itemsPaginate'
+import { onAuthStateChanged } from "firebase/auth";
+import { FirebaseAuth } from "@/firebase/credenciales";
+import { useRouter } from 'next/navigation'
 const Course = () => {
-  var [categoria,setCategoria]=useState([])
-  const [boolean,setBoolean] = useState(false)
-  const dispatch= useDispatch()
-  useEffect(() => {
-    dispatch(getCategories(categorias))
-     }, []);
-
-     const categories= useSelector(s=>s.course.myCategories)
-
+  const router = useRouter()
 const filter = useSelector(s=>s.course.courses)
 
 function onClick(id){
@@ -34,6 +29,14 @@ function handleFilter(categoria){
 dispatch(filters(categoria))
 }
   console.log("cateof",categoria)
+
+useEffect(()=>{ 
+  onAuthStateChanged(FirebaseAuth , usuarioFirebase =>{
+    if(!usuarioFirebase){
+      return router.push('/')
+    }
+  })
+},[]) 
  return (
     <div>
       <NavBar></NavBar>

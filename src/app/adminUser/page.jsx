@@ -1,9 +1,9 @@
 import React from 'react'
-
+import Crear from "../../Comonents/crearCursos/Admin"
 const Page = () => {
   return (
     <div>
-      <h1>Desde User</h1>
+      <Crear/>
     </div>
   )
 }

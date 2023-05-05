@@ -4,6 +4,16 @@ import {loadStripe} from "@stripe/stripe-js"
 import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import Producto from "./Producto"
+import {agregarPago} from "../../store/reducer/addPagos/agregarPago"
+import { useDispatch } from "react-redux"
+
+let produ = [
+  {
+    id: 2
+
+
+  }
+]
 
 let stipePromise = loadStripe("pk_test_51N3WCTG4n6v6zt1DCpKO742a1RORPW5iGwRMf3A1UgkNXuKHXPhTnIJeP9iEnlqlXKUAJ028VgOM9rpPMho3Aplk00FLkHnUtO")
 
@@ -11,66 +21,11 @@ let ChechautForm = () => {
     let stripe = useStripe()
     let element = useElements()
 
-    let [input, setInput] = useState({
-        nombre: "",
-        correo: ""
-     })
-     
-  
-     let [errorMessage, setErororMessage] = useState({
-      nombre: "",
-      correo: ""
-   })   
-  
+  let dispach = useDispatch()
   
    
 
 
- function HalandOnchange (e) {
-   let { value} = e.target
-    //  if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(value)) {
-    //     setErororMessage({
-    //         ...errorMessage,
-    //         nombre: "El nombre  solo puede contener letras y espacios"
-    //     })
-    //  } else if(value === "") { 
-    //     setErororMessage({
-    //         ...errorMessage,
-    //         nombre: "ingrasa tu nombre por favor"
-    //     })
-    //  } else {
-        setInput({
-            ...input, 
-            nombre: value
-        })
-    // }
-   
- }
-
-  function hanledOnchange1 (e) {
-     let {value} = e.target 
-    // if(!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(value)) {
-    //     setErororMessage({
-    //         ...errorMessage,
-    //         correo: "El correo solamente puede contener letras, numeros, puntos, giones y gion bajo"
-    //     })
-    //  } else if(value.length === 0) { 
-    //     setErororMessage({
-    //         ...errorMessage,
-    //         correo: "ingrasa tu correo por favor"
-    //     })
-    //  } else {
-        setInput({
-            ...input, 
-            correo: value
-        })
-        setErororMessage({
-          ...errorMessage,
-          correo: ""
-      })
-  // }
-   
-  }
 
   
     return (
@@ -111,7 +66,7 @@ let ChechautForm = () => {
                      card: element.getElement(CardElement)
                     })
                     if(!error) {
-                      console.log(paymentMethod);
+                     console.log(paymentMethod)
                       
                     } else {
                       console.log(error);
