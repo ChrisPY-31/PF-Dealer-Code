@@ -11,6 +11,7 @@ import { FirebaseAuth } from "@/firebase/credenciales";
 import { useRouter } from 'next/navigation'
 const Course = () => {
   const router = useRouter()
+  const dispatch = useDispatch()
 const filter = useSelector(s=>s.course.courses)
 
 function onClick(id){
@@ -31,6 +32,7 @@ dispatch(filters(categoria))
   console.log("cateof",categoria)
 
 useEffect(()=>{ 
+  dispatch(getCategories(categorias))
   onAuthStateChanged(FirebaseAuth , usuarioFirebase =>{
     if(!usuarioFirebase){
       return router.push('/')

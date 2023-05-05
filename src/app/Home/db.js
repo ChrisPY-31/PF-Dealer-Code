@@ -40,7 +40,8 @@ categorias:[
             image:"UX",
             rating:"Rating: 4.5 out of 5",
             price:"$12.99",
-            categorias:[{id:1, subCategorias:[{n:"Multiplataforma"}, {n:"Movil"}] },{id:3, subCategorias:[{n:"Diseño"}] }]
+            categorias:[{id:1, subCategorias:[{n:"Multiplataforma"}, {n:"Movil"}] },
+            {id:3, subCategorias:[{n:"Diseño"}] }]
             
             }
             ,{
