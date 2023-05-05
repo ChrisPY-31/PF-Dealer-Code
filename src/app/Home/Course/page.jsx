@@ -13,7 +13,7 @@ const Course = () => {
   const router = useRouter()
   const dispatch = useDispatch()
 const filter = useSelector(s=>s.course.courses)
-
+const [categoria,setCategoria]=useState([])
 function onClick(id){
 const arr= [...categoria]
 var filter= arr.filter(f=>f===id)
