@@ -15,6 +15,7 @@ const page = () => {
     await registerUser(correo , password)
   }
   
+  
   return (
     <div className="h-screen">
       <div className="flex items-center justify-center  ">
@@ -34,13 +35,13 @@ const page = () => {
       </div>
 
       <div className="flex justify-center h-full items-center flex-col ">
-        <div className="w-1/2 h-3/4 flex flex-col items-center ">
+        <div className="w-2/5 h-3/4 flex flex-col items-center ">
           <form className="w-10/12 m-auto "onSubmit={handleSubmit} >
             <h2 className="text-5xl text-white font-bold text-center">
               Registrate
             </h2>
 
-            <div className="flex flex-row my-5">
+            {/* <div className="flex flex-row my-5">
               <button
                 type="submit"
                 value="Ingresar con Google"
@@ -56,16 +57,17 @@ const page = () => {
               >
                 Githud
               </button>
-            </div>
+            </div> */}
 
-            <div className="h-20 flex flex-col justify-around">
+            <div className="h-20 flex flex-col justify-around mt-10">
               <label className=" uppercase font-light text-lg">
                 Ingresa tu Nombre
               </label>
               <input
                 type="text"
-                className="w-full text-black rounded py-1 pl-3"
+                className="w-full text-black rounded py-1 pl-3  outline-none"
                 placeholder='Nombre'
+                autoFocus
               />
             </div>
 
@@ -75,7 +77,7 @@ const page = () => {
               </label>
               <input
                 type="text"
-                className="w-full text-black rounded py-1 pl-3"
+                className="w-full text-black rounded py-1 pl-3  outline-none"
                 placeholder='Correo'
                 onChange={(e) => setCorreo(e.target.value)}
               />
@@ -86,8 +88,8 @@ const page = () => {
               </label>
               <input
                 type="password"
-                className="w-full text-black py-1 pl-3 rounded"
-                placeholder='Contraseña'
+                className="w-full text-black py-1 pl-3 rounded outline-none"
+                placeholder='******************' 
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>

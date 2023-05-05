@@ -1,10 +1,22 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import NavBar from '../components/Nav/NavBar'
 import { useSelector } from 'react-redux'
 import ItemsPaginate from '../components/Paginate/itemsPaginate'
+import { onAuthStateChanged } from "firebase/auth";
+import { FirebaseAuth } from "@/firebase/credenciales";
+import { useRouter } from 'next/navigation'
 const Course = () => {
+  const router = useRouter()
 const filter = useSelector(s=>s.course.courses)
+
+useEffect(()=>{ 
+  onAuthStateChanged(FirebaseAuth , usuarioFirebase =>{
+    if(!usuarioFirebase){
+      return router.push('/')
+    }
+  })
+},[]) 
  return (
     <div>
       <NavBar></NavBar>
