@@ -4,7 +4,6 @@ import NavBar from '../components/Nav/NavBar'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCategories,filters } from '@/store/reducer'
 import { categorias } from '../db'
-
 import ItemsPaginate from '../components/Paginate/itemsPaginate'
 import { onAuthStateChanged } from "firebase/auth";
 import { FirebaseAuth } from "@/firebase/credenciales";
@@ -13,6 +12,7 @@ const Course = () => {
   const router = useRouter()
   const dispatch = useDispatch()
 const filter = useSelector(s=>s.course.courses)
+const categories= useSelector(c=>c.course.myCategories)
 const [categoria,setCategoria]=useState([])
 function onClick(id){
 const arr= [...categoria]
@@ -24,7 +24,7 @@ if(filter.length===1){
 return 
 }
 setCategoria([...categoria,id])
-setBoolean(!boolean)
+
 }
 function handleFilter(categoria){
 dispatch(filters(categoria))
