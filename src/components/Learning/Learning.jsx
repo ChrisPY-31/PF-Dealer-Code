@@ -1,10 +1,10 @@
 'use client'
 import { Fragment, useState } from "react";
-// import {
-//   Accordion,
-//   AccordionHeader,
-//   AccordionBody,
-// } from "@material-tailwind/react";
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionBody,
+} from "@material-tailwind/react";
  
 function Icon({ id, open }) {
   
