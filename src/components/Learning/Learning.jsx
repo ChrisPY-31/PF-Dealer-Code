@@ -33,7 +33,7 @@ const Learning = () => {
  
   return (
     <div className="my-28">
-      <h3 className="text-3xl mt-28 mb-10">Temario</h3>
+      {/* <h3 className="text-3xl mt-28 mb-10">Temario</h3>
       <Fragment >
       <Accordion open={open === 1} icon={<Icon id={1} open={open} />}>
         <AccordionHeader onClick={() => handleOpen(1)} className="text-2xl">
@@ -68,7 +68,7 @@ const Learning = () => {
           dreams.
         </AccordionBody>
       </Accordion>
-    </Fragment>
+    </Fragment> */}
     </div>
   )
 }

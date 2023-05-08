@@ -4,7 +4,7 @@ import axios from "axios"
 export const agregarPago = createAsyncThunk(
     "pagos/agregarPago",
     async (datosDelpago) => {
-        const respuesta = await axios.post("http://localhost:3096/post", datosDelpago);
+        const respuesta = await axios.post("https://dealer-code.fly.dev/post", datosDelpago);
         return respuesta.data
     }
 )
