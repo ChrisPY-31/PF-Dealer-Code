@@ -35,19 +35,19 @@ function Menu() {
             menu === true ?  <div className="absolute right-0 z-20 w-56 py-2 mt-2 overflow-hidden bg-white rounded-md shadow-xl dark:bg-gray-800">
             
            <Link href="/Account" legacyBehavior>
-           <span className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+           <span className="block cursor-pointer px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
                 Mi cuenta
             </span>
            </Link >
 
             <Link href="/adminUser" legacyBehavior>
-            <span className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+            <span className="block cursor-pointer px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
                 Crear un Curso
             </span>
             </Link>
 
             <Link href="/Favorits" legacyBehavior>
-            <span className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+            <span className="block px-4 py-3 text-sm cursor-pointer text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
                 Favoritos
             </span>
             </Link>
@@ -55,10 +55,9 @@ function Menu() {
             <hr className="border-gray-200 dark:border-gray-700 "></hr>
             
             
-            <p href="#" onClick={handleClick} className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+            <p  onClick={handleClick} className="block cursor-pointer px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
                 Cerrar sesion 
             </p>
->>>>>>> 262275f64e4e0fd87ac6d540b2728f333e755227
         </div> : null
            } 
            
