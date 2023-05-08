@@ -13,7 +13,6 @@ import { useDispatch } from 'react-redux'
 
 export default function NavBar() {
   const dispatch= useDispatch()
-  const location= useLocation()
   function handleReset(){
     dispatch(reset())
   }
@@ -30,7 +29,7 @@ export default function NavBar() {
         
        
        <div><Link href="/Home">
-          {location.pathname!=="/Home"?<ul className="mr-5 hover:underline  decorat:null}ion-white">Inicio</ul>:null}
+          <ul className="mr-5 hover:underline  decorat:null}ion-white">Inicio</ul>
         </Link></div>
             <Link href="/Home/Course">
             <button onClick={handleReset} className="mr-5 hover:underline decoration-white">Explorar Cursos</button>

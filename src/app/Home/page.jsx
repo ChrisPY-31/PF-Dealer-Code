@@ -14,14 +14,15 @@ const Page = () => {
 useEffect(() => {
   dispatch(getCourses(DB))
    }, []);
-    
+  
    
    function Recomendaciones(){
     var push=[]
     if(Courses.length>3){
       for (let index = 0; index < 4; index++) {
-        if(Courses[index]!==undefined){
-          push.push(Courses[index])
+        let numeroA= Math.floor(Math.random() * Courses.length);
+        if(Courses[numeroA]!==undefined){
+          push.push(Courses[numeroA])
       setRecomendaciones(push)
         }
       }

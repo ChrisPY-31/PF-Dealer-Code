@@ -1,30 +1,22 @@
-"use client"
-import React,{useState} from 'react'
+import React from 'react'
 import ReactPaginate from 'react-paginate';
 import CardC from '../Cards/CardC';
-
-
-export default function ItemsPaginate({filter}) {
-    
-const [initPage,setinitPage] = useState(0)
-const [pageSize,setPagesize]= useState(filter.length/5)
-const pages=(filter.length/2)-1
-const startIndex = initPage * pageSize;
-const endIndex = startIndex + pageSize;
+export default function ItemsPaginate({filter,initPage,pageSize,setinitPage,startIndex,endIndex}) {
+let pages=(filter.length/2)-1
 const paged=filter.slice(startIndex,endIndex)
+console.log("paged",paged)
 const handlePageClick = (event) => {
-    const newOffset = event.selected 
+    const newOffset = event.selected                                                                                                                                                                                                                                                                               
     setinitPage(newOffset);
   };
  
   if (filter.length!==1&&initPage>pages) {
     setinitPage(0)
   }
-  console.log(initPage)
   return (
     <div>
       <nav >
-    {<ReactPaginate  
+    {paged.length&&filter.length!==2?<ReactPaginate  
       breakLabel={<li class="page-item"><a class="page-link" href="#">...</a></li>}
       nextLabel={initPage!==pages?<li className='p-1 bg-lime-800 hover:bg-lime-700 rounded m-1'>Next</li>:null}
       onPageChange={handlePageClick}
@@ -36,10 +28,10 @@ const handlePageClick = (event) => {
       pageClassName="text-black border border-black hover:bg-lime-600 rounded p-1 pl-2 pr-2 mr-1 ml-1"
      activeClassName='border-transparent text-lime-400'
      
-    />}
+    />:null}
 </nav>
     <div>
-    <CardC filter={paged}></CardC>
+    <CardC filter={paged.length?paged:filter}></CardC>
  </div>
 
 </div>

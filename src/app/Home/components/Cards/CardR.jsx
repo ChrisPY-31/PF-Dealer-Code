@@ -10,7 +10,7 @@ export default function CardR({recomendaciones}) {
 <h1 key={index}>{r.name}</h1>
 <h2>{r.subtitle}</h2>
 <p>{r.rating}</p>
-<h1>{r.price}</h1>
+{r.price!==0?<h1>${r.price}</h1>:<h1>Gratis</h1>}
 <Link href="/Detail">
 <button className='mt-2 p-2 rounded-xl hover:bg-teal-700 bg-teal-600'>Ver Detalles</button>
 </Link>

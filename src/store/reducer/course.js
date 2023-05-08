@@ -1,13 +1,12 @@
-import { categorias } from '@/app/Home/db';
 import { createSlice } from '@reduxjs/toolkit';
 let initialState = {
     courses:[],
     coursesOrigin:[],
     course:[],
+    favCourse:[],
     MyCourses:[],
     reset:[],
     myCategories:[],
-    myCategoriesOrigin:[],
     Filter:[]
 }
 
@@ -24,17 +23,104 @@ export const courseSlice = createSlice({
             state.coursesOrigin=action.payload;
             state.reset=action.payload;
         },
-        getCategories:(state,action)=>{
-             state.myCategories=action.payload;
-        },
         search_Courses:(state, action)=>{
             const course=[...state.coursesOrigin];
             const filter= course.filter(c=>c.name.toLowerCase().includes(action.payload.toLowerCase()));
-            state.courses=filter;
+            state.courses=filter
         },
-        filters:(state,action)=>{
-             
-    },
+        getCategories:(state,action)=>{
+             state.myCategories=action.payload;
+        },
+        Order:(state,action)=>{
+            if (action.payload==="Recomendados") {
+              const coursesA=state.Filter.length?[...state.Filter]:[...state.coursesOrigin]
+              let orden= coursesA.sort((a,b)=>{
+                console.log("hola")
+                if (a.rating > b.rating) {
+                  return -1;
+                }
+                if (a.rating <= b.rating) {
+                  return 1;
+                }
+                return 0;
+              }
+              )
+            state.courses=[...orden]
+            }
+           if(action.payload==="Populares"){
+            const coursesA=state.Filter.length?[...state.Filter]:[...state.coursesOrigin]
+            let orden= coursesA.sort((a,b)=>{
+              console.log("hola")
+              if (a.students > b.students) {
+                return -1;
+              }
+              if (a.students <= b.students) {
+                return 1;
+              }
+              return 0;
+            }
+            )
+          state.courses=[...orden]
+           }
+        },
+        Order2:(state,action)=>{
+            if(action.payload==="MayorPrecio"){ 
+                console.log("hola")
+                const coursesA=state.Filter.length?[...state.Filter]:[...state.coursesOrigin]
+                let orden= coursesA.sort((a,b)=>{
+                 
+                  if (a.price > b.price) {
+                    return -1;
+                  }
+                  if (a.price <= b.price) {
+                    return 1;
+                  }
+                  return 0;
+                }
+                )
+              state.courses=[...orden]
+            }
+            if(action.payload==="MenorPrecio"){
+                const coursesA=state.Filter.length?[...state.Filter]:[...state.coursesOrigin]
+                const orden= coursesA.sort((a,b)=>{
+                    if (a.price < b.price) {
+                      return -1;
+                    }
+                    if (a.price >= b.price ) {
+                      return 1;
+                    }
+                    return 0;
+                  }
+                  )
+                  state.courses=[...orden]
+            }
+            if(action.payload==="Gratis"){
+                const coursesA=state.Filter.length?[...state.Filter]:[...state.coursesOrigin]
+                const orden= coursesA.filter(f=>f.price===0)
+                state.courses=[...orden]
+            }
+        },
+         filters:(state,action)=>{
+          if(action.payload.checked){
+        const arr=[...state.coursesOrigin]
+        const DataFiltrada= arr.filter(item=>{
+for (let i = 0; i < item.categorias.length; i++) {
+    for (let j = 0; j < item.categorias[i].subCategorias.length; j++) {
+       if (item.categorias[i].subCategorias[j].n===action.payload.value) {
+        return item}}}})
+state.Filter=[...state.Filter,...DataFiltrada]
+          }else{
+            const DataFiltrada= state.Filter.filter(item=>{
+                for (let i = 0; i < item.categorias.length; i++) {
+                    for (let j = 0; j < item.categorias[i].subCategorias.length; j++) {
+                       if (item.categorias[i].subCategorias[j].n!==action.payload.value) {  
+                        return item
+                       }
+                    }}})
+                state.Filter=[...DataFiltrada]
+          }
+          state.courses=state.Filter
+    }, 
         reset:(state,/* action */ )=>{
             const save= [...state.reset];
             state.courses=save;
@@ -44,4 +130,4 @@ export const courseSlice = createSlice({
 
 
 // Action creators are generated for each case reducer function
-export const { increment,getCourses,search_Courses,reset, getCategories,filters } = courseSlice.actions;
+export const { increment,getCourses,search_Courses,reset, getCategories, filters, Order, Order2} = courseSlice.actions;
