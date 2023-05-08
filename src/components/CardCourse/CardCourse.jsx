@@ -24,7 +24,7 @@ const CardCourse = () => {
                     {autentication ? <h1>ir al curso </h1>: <h2>Comprar Curso</h2>}
                     
                   </Link>
-                  {!autentication && <button className="px-4 py-2 bg-red-400 ml-4 rounded-md" >Fav</button> }
+                  {!autentication && <Link href="/Favorits"><button className="px-4 py-2 bg-red-400 ml-4 rounded-md" >Fav</button></Link> }
               </div>
             </div>
             {!autentication &&

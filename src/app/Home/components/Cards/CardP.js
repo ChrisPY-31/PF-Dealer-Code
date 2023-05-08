@@ -12,8 +12,8 @@ export default function CardP({Courses,db}) {
           <div className='m-5'>
            <h1 className=" text-3xl">{db.name}</h1>
              <h2>{db.subtitle}</h2>
-              <p className='text-xs'>{db.rating}</p>
-              <p className=" mt-24 text-lg">{db.price}</p>
+              <p className='text-xs'>Estrellas: {db.rating}</p>
+              {db.price!==0?<p className=" mt-24 text-lg">${db.price}</p>:<p className=" mt-24 text-lg">Gratis</p>}
           </div>
          </div></Link>:null
   }

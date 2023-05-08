@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 export default function CardC({filter}) {
+  console.log(filter)
   return (
     <div>
     {filter.map((c,index)=>(
@@ -10,9 +11,10 @@ export default function CardC({filter}) {
       <div>
   <h1 key={index}>{c.name}</h1>
   <h2>{c.subtitle}</h2>
-  <p>{c.rating}</p>
+  <p className='text-xs text-orange-300'>Estrellas: {c.rating}</p>
+  <p className='text-xs'>Estudiantes: {c.students}</p>
   
-  <div className="flex justify-between"><h1>{c.price}</h1>
+  <div className="flex justify-between ">{c.price!==0?<h1 className=' text-lg font-bold text-black'>${c.price}</h1>:<h1 className=' text-lg font-bold text-black'>Gratis</h1>}
   <Link href="/Detail">
   <button className="bg-green-500 p-2 rounded-xl hover:bg-green-600">Detalle</button>
   </Link>
