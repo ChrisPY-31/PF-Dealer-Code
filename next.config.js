@@ -5,6 +5,7 @@ const nextConfig = {
     appDir: true,
     esmExternals: "loose",
   },
+  
 }
 
 module.exports = nextConfig
