@@ -93,7 +93,7 @@ const page = () => {
                     className="uppercase font-medium"
                     onClick={githudAuth}
                   >
-                    Git-hud
+                    Git-hub
                   </button>
                 </div>
               </div>
@@ -164,7 +164,7 @@ const page = () => {
                   disabled={isSubmitting}
                   className="rounded-md bg-teal-600 px-5 py-2.5 text-lg uppercase font-medium text-white shadow w-full mt-6 hover:bg-teal-800"
                 >
-                  Iniciar sesión
+                  Acceder
                 </button>
                 <p className="text-end mt-2 mr-5">
                   tienes cuenta {}

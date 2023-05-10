@@ -78,7 +78,7 @@ const Page = () => {
           {({ isSubmitting }) => (
             <div className="w-1/3">
                <h2 className="text-5xl text-white font-bold text-center">
-                  Registrarse
+                  Iniciar Sesion
                 </h2>
               <div className="flex justify-evenly w-full my-5 cursor-pointer">
                 <div className="border-2 border-teal-600 py-2 px-16 rounded flex hover:bg-teal-600">
@@ -109,7 +109,7 @@ const Page = () => {
                     className="uppercase font-medium"
                     onClick={githudAuth}
                   >
-                    Git-hud
+                    Git-hub
                   </button>
                 </div>
               </div>

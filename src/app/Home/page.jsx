@@ -21,6 +21,10 @@ const Page = () => {
     // you are safe to use the "document" object here
     console.log(document.location.href);
 }
+useEffect(() => {
+  // you are safe to use the 'document' object here
+  document.title = 'Sling Academy';
+}, []);
   function Recomendaciones() {
     var push = [];
     if (Courses.length > 3) {
