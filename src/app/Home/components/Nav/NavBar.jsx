@@ -7,7 +7,6 @@ import Image from 'next/image'
 import Logo from "../../../../Imagenes/Logo.png"
 import Menu from '@/Comonents/Menu/Menu'
 import { SearchInput } from '../Search/searchInput'
-import { useLocation } from 'react-router-dom'
 import { reset } from '@/store/reducer'
 import { useDispatch } from 'react-redux'
 
