@@ -1,14 +1,19 @@
 "use client"
-import React,{use, useEffect, useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import NavBar from '../components/Nav/NavBar'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCategories,filters ,Order,Order2} from '@/store/reducer'
+import { getCategories,filters ,Order,Order2, reset,getCourses} from '@/store/reducer'
 import { categorias } from '../db'
 import ItemsPaginate from '../components/Paginate/itemsPaginate'
 import { onAuthStateChanged } from "firebase/auth";
 import { FirebaseAuth } from "@/firebase/credenciales";
 import { useRouter } from 'next/navigation'
+import { DB } from '../db'
 const Course = () => {
+  useEffect(() => {
+    dispatch(getCourses(DB))
+     }, []);
+    
   const router = useRouter()
   const dispatch = useDispatch()
 const filter = useSelector(s=>s.course.courses)
@@ -25,6 +30,9 @@ return
 }
 setCategoria([...categoria,id])
 
+}
+function handleReset(){
+    dispatch(reset())  
 }
 function handleFilter(e){
 const {value,checked}=e.target
@@ -43,6 +51,7 @@ if(name==="Order"){
 dispatch(Order(value))
 }
 else if(name==="Order2"){
+  
   dispatch(Order2(value))
 }
 }
@@ -54,10 +63,7 @@ useEffect(()=>{
     }
   })
 },[]) 
-let [initPage,setinitPage] = useState(0)
-let [pageSize,setPagesize]= useState(filter.length/5)
-let startIndex = initPage * pageSize;
-let endIndex = startIndex + pageSize;
+
  return (
     <div>
       <NavBar></NavBar>
@@ -96,12 +102,12 @@ let endIndex = startIndex + pageSize;
                
            ))} 
       </div> 
-      <ItemsPaginate initPage={initPage} setinitPage={setinitPage} pageSize={pageSize} startIndex={startIndex} endIndex={endIndex} filter={filter}></ItemsPaginate>
+      <ItemsPaginate filter={filter}></ItemsPaginate>
     </div>
    </div>
       
     
-  </div>:<div className='text-center m-20'><h1 className='text-3xl'>No hay coincidencias encontradas</h1></div>}
+  </div>:handleReset()}
 </div>
   )
 }
