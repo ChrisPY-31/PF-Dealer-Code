@@ -2,40 +2,40 @@ import React from 'react'
 
 function Pagos() {
   return (
-    <div className='w-full h-96 flex flex-col'> 
+    <div classNameName='w-full h-96 flex flex-col'> 
      <div >
       <h1 className='text-xl  font-bold'>Tu historial de pagos</h1>
      </div>
      <section>
-  <div class="relative mx-auto max-w-screen-xl px-4 py-8">
-    <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
-      <div class="grid grid-cols-2 gap-4 md:grid-cols-1">
+  <div className="relative mx-auto max-w-screen-xl px-4 py-8">
+    <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-1">
         <img
           alt="Les Paul"
           src="https://i.pinimg.com/564x/32/9a/d8/329ad85f4ab2047cae13d582274f9270.jpg"
-          class="aspect-square w-full rounded-xl object-cover"
+          className="aspect-square w-full rounded-xl object-cover"
         />
 
       </div>
 
-      <div class="sticky top-0">
+      <div className="sticky top-0">
         <strong
-          class="rounded-full border border-blue-600 bg-verde px-3 py-0.5 text-xs font-medium tracking-wide text-blue-600"
+          className="rounded-full border border-blue-600 bg-verde px-3 py-0.5 text-xs font-medium tracking-wide text-blue-600"
         >
           Pagado
         </strong>
 
-        <div class="mt-2 flex justify-between">
-          <div class="max-w-[35ch] space-y-2">
-            <h1 class="text-xl font-bold sm:text-2xl">
+        <div className="mt-2 flex justify-between">
+          <div className="max-w-[35ch] space-y-2">
+            <h1 className="text-xl font-bold sm:text-2xl">
              Next js desde cero
             </h1>
 
-            <p class="text-sm">Curso Intensivo</p>
+            <p className="text-sm">Curso Intensivo</p>
 
-            <div class="-ms-0.5 flex">
+            <div className="-ms-0.5 flex">
               <svg
-                class="h-5 w-5 text-yellow-400"
+                className="h-5 w-5 text-yellow-400"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
@@ -46,7 +46,7 @@ function Pagos() {
               </svg>
 
               <svg
-                class="h-5 w-5 text-yellow-400"
+                className="h-5 w-5 text-yellow-400"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
@@ -57,7 +57,7 @@ function Pagos() {
               </svg>
 
               <svg
-                class="h-5 w-5 text-yellow-400"
+                className="h-5 w-5 text-yellow-400"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
@@ -68,7 +68,7 @@ function Pagos() {
               </svg>
 
               <svg
-                class="h-5 w-5 text-yellow-400"
+                className="h-5 w-5 text-yellow-400"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
@@ -79,7 +79,7 @@ function Pagos() {
               </svg>
 
               <svg
-                class="h-5 w-5 text-gray-200"
+                className="h-5 w-5 text-gray-200"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
@@ -91,33 +91,33 @@ function Pagos() {
             </div>
           </div>
 
-          <p class="text-lg font-bold">$19.99</p>
+          <p className="text-lg font-bold">$19.99</p>
         </div>
 
-        <div class="mt-1">
-          <div class="prose max-w-none">
-            <span className='text-sm '>
+        <div className="mt-1">
+          <div className="prose max-w-none">
+            <span classNameName='text-sm '>
               Amplia tus aportunidades aprendiendo next js, el frameword mas popular de react
             </span>
           </div>
         </div>
 
-        <div class="mt-3">
+        <div className="mt-3">
           <fieldset>
-            <legend class="mb-1 text-sm font-medium">Fecha de pago</legend>
+            <legend className="mb-1 text-sm font-medium">Fecha de pago</legend>
            <span className='text-base'>  12/03/2022</span>
           </fieldset>
 
-          <fieldset class="mt-2">
-            <legend class="mb-1 text-sm font-medium">Metodos de pagos</legend>
+          <fieldset className="mt-2">
+            <legend className="mb-1 text-sm font-medium">Metodos de pagos</legend>
 
-              <span className='text-base'>1234*********</span>
+              <span classNameName='text-base'>1234*********</span>
           </fieldset>
 
-          <div class="mt-3 flex gap-4">
+          <div className="mt-3 flex gap-4">
             <span
               
-              class="block rounded bg-green-600 px-5 py-3 text-xs font-medium text-white hover:bg-green-500"
+              className="block rounded bg-green-600 px-5 py-3 text-xs font-medium text-white hover:bg-green-500"
             >
              Ir al curso
             </span>

@@ -21,7 +21,7 @@ const handlePageClick = (event) => {
     <div>
       <nav >
     {paged.length&&filter.length!==2?<ReactPaginate  
-      breakLabel={<li class="page-item"><a class="page-link" href="#">...</a></li>}
+      breakLabel={<li className="page-item"><a className="page-link" href="#">...</a></li>}
       nextLabel={initPage!==pages?<li className='p-1 bg-lime-800 hover:bg-lime-700 rounded m-1'>Next</li>:null}
       onPageChange={handlePageClick}
       pageRangeDisplayed={5}
