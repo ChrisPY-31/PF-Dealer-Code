@@ -1,8 +1,12 @@
-import React from 'react'
+import Estadisticas from "./Estadisticas"
 
 function General() {
   return (
-    <div>General</div>
+    <div>
+     <Estadisticas/>
+     <h1>Cusos vendido</h1>
+    </div>
+
   )
 }
 

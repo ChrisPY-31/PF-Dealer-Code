@@ -66,7 +66,10 @@ let ChechautForm = () => {
                      card: element.getElement(CardElement)
                     })
                     if(!error) {
-                     console.log(paymentMethod)
+                      
+                      let {id} = paymentMethod
+                    dispach(agregarPago({ amount: 100.000,
+                      id}))
                       
                     } else {
                       console.log(error);

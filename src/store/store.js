@@ -3,11 +3,15 @@ import { courseSlice } from "./reducer/course";
 import { useDispatch } from "react-redux";
 import {pasarela} from "./reducer/addPagos/addPago"
 import { useMemo } from "react";
+import { usuarioSlice } from "./usuario";
+import { cursosSlice } from "./reducer/cursos";
 
 export const store = configureStore({
     reducer: {
         course: courseSlice.reducer,
-        pagos: pasarela.reducer
+        pagos: pasarela.reducer,
+        cursos: cursosSlice.reducer,
+         usuarios: usuarioSlice.reducer
     }   
 }
 )

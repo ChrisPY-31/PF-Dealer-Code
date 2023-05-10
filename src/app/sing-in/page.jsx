@@ -9,12 +9,14 @@ import { onAuthStateChanged } from "firebase/auth";
 import { FirebaseAuth } from "@/firebase/credenciales";
 import { useRouter } from "next/navigation";
 import githudAuth from "@/functions/githudLogin";
+import { useDispatch } from "react-redux";
+import { crearUsuario } from "@/store/reducer/addPagos/agregarPago";
 
 const Page = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  let dispatch = useDispatch()
   const handleSubtmit = async (e) => {
     e.preventDefault();
     await loginWithEmailPassword(email, password);
@@ -23,6 +25,12 @@ const Page = () => {
   useEffect(() => {
     onAuthStateChanged(FirebaseAuth, (usuarioFirebase) => {
       if (usuarioFirebase) {
+       dispatch(crearUsuario({
+        email: usuarioFirebase.email,
+        avatar: usuarioFirebase.photoURL,
+        userName: usuarioFirebase.displayName
+       }))
+       console.log(usuarioFirebase)
         return router.push("/Home");
       } else {
         return;
