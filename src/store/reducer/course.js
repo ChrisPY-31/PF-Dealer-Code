@@ -26,7 +26,7 @@ export const courseSlice = createSlice({
         search_Courses:(state, action)=>{
             const course=[...state.coursesOrigin];
             const filter= course.filter(c=>c.name.toLowerCase().includes(action.payload.toLowerCase()));
-            state.courses=filter
+            state.courses=[...filter]
         },
         getCategories:(state,action)=>{
              state.myCategories=action.payload;
@@ -97,7 +97,11 @@ export const courseSlice = createSlice({
             if(action.payload==="Gratis"){
                 const coursesA=state.Filter.length?[...state.Filter]:[...state.coursesOrigin]
                 const orden= coursesA.filter(f=>f.price===0)
+                if(orden.length){
                 state.courses=[...orden]
+              }else{
+                window.alert("No hay")
+              }
             }
         },
          filters:(state,action)=>{

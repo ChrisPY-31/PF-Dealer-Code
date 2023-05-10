@@ -24,7 +24,8 @@ categorias:[
     students:223,
     price:13.99,
     categorias:[
-        {id:2, subCategorias:[{n:"JAVA"}]}
+        {id:2, subCategorias:[{n:"JAVA"}]},
+        {id:3, subCategorias:[{n:"Diseño"}]}
     ]
 }
     ,{
