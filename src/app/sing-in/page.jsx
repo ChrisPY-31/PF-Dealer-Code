@@ -28,7 +28,8 @@ const Page = () => {
        dispatch(crearUsuario({
         email: usuarioFirebase.email,
         avatar: usuarioFirebase.photoURL,
-        userName: usuarioFirebase.displayName
+        userName: usuarioFirebase.displayName,
+        userId: usuarioFirebase.uid
        }))
        console.log(usuarioFirebase)
         return router.push("/Home");

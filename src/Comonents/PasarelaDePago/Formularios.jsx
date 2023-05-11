@@ -6,18 +6,13 @@ import { Formik, Form, Field, ErrorMessage } from "formik"
 import Producto from "./Producto"
 import {agregarPago} from "../../store/reducer/addPagos/agregarPago"
 import { useDispatch } from "react-redux"
+import { FirebaseAuth } from "@/firebase/credenciales";
+import { onAuthStateChanged } from "firebase/auth";
 
-let produ = [
-  {
-    id: 2
-
-
-  }
-]
 
 let stipePromise = loadStripe("pk_test_51N3WCTG4n6v6zt1DCpKO742a1RORPW5iGwRMf3A1UgkNXuKHXPhTnIJeP9iEnlqlXKUAJ028VgOM9rpPMho3Aplk00FLkHnUtO")
 
-let ChechautForm = () => {
+let ChechautForm = ({titulo, monto, idCurso, rating}) => {
     let stripe = useStripe()
     let element = useElements()
 
@@ -68,8 +63,20 @@ let ChechautForm = () => {
                     if(!error) {
                       
                       let {id} = paymentMethod
-                    dispach(agregarPago({ amount: 100.000,
-                      id}))
+                      onAuthStateChanged(FirebaseAuth, (usuarioFirebase) => {
+   
+                        if (usuarioFirebase) {
+                          dispach(agregarPago({
+                               token: usuarioFirebase.accessToken,
+                               amount: monto,
+                      id, 
+                    email: valores.correo,
+                    nombre: valores.nombre,
+                    idCurso
+                            }))
+                        } 
+                      });
+                   
                       
                     } else {
                       console.log(error);
@@ -112,14 +119,17 @@ let ChechautForm = () => {
 
             </div>
             <div className="w-1/2">
-                <Producto/>
+                <Producto 
+                titulo= {titulo}
+                monto = {monto}
+                rating={rating} />
             </div>
       </div>
     )
 }
 
 
-export default function Formularios ()  {
+export default function Formularios ({titulo, monto, idCurso, rating})  {
 
     
 
@@ -127,7 +137,10 @@ export default function Formularios ()  {
         <div className="max-w-2xl mx-auto px-4 md:px-0 ">
            
            <Elements stripe={stipePromise}>
-              <ChechautForm/>
+              <ChechautForm 
+                titulo = {titulo}
+                 monto={monto} idCurso={idCurso}
+                 rating={rating} />
            </Elements>
 
         </div>

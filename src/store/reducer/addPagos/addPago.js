@@ -2,7 +2,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit"
 import axios from "axios"
 import { agregarPago } from "./agregarPago"
 const initialState = {
-    cursospagos: []
+    pagos: []
 }
 
 export const pasarela = createSlice({
@@ -15,7 +15,7 @@ export const pasarela = createSlice({
      },
      extraReducers:  (builder) => {
         builder.addCase(agregarPago.fulfilled, (state, action) => {
-           state.cursospagos.push(action.payload)
+           state.pagos.push(action.payload)
         })
      }
 })

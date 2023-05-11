@@ -8,11 +8,13 @@ import { DB } from './db'
 import Link from 'next/link'
 import CardP from './components/Cards/CardP'
 import CardR from './components/Cards/CardR'
+import { getCursos } from '@/store/reducer/addPagos/agregarPago'
 const Page = () => {
   const [recomendaciones,setRecomendaciones]=useState("")
   const dispatch = useDispatch()
 useEffect(() => {
   dispatch(getCourses(DB))
+   dispatch(getCursos())
    }, []);
   
    
@@ -30,6 +32,8 @@ useEffect(() => {
      
   }
   const Courses=useSelector(s=>s.course.courses)
+  const cursos=useSelector(s=>s.getCursos.cursos)
+  console.log(cursos)
 const numeroAleatorio = Math.floor(Math.random() * Courses.length);
 if(!recomendaciones){
   Recomendaciones()
@@ -55,7 +59,7 @@ var db=Courses[numeroAleatorio]
 <div>
   <h1 className='text-2xl m-5'>Recomendaciones</h1>
    <div>
-   <CardR recomendaciones={recomendaciones}></CardR>
+  {cursos.length ?  <CardR cursos = {cursos}></CardR> : "No hay cursos"}
   </div>
 </div>
   </div>

@@ -2,12 +2,18 @@
 import { useEffect, useRef, useState } from "react";
 import Cuenta from "./Cuenta";
 import Pagos from "./Pagos";
+import { FirebaseAuth } from "@/firebase/credenciales";
+import { onAuthStateChanged } from "firebase/auth";
 import EditPerfil from "./EditPerfil";
 import { MdOutlineManageAccounts, MdPayment, MdOutlineAssignmentReturn } from "react-icons/md";
 import { BiEdit } from "react-icons/bi";
 import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { cursosPagos, getComprados } from "@/store/reducer/addPagos/agregarPago";
+
 
 const Sidebar = () => {
+  let dispacth = useDispatch()
   let [whatInfo, setWhatInfo] = useState({
     pago: null,
     edict: null,
@@ -29,6 +35,15 @@ const Sidebar = () => {
       name: "Pagos",
     },
   ];
+  useEffect(() => {
+    onAuthStateChanged(FirebaseAuth, (usuarioFirebase) => {
+     
+      if (usuarioFirebase) {
+        console.log(usuarioFirebase.accessToken);
+        dispacth(getComprados({cookie: usuarioFirebase.accessToken}))
+      } 
+    });
+  }, [])
 
   return (
     <>

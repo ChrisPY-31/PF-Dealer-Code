@@ -4,7 +4,7 @@ import axios from "axios"
 export const agregarPago = createAsyncThunk(
     "pagos/agregarPago",
     async (datosDelpago) => {
-        const respuesta = await axios.post("https://dealer-code.fly.dev/post", datosDelpago);
+        const respuesta = await axios.post("http://localhost:3096/post", datosDelpago);
         return respuesta.data
     }
 )
@@ -24,6 +24,53 @@ export const crearUsuario = createAsyncThunk(
         return respuesta.data
     }
 )
+
+
+export const cursosPagos = createAsyncThunk(
+    "cursosPagos/ccursosPagos",
+    async (token) => {
+        const respuesta = await axios.get("http://localhost:3096/post", token);
+        return respuesta.data
+    }
+)
+
+export const PostCursoscart = createAsyncThunk(
+    "cursos/getCursoscarts",
+    async (obj) => { 
+        console.log(obj);
+        const respuesta = await axios.post(`http://localhost:3096/cart`,obj);
+        return respuesta.data
+    }
+)
+
+export const getCursos = createAsyncThunk(
+    "cursos/getCursos",
+    async ( id) => {
+        const respuesta = await axios.get(`http://localhost:3096/cursos`);
+        return respuesta.data
+    }
+)
+
+export const getCursosId = createAsyncThunk(
+    "cursos/getCursosId",
+    async (id) => {
+        const respuesta = await axios.get(`http://localhost:3096/cursos/${id}`);
+        return respuesta.data
+    }
+)
+
+
+
+export const getComprados = createAsyncThunk(
+    "comprados/getComprados",
+    async (cookie) => { 
+        console.log(cookie);
+        const respuesta = await axios.post("http://localhost:3096/comprados", cookie);
+        return respuesta.data
+    }
+)
+
+
 
 
 

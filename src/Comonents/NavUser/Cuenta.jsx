@@ -1,6 +1,10 @@
-import React from 'react'
+"use client"
+import { useSelector } from 'react-redux'
 
 function Cuenta() {
+
+ 
+
   return (
     <div className=' w-full h-96 flex items-center justify-center flex-col'>
        <div className=' w-full h-96 flex   flex-col'>
