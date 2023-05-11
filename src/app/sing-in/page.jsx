@@ -35,6 +35,7 @@ const Page = () => {
     });
   }, []);
 
+
   const LoginSchema = Yup.object().shape({
     email: Yup.string()
       .email("Correo electrónico no válido")
