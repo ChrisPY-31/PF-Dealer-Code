@@ -4,7 +4,6 @@ import NavBar from "./components/Nav/NavBar";
 import { useSelector } from "react-redux";
 import { getCourses } from "../../store/reducer/course";
 import { useDispatch } from "react-redux";
-<<<<<<< HEAD
 import { DB } from './db'
 import Link from 'next/link'
 import CardP from './components/Cards/CardP'
@@ -17,21 +16,7 @@ useEffect(() => {
   dispatch(getCourses(DB))
    dispatch(getCursos())
    }, []);
-=======
-import { DB } from "./db";
-import Link from "next/link";
-import CardP from "./components/Cards/CardP";
-import CardR from "./components/Cards/CardR";
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer,} from "react-toastify";
-const Page = () => {
-  const [recomendaciones, setRecomendaciones] = useState("");
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getCourses(DB));
-  }, []);
->>>>>>> 4f17835858f69582786d42c6a6cd93b7c554fdc6
-  
+
   if(typeof document !== 'undefined') {
     // you are safe to use the "document" object here
     console.log(document.location.href);
@@ -52,7 +37,7 @@ useEffect(() => {
       }
     }
   }
-<<<<<<< HEAD
+
   const Courses=useSelector(s=>s.course.courses)
   const cursos=useSelector(s=>s.getCursos.cursos)
   console.log(cursos)
@@ -62,17 +47,10 @@ if(!recomendaciones){
 }
 var db=Courses[numeroAleatorio]
  
-=======
-  const Courses = useSelector((s) => s.course.courses);
-  const numeroAleatorio = Math.floor(Math.random() * Courses.length);
-  if (!recomendaciones) {
-    Recomendaciones();
-  }
-  var db = Courses[numeroAleatorio];
 
->>>>>>> 4f17835858f69582786d42c6a6cd93b7c554fdc6
   return (
     <div>
+      <div>
       <ToastContainer />
       <NavBar />
       <div>
@@ -105,7 +83,7 @@ var db=Courses[numeroAleatorio]
         </div>
       </div>
     </div>
-<<<<<<< HEAD
+
     <div className='flex'>
   <div className='ml-7 rounded-xl bg-slate-800 '>
 <h1 className='text-2xl m-5 '>Mis Cursos</h1>
@@ -120,13 +98,10 @@ var db=Courses[numeroAleatorio]
   {cursos.length ?  <CardR cursos = {cursos}></CardR> : "No hay cursos"}
   </div>
 </div>
-  </div>
-</div>
+    </div>
+ 
   )
 }
-=======
-  );
-};
->>>>>>> 4f17835858f69582786d42c6a6cd93b7c554fdc6
+
 
 export default Page;
