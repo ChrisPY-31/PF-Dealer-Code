@@ -22,15 +22,15 @@ const Landing = () => {
   return (
     <div className="min-h-screen ">
       <NavLanding />
-      <section class=" text-white">
-        <div class="mx-auto max-w-screen-xl px-4 pt-12 lg:flex lg:h-1/2 ">
-          <div class="mx-auto max-w-3xl text-center">
-            <h1 class="bg-gradient-to-r from-green-300 via-verde to-white bg-clip-text text-3xl font-extrabold text-transparent sm:text-6xl">
+      <section className=" text-white">
+        <div className="mx-auto max-w-screen-xl px-4 pt-12 lg:flex lg:h-1/2 ">
+          <div className="mx-auto max-w-3xl text-center">
+            <h1 className="bg-gradient-to-r from-green-300 via-verde to-white bg-clip-text text-3xl font-extrabold text-transparent sm:text-6xl">
               Aprende algo nuevo hoy
-              <span class="sm:block"> Y cambia tu mañana. </span>
+              <span className="sm:block"> Y cambia tu mañana. </span>
             </h1>
 
-            <p class="mx-auto mt-4  text-base max-w-xl sm:text-lg/relaxed">
+            <p className="mx-auto mt-4  text-base max-w-xl sm:text-lg/relaxed">
               Cambia tu vida con el conocimiento. descubre nuestros cursos y
               enpieza a aprender hoy
             </p>

@@ -1,10 +1,14 @@
-import React from 'react'
+"use client"
+import React,{useState} from 'react'
 import ReactPaginate from 'react-paginate';
 import CardC from '../Cards/CardC';
-export default function ItemsPaginate({filter,initPage,pageSize,setinitPage,startIndex,endIndex}) {
+export default function ItemsPaginate({filter}) {
 let pages=(filter.length/2)-1
+const [initPage,setinitPage] = useState(0)
+const [pageSize,setPagesize]= useState(filter.length/5)
+const startIndex = initPage * pageSize;
+const endIndex = startIndex + pageSize;
 const paged=filter.slice(startIndex,endIndex)
-console.log("paged",paged)
 const handlePageClick = (event) => {
     const newOffset = event.selected                                                                                                                                                                                                                                                                               
     setinitPage(newOffset);
