@@ -2,49 +2,25 @@
 import React,{useEffect, useState} from 'react'
 import NavBar from '../components/Nav/NavBar'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCategories,filters ,Order,Order2, reset,getCourses} from '@/store/reducer'
-import { categorias } from '../db'
+import { getCategories,filters ,Order,Order2, reset, getCourses, search_Courses} from '@/store/reducer'
+import { categorias, DB } from '../db'
 import ItemsPaginate from '../components/Paginate/itemsPaginate'
 import { onAuthStateChanged } from "firebase/auth";
 import { FirebaseAuth } from "@/firebase/credenciales";
 import { useRouter } from 'next/navigation'
-import { DB } from '../db'
+//aqui va estar la ruta /Course
 const Course = () => {
-  useEffect(() => {
-    dispatch(getCourses(DB))
-     }, []);
-    
+//aqui al levantar la aplicacion se cargaran todos lo paises
   const router = useRouter()
   const dispatch = useDispatch()
+  //aqui se llaman dos array el de cursos y el de categorias
 const filter = useSelector(s=>s.course.courses)
 const categories= useSelector(c=>c.course.myCategories)
-const [categoria,setCategoria]=useState([])
-function onClick(id){
-const arr= [...categoria]
-var filter= arr.filter(f=>f===id)
-if(filter.length===1){
- const filter2= categoria.filter(f=>f!==id)
- console.log(filter2)
- setCategoria(filter2)
-return 
-}
-setCategoria([...categoria,id])
-
-}
+const [boolean,setBoolean]=useState(false)
+let [addCategories,setCategories]=useState([])
 function handleReset(){
-    dispatch(reset())  
+    dispatch(getCourses(DB))  
 }
-function handleFilter(e){
-const {value,checked}=e.target
-const obj={
-  value,
-  checked
-}
-console.log("obj",obj)
-dispatch(filters(obj))
-}
-
-  console.log("cateof",categoria)
 function handleOrder(e){
   const {name,value} =e.target
 if(name==="Order"){
@@ -63,7 +39,21 @@ useEffect(()=>{
     }
   })
 },[]) 
+function onClick(){
+setBoolean(!boolean)
+}
+function searchCategories(e){
+  const {value,checked}=e.target
+  if(checked){
+  setCategories([...addCategories,parseInt(value)])
+}else{
+   const arr=[...addCategories]
+   const filter = arr.filter((v)=>v!==parseInt(value))
+   setCategories(filter)
+}
 
+}
+ console.log(addCategories)
  return (
     <div>
       <NavBar></NavBar>
@@ -89,24 +79,18 @@ useEffect(()=>{
       <div className='flex justify-center items-center'>
       <div className='flex p-4 w-4/5 rounded-b bg-teal-700'>
       <div className=' w-1/3 text-center'>
-        <h1 className='mb-4'>Categorias</h1>
+        <button className='mb-4 p-1 pl-5 pr-4 border border-emerald-500 hover:bg-emerald-700' onClick={onClick}>Categorias</button>
            {categories.map((c)=>(
             <div className="flex justify-center flex-col" key={c.id}>
-            <button className='p-1 border border-emerald-500 hover:bg-emerald-700' onClick={()=>onClick(c.id)}>{c.nombre}</button>
-            {c.subCategorias.map((s)=>(
-              <div style={!(categoria.find(f=>f===c.id))?{ display:"none" }:{display:"flex"}} className="bg-teal-800 border border-transparent hover:border-black m-1 p-2 rounded">
-              <input onChange={(e)=>{handleFilter(e)}} type="checkbox" value={s.n} id={s.n} name="categorias"></input><label className='pl-2' htmlFor={s.n}>{s.n}</label>
-              </div>
-            ))}
+            <div style={boolean?{display:'flex'}:{display:"none"}} className='flex m-1 p-2 bg-teal-800 border border-transparent hover:border-black rounded'>
+            <input type="checkbox" name='Categorias' onChange={searchCategories} value={c.id}></input><p className='ml-2'>{c.nombre}</p>
             </div>
-               
+            </div>
            ))} 
       </div> 
       <ItemsPaginate filter={filter}></ItemsPaginate>
     </div>
    </div>
-      
-    
   </div>:handleReset()}
 </div>
   )
