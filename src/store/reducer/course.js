@@ -104,27 +104,6 @@ export const courseSlice = createSlice({
               }
             }
         },
-         filters:(state,action)=>{
-          if(action.payload.checked){
-        const arr=[...state.coursesOrigin]
-        const DataFiltrada= arr.filter(item=>{
-for (let i = 0; i < item.categorias.length; i++) {
-    for (let j = 0; j < item.categorias[i].subCategorias.length; j++) {
-       if (item.categorias[i].subCategorias[j].n===action.payload.value) {
-        return item}}}})
-state.Filter=[...state.Filter,...DataFiltrada]
-          }else{
-            const DataFiltrada= state.Filter.filter(item=>{
-                for (let i = 0; i < item.categorias.length; i++) {
-                    for (let j = 0; j < item.categorias[i].subCategorias.length; j++) {
-                       if (item.categorias[i].subCategorias[j].n!==action.payload.value) {  
-                        return item
-                       }
-                    }}})
-                state.Filter=[...DataFiltrada]
-          }
-          state.courses=state.Filter
-    }, 
         reset:(state,/* action */ )=>{
             const save= [...state.reset];
             state.courses=save;

@@ -14,8 +14,6 @@ const Page = () => {
 useEffect(() => {
   dispatch(getCourses(DB))
    }, []);
-  
-   
    function Recomendaciones(){
     var push=[]
     if(Courses.length>3){

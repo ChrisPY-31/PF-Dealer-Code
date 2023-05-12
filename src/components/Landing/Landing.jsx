@@ -19,7 +19,6 @@ const Landing = () => {
   //     }
   //   })
   // },[])
-
   return (
     <div className="min-h-screen ">
       <NavLanding />
@@ -33,7 +32,7 @@ const Landing = () => {
 
             <p className="mx-auto mt-4  text-base max-w-xl sm:text-lg/relaxed">
               Cambia tu vida con el conocimiento. descubre nuestros cursos y
-              enpieza a aprender hoy
+              empieza a aprender hoy
             </p>
           </div>
         </div>
