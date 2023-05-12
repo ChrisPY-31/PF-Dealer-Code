@@ -1,10 +1,15 @@
 'use client'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { PostCursoscart } from "@/store/reducer/addPagos/agregarPago";
 import { FirebaseAuth } from "@/firebase/credenciales";
 import { onAuthStateChanged } from "firebase/auth";
+import { UseLocalStorage } from "@/Comonents/carrito/useLocalStorage";
+
+
+
+
 const CardCourse = ({titulo, instructor, video, descripcion, categoria, precio, id, }) => {
   const [autentication , setAutentication] = useState(false)
   
@@ -20,6 +25,14 @@ const CardCourse = ({titulo, instructor, video, descripcion, categoria, precio, 
       return router.push("/sing-in");
     }
   });
+
+  let obj = {
+    titulo, instructor, video, descripcion, categoria, precio, id, 
+  }
+
+  let [producto, setProducto] = UseLocalStorage("producto", [])
+
+
   return (
     <div className="bg-indigo-600 ">
       <div className="">
@@ -46,7 +59,7 @@ const CardCourse = ({titulo, instructor, video, descripcion, categoria, precio, 
             </div>
             {!autentication &&
             <button onClick={
-              () =>  dispacth(PostCursoscart({id, token}))
+              () => setProducto([...producto, obj])
             } className="py-2.5 w-full bg-slate-600 rounded-lg">
             Agregar a la Cesta
           </button>

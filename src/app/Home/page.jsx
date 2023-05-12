@@ -9,6 +9,8 @@ import Link from 'next/link'
 import CardP from './components/Cards/CardP'
 import CardR from './components/Cards/CardR'
 import { getCursos } from '@/store/reducer/addPagos/agregarPago'
+import { ToastContainer } from "react-toastify";
+
 const Page = () => {
   const [recomendaciones,setRecomendaciones]=useState("")
   const dispatch = useDispatch()
