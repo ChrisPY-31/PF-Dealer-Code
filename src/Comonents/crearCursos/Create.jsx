@@ -3,7 +3,6 @@ import { FirebaseAuth } from "@/firebase/credenciales";
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import { useState } from "react"
 import { useDispatch } from "react-redux";
-import { addtoken } from "@/store/usuario";
 import { crearCurso } from "@/store/reducer/addPagos/agregarPago";
 
 const urlRegExp = /(http|https?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_.~#?&//=]*)/;

@@ -43,7 +43,9 @@ export default function NavBar() {
         {/*aqui se renderiza el input de busqueda para buscar un curso*/}
         <SearchInput/>
         <div className="flex flex-wrap items-center">
-            <button className='mr-5 p-1 rounded-xl hover:bg-tarawera-600'><BsCart4/></button>
+         <Link href="/cart">
+         <button className='mr-5 p-1 rounded-xl hover:bg-tarawera-600'><BsCart4/></button>
+         </Link>
             <div className="flex flex-wrap items-center p-2 rounded-xl">
               <BsPersonCircle/>
             </div>
