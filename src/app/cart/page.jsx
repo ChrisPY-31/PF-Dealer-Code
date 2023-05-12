@@ -1,6 +1,10 @@
+"use client"
+
 import {  getCursos } from '@/store/reducer/addPagos/agregarPago'
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import Carrito from '../../Comonents/carrito/Carrito'
+import NavBar from '../Home/components/Nav/NavBar'
 
 function caritoDecompras() {
   let dispach = useDispatch()
@@ -12,11 +16,8 @@ function caritoDecompras() {
     
   return (
     <div>
-      { cursosCart ? map(c => (
-        <div key={c.id} >
-          <h1>c.titulo</h1>
-        </div>
-      )): <h1>No tienes cursos en tu carrito de compras</h1>}
+      <NavBar/>
+     <Carrito/>
     </div>
   )
 }
