@@ -9,16 +9,15 @@ import { FirebaseAuth } from "@/firebase/credenciales";
 import { useRouter } from "next/navigation";
 import RouteOfCourse from "../RouteOfCourse/RouteOfCourse";
 import Footer from "../Footer/Footer";
+import { useDispatch } from "react-redux";
+import { getCursos } from "@/store/reducer/addPagos/agregarPago";
 
 const Landing = () => {
   const router = useRouter();
-  // useEffect(() =>{
-  //   onAuthStateChanged(FirebaseAuth , usuariofirebase => {
-  //     if(usuariofirebase){
-  //       router.push('/Home')
-  //     }
-  //   })
-  // },[])
+  let disacth = useDispatch()
+  useEffect(() =>{
+    disacth(getCursos())
+  },[])
 
   return (
     <div className="min-h-screen ">

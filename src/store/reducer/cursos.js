@@ -6,7 +6,7 @@ const initialState = {
 }
 
 export const cursosSlice = createSlice({
-    name: "curso",
+    name: "cretecurso",
     initialState,
      reducers: {
         addPPago: () => {

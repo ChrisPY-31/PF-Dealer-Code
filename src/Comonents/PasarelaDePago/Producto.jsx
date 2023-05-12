@@ -1,13 +1,13 @@
-import React from 'react'
 
-function Producto() {
+
+function Producto({titulo, monto,  rating}) {
   return (
     <div className=" py-12 md:py-24">
     <div className="mx-auto max-w-lg space-y-8 px-4 lg:px-8">
 
       <div>
-        <p className="text-2xl font-medium tracking-tight text-white-900">
-          $99.99
+        <p class="text-2xl font-medium tracking-tight text-white-900">
+          {monto}
         </p>
 
         <p className="mt-1 text-sm text-slate-400">Total a pagar</p>
@@ -24,7 +24,7 @@ function Producto() {
               />
 
               <div>
-                <h3 className="text-sm text-white ">Next js desde cero</h3>
+                <h3 class="text-sm text-white ">Next js desde cero</h3>
 
                 <dl className="mt-0.5 space-y-px text-[10px] text-slate-500">
                   <div>
@@ -33,8 +33,8 @@ function Producto() {
                   </div>
 
                   <div>
-                    <dt className="inline mr-1">categoria:</dt>
-                    <dd className="inline">Next js</dd>
+                    <dt class="inline mr-1">categoria:</dt>
+                    <dd class="inline">Next js</dd>
                   </div>
                 </dl>
               </div>

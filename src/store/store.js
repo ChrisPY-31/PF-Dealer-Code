@@ -5,13 +5,23 @@ import {pasarela} from "./reducer/addPagos/addPago"
 import { useMemo } from "react";
 import { usuarioSlice } from "./usuario";
 import { cursosSlice } from "./reducer/cursos";
+import { cursosPagados } from "./reducer/addPagos/getPagos";
+import { getCursosSlice } from "./reducer/getCursos";
+import {getCursosIdSlice} from "./reducer/getCursosId"
+import { postCursosSliceCart } from "./reducer/posCart";
+import { getCompradosSlice } from "./reducer/getComprados";
 
 export const store = configureStore({
     reducer: {
         course: courseSlice.reducer,
         pagos: pasarela.reducer,
-        cursos: cursosSlice.reducer,
-         usuarios: usuarioSlice.reducer
+        cursosPost: cursosSlice.reducer,
+         usuarios: usuarioSlice.reducer,
+         cursospagos: cursosPagados.reducer,
+         getCursos: getCursosSlice.reducer,
+         cursoId: getCursosIdSlice.reducer,
+         postCart: postCursosSliceCart.reducer,
+         getcomprados: getCompradosSlice.reducer
     }   
 }
 )

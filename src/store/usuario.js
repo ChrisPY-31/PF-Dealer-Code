@@ -2,7 +2,7 @@ import { createSlice} from "@reduxjs/toolkit"
 import { crearUsuario } from "./reducer/addPagos/agregarPago"
 
 const initialState = {
-    usuario: []
+    usuario: {}
 }
 
 export const usuarioSlice = createSlice({
@@ -15,7 +15,8 @@ export const usuarioSlice = createSlice({
      },
      extraReducers:  (builder) => {
       builder.addCase(crearUsuario.fulfilled, (state, action) => {
-         state.usuario.push(action.payload)
+         state.usuario = action.payload
+         console.log(action.payload)
       })
    }
    

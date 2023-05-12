@@ -7,7 +7,7 @@ export const Asociados = [
     {
         id:2,
         name:'amazon',
-        image:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Google_logo_%282010-2013%29.svg/2560px-Google_logo_%282010-2013%29.svg.png'
+        image:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png'
     },
     {
         id:3,
@@ -41,41 +41,37 @@ export const Asociados2 = [
     {
         id:1,
         name:'globant',
-        image:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Google_logo_%282010-2013%29.svg/2560px-Google_logo_%282010-2013%29.svg.png'
+        image:'https://statics.globant.com/production/public/2022-08/globant-logo.jpg'
     },
     {
         id:2,
         name:'uber',
-        image:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Google_logo_%282010-2013%29.svg/2560px-Google_logo_%282010-2013%29.svg.png'
+        image:'https://1000marcas.net/wp-content/uploads/2019/12/UBER-Logo.jpg'
     },
     {
         id:3,
         name:'platzi',
-        image:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Rappi_logo.svg/2560px-Rappi_logo.svg.png'
+        image:'https://upload.wikimedia.org/wikipedia/commons/3/32/Platzi.jpg'
     },
     {
         id:4,
         name:'mercado libre',
-        image:'https://1000marcas.net/wp-content/uploads/2019/12/Facebook-logo.png'
+        image:'https://kineo.com/es/glide/containers/main/case_studies_images/Mercado_Libre/meli_case-study-logo-colour.png/d560984a679a4738412487af916cde1d.png'
     },
     {
         id:5,
         name:'fizer',
-        image:'https://1000marcas.net/wp-content/uploads/2020/01/Logo-Linkedin.png'
+        image:'https://1000marcas.net/wp-content/uploads/2021/05/Pfizer-logo.png'
     },
     {
         id:6,
         name:'adcenture',
-        image:'https://www.vectorlogo.zone/logos/apple/apple-ar21.png'
+        image:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Accenture.svg/2560px-Accenture.svg.png'
     },
     {
         id:7,
         name:'doulingo',
         image:'https://1000marcas.net/wp-content/uploads/2021/02/Logo-Duolingo.png'
     },
-    {
-        id:8,
-        name:'doulingo',
-        image:'https://1000marcas.net/wp-content/uploads/2021/02/Logo-Duolingo.png'
-    },
+    
 ]
