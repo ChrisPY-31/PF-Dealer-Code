@@ -7,15 +7,9 @@ import Image from 'next/image'
 import Logo from "../../../../Imagenes/Logo.png"
 import Menu from '@/Comonents/Menu/Menu'
 import { SearchInput } from '../Search/searchInput'
-import { reset } from '@/store/reducer'
-import { useDispatch } from 'react-redux'
 //aqui esta la navBar que se renderizara en la mayoria de rutas
 export default function NavBar() {
   //esta funcion sirve para resetear todos los cursos
-  const dispatch= useDispatch()
-  function handleReset(){
-    dispatch(reset())
-  }
   return (
     <div className=" flex flex-wrap items-center justify-around shadow-amber-50 shadow p-1">
        <Image className="absolute p-0 left-0" src={Logo} alt="Logo" width={80} height={80}></Image>
@@ -33,7 +27,7 @@ export default function NavBar() {
         </Link></div>
         {/*haciendo click te llevara a la ruta /Home/Course ademas se resetearan los cursos*/}
             <Link href="/Home/Course">
-            <button onClick={handleReset} className="mr-5 hover:underline decoration-white">Explorar Cursos</button>
+            <button className="mr-5 hover:underline decoration-white">Explorar Cursos</button>
             </Link>
             {/*haciendo click te llevara a la ruta /Favorits*/}
             <Link href="/Favorits">

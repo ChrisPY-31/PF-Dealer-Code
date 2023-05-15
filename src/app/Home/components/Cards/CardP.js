@@ -13,9 +13,9 @@ export default function CardP({Courses,db}) {
               <h1 className="bg-gray-200 p-10 text-amber-400 rounded-full">{db.image}</h1>
               </div>
           <div className='m-5'>
-           <h1 className=" text-3xl">{db.name}</h1>
-             <h2>{db.subtitle}</h2>
-              <p className='text-xs'>Estrellas: {db.rating}</p>
+           <h1 className=" text-3xl">{db.title}</h1>
+             <h2>{db.description}</h2>
+              <p className='text-xs'>Instructor: {db.instructor}</p>
               {/*aqui se esta la logica de que si el precio es cero se va a mostrar como gratis */}
               {db.price!==0?<p className=" mt-24 text-lg">${db.price}</p>:<p className=" mt-24 text-lg">Gratis</p>}
           </div>
