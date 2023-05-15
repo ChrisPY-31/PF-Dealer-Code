@@ -2,30 +2,33 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "./components/Nav/NavBar";
 import { useSelector } from "react-redux";
-import { getCourses } from "../../store/reducer/course";
+import { getCursos } from "@/store/reducer/addPagos/agregarPago";
 import { useDispatch } from "react-redux";
-import { DB } from './db'
 import Link from 'next/link'
 import CardP from './components/Cards/CardP'
 import CardR from './components/Cards/CardR'
-import { getCursos } from '@/store/reducer/addPagos/agregarPago'
 import { ToastContainer } from "react-toastify";
+
 
 const Page = () => {
   const [recomendaciones,setRecomendaciones]=useState("")
-  const dispatch = useDispatch()
+   const dispatch = useDispatch()
+   /*
 useEffect(() => {
   dispatch(getCourses(DB))
    dispatch(getCursos())
-   }, []);
+   }, []); */
 
+  const Courses=useSelector(state=>state.getCursos.cursos)
   if(typeof document !== 'undefined') {
     // you are safe to use the "document" object here
     console.log(document.location.href);
 }
 useEffect(() => {
+  dispatch(getCursos())
+
   // you are safe to use the 'document' object here
-  document.title = 'Sling Academy';
+  document.title = 'Dealer Code';
 }, []);
   function Recomendaciones() {
     var push = [];
@@ -40,9 +43,7 @@ useEffect(() => {
     }
   }
 
-  const Courses=useSelector(s=>s.course.courses)
-  const cursos=useSelector(s=>s.getCursos.cursos)
-  console.log(cursos)
+
 const numeroAleatorio = Math.floor(Math.random() * Courses.length);
 if(!recomendaciones){
   Recomendaciones()
@@ -85,21 +86,6 @@ var db=Courses[numeroAleatorio]
         </div>
       </div>
     </div>
-
-    <div className='flex'>
-  <div className='ml-7 rounded-xl bg-slate-800 '>
-<h1 className='text-2xl m-5 '>Mis Cursos</h1>
-        <Link href="/Home/Course"><div className="flex items-center p-16 m-5 flex-col hover:bg-slate-700" style={{border:"1px", borderStyle:"solid", borderColor:"grey"}}>
-  <h1>Añadir</h1>
-    </div></Link>
-  </div>
-</div>
-<div>
-  <h1 className='text-2xl m-5'>Recomendaciones</h1>
-   <div>
-  {cursos.length ?  <CardR cursos = {cursos}></CardR> : "No hay cursos"}
-  </div>
-</div>
     </div>
  
   )

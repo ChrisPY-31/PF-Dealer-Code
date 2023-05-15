@@ -5,6 +5,7 @@ import CardC from '../Cards/CardC';
 //aqui se renderiza la loguica del paginado que tiene la ruta /Course
 //le llega el array de cursos por props
 export default function ItemsPaginate({filter}) {
+  console.log("paginate",filter)
   //primero se calcula el numero de paginas que va haber
 let pages=Math.ceil(filter.length / 3)-1
 // se hace inicia un estado con la primara pagina
@@ -23,14 +24,16 @@ const handlePageClick = (event) => {
   };
  //aqui yase la logica para que al a ver mas paginas 
  //que la pagina que se esta, se resetee a 0 y vuelva a la primera pagina
- if (filter.length!==1&&initPage>pages) {
+ if(filter.length){
+ if (filter.length===1&&initPage>pages) {
   setinitPage(0)
+}
 }
   return (
     <div>
       <nav >
         {/*aqui se mapea el paguinado*/}
-    {paginado.length&&filter.length>3?<ReactPaginate  
+    {paginado&&filter.length>3?<ReactPaginate  
       breakLabel={<li className="page-item"><a className="page-link" href="#">...</a></li>}
       nextLabel={initPage!==pages?<button className='p-1 bg-lime-800 hover:bg-lime-700 rounded m-1'>Next</button>:null}
       onPageChange={handlePageClick}

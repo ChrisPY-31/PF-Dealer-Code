@@ -2,7 +2,7 @@
 import { useState } from "react"
 import {RxMagnifyingGlass} from "react-icons/rx"
 import { useDispatch } from "react-redux"
-import {search_Courses} from "../../../../store/reducer/course"
+import { search_Courses } from "@/store/reducer/cursos"
 import Link from "next/link"
 //aqui se renderiza el input que busca los cursos
 export function SearchInput() {
