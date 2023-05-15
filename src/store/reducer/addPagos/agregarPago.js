@@ -55,6 +55,7 @@ export const getCursosId = createAsyncThunk(
     "cursos/getCursosId",
     async (id) => {
         const respuesta = await axios.get(`http://localhost:3096/cursos/${id}`);
+        console.log(respuesta.data)
         return respuesta.data
     }
 )

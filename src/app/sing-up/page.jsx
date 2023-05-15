@@ -21,8 +21,8 @@ const page = () => {
     password: Yup.string()
       .min(6, "La contraseña debe tener al menos 6 caracteres")
       .matches(
-        /^(?=.*[A-Z])(?=.*[0-9])/,
-        "La contraseña debe tener al menos una letra mayúscula y un número"
+        /^(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*\d)/,
+      'La contraseña debe contener al menos un carácter especial, una mayúscula y un número'
       )
       .required("Este campo es obligatorio"),
   });

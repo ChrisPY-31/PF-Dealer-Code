@@ -9,6 +9,7 @@ import Link from 'next/link'
 import CardP from './components/Cards/CardP'
 import CardR from './components/Cards/CardR'
 import { getCursos } from '@/store/reducer/addPagos/agregarPago'
+import { ToastContainer } from "react-toastify";
 const Page = () => {
   const [recomendaciones,setRecomendaciones]=useState("")
   const dispatch = useDispatch()
@@ -95,7 +96,7 @@ var db=Courses[numeroAleatorio]
 <div>
   <h1 className='text-2xl m-5'>Recomendaciones</h1>
    <div>
-  {cursos.length ?  <CardR cursos = {cursos}></CardR> : "No hay cursos"}
+  {/* {cursos.length ?  <CardR cursos = {cursos}></CardR> : "No hay cursos"} */}
   </div>
 </div>
     </div>
