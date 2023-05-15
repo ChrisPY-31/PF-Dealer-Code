@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import {pasarela} from "./reducer/addPagos/addPago"
 import { useMemo } from "react";
 import { usuarioSlice } from "./usuario";
-import { cursosSlice } from "./reducer/getCursos";
 import { cursosPagados } from "./reducer/addPagos/getPagos";
 import { getCursosSlice } from "./reducer/cursos";
 import {getCursosIdSlice} from "./reducer/getCursosId"
@@ -15,7 +14,6 @@ import { filterSlice } from "./reducer/categorias/filtrarCategorias";
 export const store = configureStore({
     reducer: {
          pagos: pasarela.reducer, 
-         cursosPost: cursosSlice.reducer,
         usuarios: usuarioSlice.reducer,
           cursospagos: cursosPagados.reducer, 
          getCursos: getCursosSlice.reducer,
