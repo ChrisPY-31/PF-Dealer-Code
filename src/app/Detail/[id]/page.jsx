@@ -27,8 +27,11 @@ const Page = ({params}) => {
           <div className="w-4/12">
           { cursoId !==  null ?   <CardCourse 
             precio = {cursoId.price  }
+            categoria={cursoId.categoria}
+            titulo={cursoId.titulo}
+            instructor={cursoId.instructor}
             descripcion={cursoId.descripcion}
-            id={cursoId.id}
+            id = {cursoId.id}
             /> : <h2>Loadin...</h2> }
           </div>
         </div>

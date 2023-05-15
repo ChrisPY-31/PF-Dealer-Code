@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import {BsCart4} from "react-icons/bs"
 import {BsPersonCircle} from "react-icons/bs"
@@ -15,6 +15,14 @@ export default function NavBar() {
   function handleReset(){
     dispatch(reset())
   }
+  const [producto, setProducto] = useState(
+    JSON.parse(window.localStorage.getItem("producto") || [] )
+  )
+
+useEffect(() => {
+
+}, [producto])
+
   return (
     <div className=" flex flex-wrap items-center justify-around shadow-amber-50 shadow p-1">
        <Image className="absolute p-0 left-0" src={Logo} alt="Logo" width={80} height={80}></Image>
@@ -40,7 +48,11 @@ export default function NavBar() {
         <SearchInput/>
         <div className="flex flex-wrap items-center">
          <Link href="/cart">
-         <button className='mr-5 p-1 rounded-xl hover:bg-tarawera-600'><BsCart4/></button>
+         <div className='mr-5 p-1 rounded-xl hover:bg-tarawera-600 flex '>
+          { producto.length > 0  ?  <span className='text-[8px] mt-2 text-red-700   '> {producto.length} </span> : null }
+          <BsCart4  className='' />
+          
+         </div>
          </Link>
             <div className="flex flex-wrap items-center p-2 rounded-xl">
               <BsPersonCircle/>
