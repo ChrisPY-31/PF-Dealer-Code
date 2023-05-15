@@ -1,8 +1,13 @@
 export const categorias=[
-    { id: 1, nombre: 'Movil', subCategorias:[{n:"iOS"},{n:"Android"},{n:"Multiplataforma"}, {n:"Dart y Flutter"},{n:"Ionic"}]},
-    { id: 2, nombre: 'Programacion', subCategorias:[{n:"HTML"},{n:"Python"},{n:"JAVA"},{n:"CSS"},{n:"JavaScript"}]},
-    { id: 3, nombre: 'Devops', subCategorias:[{n:"Diseño"}]},
-  
+    { id: 1, nombre: "iOS"},
+    { id: 2, nombre: "Android"},
+    { id: 3, nombre: "Dart y Flutter"},
+    { id: 4, nombre: "Ionic"},
+    { id: 5, nombre: "HTML"},
+    { id: 6, nombre: "JAVA"},
+    { id: 7, nombre: "CSS"},
+    { id: 8, nombre: "JavaScript"},
+    { id: 9, nombre: "Diseño"},
 ]
 export const DB=[
 {

@@ -2,7 +2,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit"
 import axios from "axios"
 import {  PostCursoscart  } from "./addPagos/agregarPago"
 const initialState = {
-    CursosCart: [],
+    CursosCheckaut: [],
     
    
 }
@@ -17,7 +17,7 @@ export const postCursosSliceCart = createSlice({
      },
      extraReducers:  (builder) => {
         builder.addCase(PostCursoscart.fulfilled, (state, action) => {
-           state.CursosCart.push(action.payload)
+           state.CursosCheckaut.push(action.payload)
            console.log(action.payload);
         })
      },
