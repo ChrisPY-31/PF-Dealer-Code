@@ -103,7 +103,7 @@ export default function Contraseña ()  {
                )} />   }
                  <button type="submit" className='w-28 relative mt-3 text-base  rounded-full   border-2 border-transparent transition-colors outline-transparent focus:outline-transparent  disabled:pointer-events-none disabled:opacity-40 disabled:hover:opacity-40 disabled:cursor-not-allowed disabled:shadow-none
         text-black bg-blue-400  focus:bg-bg-blue-400'>
-            {loading === true ?  <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg> 
+            {loading === true ?  <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg> 
      : "confirmar" }
         </button>
               </div>: null}
@@ -114,7 +114,7 @@ export default function Contraseña ()  {
                )} />   }
                  <button type="submit" className='w-28 relative mt-3 text-base  rounded-full   border-2 border-transparent transition-colors outline-transparent focus:outline-transparent  disabled:pointer-events-none disabled:opacity-40 disabled:hover:opacity-40 disabled:cursor-not-allowed disabled:shadow-none
         text-black bg-blue-400  focus:bg-bg-blue-400'>
-            {loading === true ?  <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg> 
+            {loading === true ?  <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg> 
      : "confirmar"}
         </button>
               </div>: null}
@@ -125,7 +125,7 @@ export default function Contraseña ()  {
                )} />   }
                  <button type="submit" className='w-28 relative mt-3 text-base  rounded-full   border-2 border-transparent transition-colors outline-transparent focus:outline-transparent  disabled:pointer-events-none disabled:opacity-40 disabled:hover:opacity-40 disabled:cursor-not-allowed disabled:shadow-none
         text-black bg-blue-400  focus:bg-bg-blue-400'>
-            {loading === true ?  <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg> 
+            {loading === true ?  <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg> 
      : "confirmar"}
         </button>
               </div>: null}

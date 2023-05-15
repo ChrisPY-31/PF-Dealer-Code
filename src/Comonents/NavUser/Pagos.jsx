@@ -6,7 +6,7 @@ function Pagos() {
 
   let cursos = useSelector(state => state.getcomprados.comprados)
   return (
-    <div className='w-full h-96 flex flex-col'> 
+    <div classNameName='w-full h-96 flex flex-col'> 
      <div >
       <h1 className='text-xl  font-bold'>Tu historial de pagos</h1>
      </div>
