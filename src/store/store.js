@@ -15,7 +15,6 @@ import { filterSlice } from "./reducer/categorias/filtrarCategorias";
 export const store = configureStore({
     reducer: {
          pagos: pasarela.reducer, 
-         cursosPost: cursosSlice.reducer,
         usuarios: usuarioSlice.reducer,
           cursospagos: cursosPagados.reducer, 
          getCursos: getCursosSlice.reducer,
