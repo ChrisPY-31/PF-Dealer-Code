@@ -10,11 +10,11 @@ import { UseLocalStorage } from "@/Comonents/carrito/useLocalStorage";
 
 
 
-const CardCourse = ({titulo, instructor, video, descripcion, categoria, precio, id, }) => {
+const CardCourse = ({titulo, instructor,  categoria, precio, descripcion, id }) => {
   const [autentication , setAutentication] = useState(false)
   
   let dispacth = useDispatch()
-  console.log(id);
+
   let token;
   onAuthStateChanged(FirebaseAuth, (usuarioFirebase) => {
     
@@ -26,12 +26,9 @@ const CardCourse = ({titulo, instructor, video, descripcion, categoria, precio, 
     }
   });
 
-  let obj = {
-    titulo, instructor, video, descripcion, categoria, precio, id, 
-  }
+  
 
   let [producto, setProducto] = UseLocalStorage("producto", [])
-
 
   return (
     <div className="bg-indigo-600 ">
@@ -59,7 +56,9 @@ const CardCourse = ({titulo, instructor, video, descripcion, categoria, precio, 
             </div>
             {!autentication &&
             <button onClick={
-              () => setProducto([...producto, obj])
+              () => setProducto([ {
+                titulo, instructor,  categoria, precio, idP: producto.length
+              } ])
             } className="py-2.5 w-full bg-slate-600 rounded-lg">
             Agregar a la Cesta
           </button>

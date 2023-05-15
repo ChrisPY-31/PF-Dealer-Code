@@ -1,6 +1,24 @@
-import React from 'react'
+"use client"
+
+import { getCursosId } from "@/store/reducer/addPagos/agregarPago";
+import Link from "next/link";
+import { useState, useEffect } from "react"
+import { useDispatch } from "react-redux";
 
 function DetallesCompra() {
+   let dispacth = useDispatch()
+  const [producto, setProducto] = useState(
+    JSON.parse(window.localStorage.getItem("producto") || [] )
+  )
+
+  let sumaPrice = producto.reduce((total, producto) => total + producto.precio, 0 );
+  console.log(sumaPrice);
+  let idp = producto.map(p => p.id)
+  
+  useEffect(() => {
+
+  }, [producto])
+
   return (
     
           <div className="mt-8 flex justify-end border-t border-gray-100 pt-8">
@@ -9,7 +27,7 @@ function DetallesCompra() {
 
               <div className="flex justify-between !text-base font-medium">
                 <dt>Total</dt>
-                <dd>USD 200</dd>
+                <dd>USD {sumaPrice} </dd>
               </div>
             </dl>
 
@@ -17,13 +35,10 @@ function DetallesCompra() {
              
             </div>
 
-            <div className="flex justify-end">
-              <a
-                href="#"
-                className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
-              >
-                Checkout
-              </a>
+            <div className="flex justify-end  " >
+             <Link href={`/checkaut/${idp[0]}`} className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600" >
+             Checkout
+             </Link>
             </div>
           </div>
         </div>

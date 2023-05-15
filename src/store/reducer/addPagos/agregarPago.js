@@ -36,7 +36,7 @@ export const cursosPagos = createAsyncThunk(
 
 export const PostCursoscart = createAsyncThunk(
     "cursos/getCursoscarts",
-    async (obj) => { 
+    async (id, id2) => { 
         console.log(obj);
         const respuesta = await axios.post(`http://localhost:3096/cart`,obj);
         return respuesta.data
