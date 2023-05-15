@@ -4,7 +4,7 @@ import { getCursosId } from "@/store/reducer/addPagos/agregarPago";
 import Link from "next/link";
 import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux";
-
+// revirt
 function DetallesCompra() {
    let dispacth = useDispatch()
   const [producto, setProducto] = useState(
