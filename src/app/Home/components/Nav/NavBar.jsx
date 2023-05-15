@@ -12,7 +12,7 @@ export default function NavBar() {
   //esta funcion sirve para resetear todos los cursos
   
   const [producto, setProducto] = useState(
-    JSON.parse(window.localStorage.getItem("producto") || [] )
+    // JSON.parse(window.localStorage.getItem("producto") || [] )
   )
 useEffect(() => {
 }, [producto]) 
