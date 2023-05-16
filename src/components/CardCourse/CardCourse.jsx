@@ -42,12 +42,7 @@ const CardCourse = ({titulo, instructor,  categoria, precio, descripcion, id }) 
           </video>
         </div>
 
-        
-    </div>
-  );
-};
-
-{/* <div className="w-11/12 m-auto mt-10 ">
+        <div className="w-11/12 m-auto mt-10 ">
           <div>
             <h4 className="text-2xl">{title}</h4>
             <p className="my-1">
@@ -120,5 +115,9 @@ const CardCourse = ({titulo, instructor,  categoria, precio, descripcion, id }) 
                 <p className="ml-4">Recursos descargables</p>
               </div>
             </div>
-          </div> */}
+          </div>
+    </div>
+  );
+};
+
 export default CardCourse;
