@@ -58,6 +58,7 @@ useEffect(()=>{
         
           
         <div className="flex flex-wrap items-center">
+
          <Link href="/cart">
          <div className='mr-5 p-1 rounded-xl hover:bg-tarawera-600 flex '>
           {//{ producto.length > 0  ?  <span className='text-[8px] mt-2 text-red-700   '> {producto.length} </span> : null }

@@ -1,24 +1,23 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit"
-import axios from "axios"
-import {   getCursosId  } from "./addPagos/agregarPago"
-const initialState = {
-    Detail: null
+import { createSlice } from '@reduxjs/toolkit';
+
+const initialState ={
+   Detail:[],
+   Name:''
 }
 
-export const getCursosIdSlice = createSlice({
-    name: "curso",
+export const getCursoIdSlice = createSlice({
+    name: 'getCursoId',
     initialState,
-     reducers: {
-        addPPago: () => {
-           
+    reducers: {
+        getCourse: (state,  action  ) => {
+            state.Detail = action.payload
+        },
+        getUserRegister:(state , action) =>{
+            state.Name = action.payload
         }
-     },
-    
-     extraReducers:  (builder) => {
-        builder.addCase(getCursosId.fulfilled, (state, action) => {
-           state.Detail = action.payload
-           console.log(action.payload);
-        })
-     },
-    
-})
+    }
+});
+
+
+// Action creators are generated for each case reducer function
+export const { getCourse , getUserRegister} = getCursoIdSlice.actions;

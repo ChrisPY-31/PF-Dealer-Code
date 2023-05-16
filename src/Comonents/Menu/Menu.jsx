@@ -21,8 +21,8 @@ function Menu() {
       },[])
   return (
    
-    <div class="flex justify-end">
-        <div class="relative inline-block ">
+    <div className="flex justify-end">
+        <div className="relative inline-block ">
         
             <button onClick={() => setMenu(!menu)} className="relative z-10 flex items-center  text-sm text-gray-600  border border-transparent  focus:ring-opacity-40 dark:focus:ring-opacity-40  dark:text-white focus:outline-none">
                 

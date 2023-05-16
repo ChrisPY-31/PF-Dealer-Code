@@ -8,12 +8,11 @@ const Video = () => {
       <div className="text-black flex flex-col justify-evenly items-center h-full">
         {userValidation ? (
           <video
-            src="https://www.youtube.com/watch?v=DFehUVIFoa8.ogm"
             controls
             autoplay
             poster="https://upload.wikimedia.org/wikipedia/commons/1/18/React_Native_Logo.png"
           >
-            Tu navegador no admite el elemento <code>video</code>.
+            <source src="https://res.cloudinary.com/dbcko47q4/video/upload/v1684004412/ani9offcbn2gfashswpr.mp4" type="video/mp4"/>
           </video>
         ) : (
           <div className="text-black flex flex-col justify-evenly items-center h-full">

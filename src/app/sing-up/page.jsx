@@ -19,16 +19,16 @@ const page = () => {
       .email("Correo electrónico no válido")
       .required("Campo requerido"),
     password: Yup.string()
-      .min(6, "La contraseña debe tener al menos 6 caracteres")
+      .min(8, "La contraseña debe tener al menos 8 caracteres")
       .matches(
-        /^(?=.*[A-Z])(?=.*[0-9])/,
-        "La contraseña debe tener al menos una letra mayúscula y un número"
+        /^(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*\d)/,
+        "La contraseña debe contener al menos un carácter especial, una mayúscula y un número"
       )
       .required("Este campo es obligatorio"),
   });
   return (
     <div className="h-screen">
-<ToastContainer></ToastContainer>
+      <ToastContainer></ToastContainer>
       <div className="flex items-center justify-center  ">
         <Image
           className="absolute p-0 left-2 top-0"
@@ -51,6 +51,7 @@ const page = () => {
           validationSchema={LoginSchema}
           onSubmit={(values, { setSubmitting }) => {
             registerUser(values.email, values.password);
+            console.log(values.password)
             const newUser = {
               name: values.name,
               email: values.email,
@@ -61,9 +62,9 @@ const page = () => {
         >
           {({ isSubmitting }) => (
             <div className="w-1/3">
-               <h2 className="text-5xl text-white font-bold text-center">
-                  Registrarse
-                </h2>
+              <h2 className="text-5xl text-white font-bold text-center">
+                Registrarse
+              </h2>
               <div className="flex justify-evenly w-full my-5 cursor-pointer">
                 <div className="border-2 border-teal-600 py-2 px-16 rounded flex hover:bg-teal-600">
                   <img
@@ -99,7 +100,6 @@ const page = () => {
               </div>
 
               <Form className="">
-               
                 <div className="h-20 flex flex-col justify-around  my-3">
                   <label
                     htmlFor="email"
@@ -159,6 +159,7 @@ const page = () => {
                     className="error text-gray-400"
                   />
                 </div>
+                
                 <button
                   type="submit"
                   disabled={isSubmitting}
