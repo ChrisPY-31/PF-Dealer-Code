@@ -3,6 +3,7 @@ import Link from 'next/link'
 //aqui se hara el mapeo de las recomendaciones en el /Home 
 //trae 4 cursos aleatorios desde props
 export default function CardR({recomendaciones}) {
+  console.log(recomendaciones);
   return (
     <div className="flex m-5">
       {/*aqui se mapean los cursos*/}
@@ -15,7 +16,7 @@ export default function CardR({recomendaciones}) {
 <h2>{r.description}</h2>
 <p>{r.instructor}</p>
 {r.price!==0?<h1>${r.price}</h1>:<h1>Gratis</h1>}
-<Link href="/Detail">
+<Link href={`/Detail/${r.id}`}>
 <button className='mt-2 p-2 rounded-xl hover:bg-teal-700 bg-teal-600'>Ver Detalles</button>
 </Link>
       </div>
