@@ -19,9 +19,18 @@ const CardCourse = ({image,titulo, instructor,  categoria, precio, descripcion, 
       return router.push("/sing-in");
     }
   });
-
+  const [Fav,setFav]= useState( 
+     
+    JSON.parse(window.localStorage.getItem("Fav") || [] )
+  )
   let [producto, setProducto] = UseLocalStorage("producto", [])
-
+  let [favoritos, setFavoritos] = UseLocalStorage("Fav", [])
+function addFavorite(id){
+const filter= Fav.find((f)=>f.id===id)
+if(!filter){
+setFavoritos([...favoritos,{image,titulo, instructor, precio, descripcion, id }])
+}
+}
   return (
     <div className="bg-indigo-600 ">
       <div className="">
