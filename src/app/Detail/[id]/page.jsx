@@ -7,7 +7,6 @@ import Learning from "@/components/Learning/Learning";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {getCursosId} from "../../../store/reducer/addPagos/agregarPago"
-
 const Page = ({params}) => {
     let {id} = params
      let dispatch = useDispatch()
@@ -28,9 +27,10 @@ const Page = ({params}) => {
           { cursoId !==  null ?   <CardCourse 
             precio = {cursoId.price  }
             titulo={cursoId.title}
+            titulo={cursoId.title}
             instructor={cursoId.instructor}
             descripcion={cursoId.description}
-            id = {cursoId.id}
+              id = {cursoId.id}
             /> : <h2>Loadin...</h2> }
           </div>
         </div>

@@ -13,11 +13,12 @@ import Hover from '../cartHover/Hover'
 //aqui esta la navBar que se renderizara en la mayoria de rutas
 export default function NavBar() {
   //esta funcion sirve para resetear todos los cursos
-/*   const [producto, setProducto] = useState(
-    JSON.parse(localStorage.getItem("producto") || [] )
+  
+  const [producto, setProducto] = useState(
+    JSON.parse(window.localStorage.getItem("producto") || [] )
   )
 useEffect(() => {
-}, [producto])  */
+}, [producto])  
 const [boolean,setBoolean]=useState(false)
 var [hover, setHover]=useState(false)
 useEffect(()=>{
@@ -58,12 +59,12 @@ useEffect(()=>{
         
           
         <div className="flex flex-wrap items-center">
-       
-      {!boolean?<Link href="/sing-in" ><button  className="rounded-md m-0.5 bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow">Iniciar sesion</button></Link>: <Link href="/cart">
-         <div  onMouseOver={()=>setHover(true)} onMouseLeave={()=>setHover(false)} className="mr-5 p-1 rounded-xl hover:bg-teal-500 flex">
+         <Link href="/cart">
+         <div className='mr-5 p-1 rounded-xl hover:bg-tarawera-600 flex '>
           {//{ producto.length > 0  ?  <span className='text-[8px] mt-2 text-red-700   '> {producto.length} </span> : null }
           }
-          <BsCart4  className=''/>
+          <BsCart4  className='' />
+          
          </div>
          </Link>}
       {hover?<Hover></Hover>:null}
