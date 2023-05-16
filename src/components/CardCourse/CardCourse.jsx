@@ -29,7 +29,6 @@ const CardCourse = ({titulo, instructor,  categoria, precio, descripcion, id }) 
 
   return (
     <div className="bg-indigo-600 h-full ">
-      <div className="">
         <div className="bg-teal-500 h-52 ">
           <video
             poster="https://blog.logrocket.com/wp-content/uploads/2020/08/8-ways-deploy-react-app-free.png"
@@ -42,13 +41,18 @@ const CardCourse = ({titulo, instructor,  categoria, precio, descripcion, id }) 
             />
           </video>
         </div>
-        <div className="w-11/12 m-auto mt-10 ">
+
+        
+    </div>
+  );
+};
+
+{/* <div className="w-11/12 m-auto mt-10 ">
           <div>
             <h4 className="text-2xl">{title}</h4>
             <p className="my-1">
               <span className="text-lg">{price} MX</span>
             </p>
-            <p></p>
           </div>
           <div>
             <div className="flex flex-col justify-between h-14">
@@ -74,19 +78,20 @@ const CardCourse = ({titulo, instructor,  categoria, precio, descripcion, id }) 
                       Fav
                     </button>
                   </Link>
-                  {!autentication && <Link href="/Favorits"><button className="px-4 py-2 bg-red-400 ml-4 rounded-md" >Fav</button></Link> }
+                  {!autentication && 
+                    <Link href="/Favorits"><button className="px-4 py-2 bg-red-400 ml-4 rounded-md" >Fav</button></Link>
+                  }
               </div>
             </div>
             {!autentication &&
-            <button onClick={
-              () => setProducto([ {
-                titulo, instructor,  categoria, precio, idP: producto.length
-              } ])
-            } className="py-2.5 w-full bg-slate-600 rounded-lg">
-            Agregar a la Cesta
-          </button>
-            }
-            
+              <button onClick={
+                () => setProducto([ {
+                  titulo, instructor,  categoria, precio, idP: producto.length
+                } ])
+              } className="py-2.5 w-full bg-slate-600 rounded-lg">
+              Agregar a la Cesta
+            </button>
+              }
           </div>
           <div>
             <div>
@@ -115,11 +120,5 @@ const CardCourse = ({titulo, instructor,  categoria, precio, descripcion, id }) 
                 <p className="ml-4">Recursos descargables</p>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
+          </div> */}
 export default CardCourse;
