@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getCursoId } from "@/store/reducer";
 
+
 const Page = ({params}) => {
     let {id} = params
      let dispatch = useDispatch()
@@ -28,12 +29,14 @@ const Page = ({params}) => {
             instructor={instructor}/>
           </div>
           <div className="w-4/12">
+
           { Detail !==  null ?<CardCourse 
           id={id} 
           title={title}
           price={price}
           thumbnail={thumbnail}
           />:<h2>Loadin...</h2> }
+
           </div>
         </div>
         <Addressed />

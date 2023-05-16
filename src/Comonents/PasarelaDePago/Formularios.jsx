@@ -12,16 +12,27 @@ import { onAuthStateChanged } from "firebase/auth";
 
 let stipePromise = loadStripe("pk_test_51N3WCTG4n6v6zt1DCpKO742a1RORPW5iGwRMf3A1UgkNXuKHXPhTnIJeP9iEnlqlXKUAJ028VgOM9rpPMho3Aplk00FLkHnUtO")
 
-let ChechautForm = ({titulo, monto, idCurso, rating}) => {
+let ChechautForm = () => {
     let stripe = useStripe()
     let element = useElements()
 
   let dispach = useDispatch()
   
-   
+  const [producto, setProducto] = useState(
+    JSON.parse(window.localStorage.getItem("producto") || [] )
+  )
+
+  let [pCheckauyt, sePckeckaut] = useState(
+    JSON.parse(window.localStorage.getItem("pCheckaut") || [] )
+  )
 
 
-
+ let compra = producto.length  > 0 ? producto : pCheckauyt
+ console.log(compra);
+ let sumaPrice = compra.reduce((total, producto) => total + producto.precio, 0 );
+  console.log(sumaPrice);
+  let idCursos = compra.map(p => p.id)
+  
   
     return (
       <div className="text-white flex justify-center items-center gap-20 ml-5 ">
@@ -68,11 +79,11 @@ let ChechautForm = ({titulo, monto, idCurso, rating}) => {
                         if (usuarioFirebase) {
                           dispach(agregarPago({
                                token: usuarioFirebase.accessToken,
-                               amount: monto,
+                               amount: sumaPrice,
                       id, 
                     email: valores.correo,
                     nombre: valores.nombre,
-                    idCurso
+                    idCursos: idCursos
                             }))
                         } 
                       });
@@ -119,10 +130,7 @@ let ChechautForm = ({titulo, monto, idCurso, rating}) => {
 
             </div>
             <div className="w-1/2">
-                <Producto 
-                titulo= {titulo}
-                monto = {monto}
-                rating={rating} />
+                <Producto />
             </div>
       </div>
     )

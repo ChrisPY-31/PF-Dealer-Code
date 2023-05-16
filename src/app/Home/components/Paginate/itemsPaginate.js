@@ -9,7 +9,7 @@ export default function ItemsPaginate({filter}) {
   //primero se calcula el numero de paginas que va haber
 let pages=Math.ceil(filter.length / 3)-1
 // se hace inicia un estado con la primara pagina
-const [initPage,setinitPage] = useState(1)
+const [initPage,setinitPage] = useState(0)
 //se calcula cuantos componentes se van a renderizar por pagina
 const [pageSize,setPageSize]= useState(3)
 var startIndex = initPage * pageSize;

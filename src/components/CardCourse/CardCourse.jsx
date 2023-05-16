@@ -2,15 +2,17 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
-import { PostCursoscart } from "@/store/reducer/addPagos/agregarPago";
 import { FirebaseAuth } from "@/firebase/credenciales";
 import { onAuthStateChanged } from "firebase/auth";
 import { UseLocalStorage } from "@/Comonents/carrito/useLocalStorage";
 
-const CardCourse = ({ id, price, thumbnail, title }) => {
-  const [autentication, setAutentication] = useState(false);
 
-  let dispacth = useDispatch();
+
+
+const CardCourse = ({titulo, instructor,  categoria, precio, descripcion, id }) => {
+  const [autentication , setAutentication] = useState(false)
+  
+  let dispacth = useDispatch()
 
   let token;
   onAuthStateChanged(FirebaseAuth, (usuarioFirebase) => {
@@ -21,7 +23,9 @@ const CardCourse = ({ id, price, thumbnail, title }) => {
     }
   });
 
-  let [producto, setProducto] = UseLocalStorage("producto", []);
+  
+
+  let [producto, setProducto] = UseLocalStorage("producto", [])
 
   return (
     <div className="bg-indigo-600 h-full ">
@@ -70,27 +74,19 @@ const CardCourse = ({ id, price, thumbnail, title }) => {
                       Fav
                     </button>
                   </Link>
-                )}
+                  {!autentication && <Link href="/Favorits"><button className="px-4 py-2 bg-red-400 ml-4 rounded-md" >Fav</button></Link> }
               </div>
             </div>
-            {!autentication && (
-              <button
-                onClick={() =>
-                  setProducto([
-                    {
-                      titulo,
-                      instructor,
-                      categoria,
-                      precio,
-                      idP: producto.length,
-                    },
-                  ])
-                }
-                className="py-2.5 w-full bg-slate-600 rounded-lg"
-              >
-                Agregar a la Cesta
-              </button>
-            )}
+            {!autentication &&
+            <button onClick={
+              () => setProducto([ {
+                titulo, instructor,  categoria, precio, idP: producto.length
+              } ])
+            } className="py-2.5 w-full bg-slate-600 rounded-lg">
+            Agregar a la Cesta
+          </button>
+            }
+            
           </div>
           <div>
             <div>

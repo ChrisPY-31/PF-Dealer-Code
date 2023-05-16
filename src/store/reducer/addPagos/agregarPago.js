@@ -51,7 +51,6 @@ export const getCursos = createAsyncThunk(
     }
 )
 
-
 export const getComprados = createAsyncThunk(
     "comprados/getComprados",
     async (cookie) => { 

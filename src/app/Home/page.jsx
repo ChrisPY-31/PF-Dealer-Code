@@ -15,6 +15,7 @@ const Page = () => {
   const dispatch = useDispatch()
   
 
+
   const Courses=useSelector(state=>state.getCursos.cursos)
   if(typeof document !== 'undefined') {
     // you are safe to use the "document" object here
@@ -22,7 +23,11 @@ const Page = () => {
 }
 useEffect(() => {
   dispatch(getCursos())
-
+  onAuthStateChanged(FirebaseAuth , usuarioFirebase =>{
+    if(!usuarioFirebase){
+      return router.push('/')
+    }
+  })
   // you are safe to use the 'document' object here
   document.title = 'Dealer Code';
 }, []);
