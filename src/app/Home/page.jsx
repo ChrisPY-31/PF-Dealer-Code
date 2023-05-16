@@ -1,23 +1,19 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import NavBar from "./components/Nav/NavBar";
-import { useSelector } from "react-redux";
 import { getCursos } from "@/store/reducer/addPagos/agregarPago";
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector } from "react-redux";
 import Link from 'next/link'
 import CardP from './components/Cards/CardP'
 import CardR from './components/Cards/CardR'
-import { getCursos } from '@/store/reducer/addPagos/agregarPago'
 import { ToastContainer } from "react-toastify";
 
 const Page = () => {
   const [recomendaciones,setRecomendaciones]=useState("")
-   const dispatch = useDispatch()
-   /*
-useEffect(() => {
-  dispatch(getCourses(DB))
-   dispatch(getCursos())
-   }, []); */
+  const {Name} = useSelector(state => state.cursoId)
+  console.log(Name)
+  const dispatch = useDispatch()
+  
 
   const Courses=useSelector(state=>state.getCursos.cursos)
   if(typeof document !== 'undefined') {

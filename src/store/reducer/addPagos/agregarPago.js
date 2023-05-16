@@ -51,15 +51,6 @@ export const getCursos = createAsyncThunk(
     }
 )
 
-export const getCursosId = createAsyncThunk(
-    "cursos/getCursosId",
-    async (id) => {
-        const respuesta = await axios.get(`https://dealer-code.fly.dev/course${id}`);
-        return respuesta.data
-    }
-)
-
-
 
 export const getComprados = createAsyncThunk(
     "comprados/getComprados",
