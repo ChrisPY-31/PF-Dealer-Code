@@ -6,15 +6,13 @@ import { PostCursoscart } from "@/store/reducer/addPagos/agregarPago";
 import { FirebaseAuth } from "@/firebase/credenciales";
 import { onAuthStateChanged } from "firebase/auth";
 import { UseLocalStorage } from "@/Comonents/carrito/useLocalStorage";
+import { favoritos } from "@/store/reducer/cursos";
 
 
 
-
-const CardCourse = ({titulo, instructor,  categoria, precio, descripcion, id }) => {
+const CardCourse = ({image,titulo, instructor,  categoria, precio, descripcion, id }) => {
   const [autentication , setAutentication] = useState(false)
-  
   let dispacth = useDispatch()
-
   let token;
   onAuthStateChanged(FirebaseAuth, (usuarioFirebase) => {
     
@@ -26,10 +24,18 @@ const CardCourse = ({titulo, instructor,  categoria, precio, descripcion, id }) 
     }
   });
 
-  
-
   let [producto, setProducto] = UseLocalStorage("producto", [])
-
+  const [Fav,setFav]= useState( 
+     
+    JSON.parse(window.localStorage.getItem("Fav") || [] )
+  )
+  let [favoritos, setFavoritos] = UseLocalStorage("Fav", [])
+function addFavorite(id){
+const filter= Fav.find((f)=>f.id===id)
+if(!filter){
+  setFavoritos([...favoritos,{image,titulo, instructor, precio, descripcion, id }])
+}
+}
   return (
     <div className="bg-indigo-600 ">
       <div className="">
@@ -49,9 +55,8 @@ const CardCourse = ({titulo, instructor,  categoria, precio, descripcion, id }) 
               <div className="flex">
                   <Link href="checkaut/[id]" as={`/checkaut/${id}`} className={!autentication?"py-2.5 w-full  rounded-md text-center": 'w-64 py-2.5 bg-transparent rounded-md text-center'}>
                     {autentication ? <h1 className="text-black"> ir al curso </h1>: null }
-                    
                   </Link>
-                  {!autentication && <Link href="/Favorits"><button className="px-4 py-2 bg-red-400 ml-4 rounded-md" >Fav</button></Link> }
+                  {!autentication && <div className="flex items-center">Añadir a Favoritos:<button className="p-2 bg-red-400 ml-4 rounded-md" onClick={()=>addFavorite(id)}>🤍</button></div> }
               </div>
             </div>
             {!autentication &&

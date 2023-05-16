@@ -8,11 +8,14 @@ import Link from 'next/link'
 import CardP from './components/Cards/CardP'
 import CardR from './components/Cards/CardR'
 import { ToastContainer } from "react-toastify";
-
+import { onAuthStateChanged } from "firebase/auth";
+import { FirebaseAuth } from "@/firebase/credenciales";
+import { useRouter } from 'next/navigation'
 
 const Page = () => {
   const [recomendaciones,setRecomendaciones]=useState("")
    const dispatch = useDispatch()
+   const router = useRouter()
    /*
 useEffect(() => {
   dispatch(getCourses(DB))
@@ -26,7 +29,11 @@ useEffect(() => {
 }
 useEffect(() => {
   dispatch(getCursos())
-
+  onAuthStateChanged(FirebaseAuth , usuarioFirebase =>{
+    if(!usuarioFirebase){
+      return router.push('/')
+    }
+  })
   // you are safe to use the 'document' object here
   document.title = 'Dealer Code';
 }, []);

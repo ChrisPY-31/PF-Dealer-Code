@@ -1,10 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit"
-
 import {  PostCursoscart,  getCursos } from "./addPagos/agregarPago"
 const initialState = {
     CursosCart: [],
     cursos: [],
-    cursosOrigin:[]
+    cursosOrigin:[],
+    Favoritos:[]
+    
 }
 
 export const getCursosSlice = createSlice({
@@ -35,7 +36,7 @@ export const getCursosSlice = createSlice({
             return 0;
           }
           )
-        state.cursos=orden
+          state.cursos=orden
       }
       if(action.payload==="MenorPrecio"){
           const coursesA=[...state.cursosOrigin]
@@ -55,12 +56,15 @@ export const getCursosSlice = createSlice({
           const coursesA=[...state.cursosOrigin]
           const orden= coursesA.filter(f=>f.price===0)
           if(orden.length){
-          state.cursos=orden
+            state.cursos=orden
         }else{
           window.alert("No hay")
         }
       }
   },
+  favoritos:(state,action)=>{
+  
+  }
      },
      extraReducers:  (builder) => {
         builder.addCase(PostCursoscart.fulfilled, (state, action) => {
@@ -76,4 +80,4 @@ export const getCursosSlice = createSlice({
         })
      }
 })
-export const {search_Courses,Order2} = getCursosSlice.actions;
+export const {search_Courses,Order2,favoritos} = getCursosSlice.actions;

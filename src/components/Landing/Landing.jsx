@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import NavLanding from "../NavLanding/NavLanding";
+import NavBar from "@/app/Home/components/Nav/NavBar";
 import Slider from "../SliderCourse/Slider";
 import Empresas from "../Empresas/Empresas";
 import { useEffect } from "react";
@@ -17,11 +17,16 @@ const Landing = () => {
   let disacth = useDispatch()
   useEffect(() =>{
     disacth(getCursos())
+    onAuthStateChanged(FirebaseAuth , usuarioFirebase =>{
+      if(usuarioFirebase){
+        return router.push('/Home')
+      }
+    })
   },[])
 
   return (
     <div className="min-h-screen ">
-      <NavLanding />
+      <NavBar></NavBar>
       <section className=" text-white">
         <div className="mx-auto max-w-screen-xl px-4 pt-12 lg:flex lg:h-1/2 ">
           <div className="mx-auto max-w-3xl text-center">
