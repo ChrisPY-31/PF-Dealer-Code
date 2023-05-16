@@ -58,16 +58,23 @@ useEffect(()=>{
         
           
         <div className="flex flex-wrap items-center">
-         <Link href="/cart">
+         {!boolean? <Link
+                    href="/sing-in"
+                    className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow"
+                  >
+                    
+                    Iniciar sesion
+                    
+                  </Link>:<Link href="/cart">
          <div className='mr-5 p-1 rounded-xl hover:bg-tarawera-600 flex '>
           {//{ producto.length > 0  ?  <span className='text-[8px] mt-2 text-red-700   '> {producto.length} </span> : null }
           }
           <BsCart4  className='' />
           
          </div>
-         </Link>
+         </Link>}
       {hover?<Hover></Hover>:null}
-  
+        
     
       {!boolean?<Link href="/sing-up"><button className="rounded-md m-0.5 bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600">Registrarse</button></Link>:
       <div className='flex items-center'>
