@@ -1,5 +1,8 @@
+
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios"
+import { dealerApi } from "@/api/api";
+import { getCourse , getUserRegister} from "./getCursosId";
 
 //llamado de las api         
     export const Filter = createAsyncThunk(
@@ -18,11 +21,26 @@ import axios from "axios"
       }
     );
 
+
 //Conectamos el registro al api 
 export const getRegisterUser = (user) =>{
     return async (dispatch , getState) =>{
-        console.log(user)
-        // const userRegister = await axios.Post(`${dealerApi}/user/signup`, user)
-        // console.log(userRegister)
+        const userRegister = await axios.post(`https://dealer-code.fly.dev/user/signup`, user)
+        dispatch(getUserRegister(userRegister.data))
     }
+}
+
+export const getUserSignIn = user =>{
+  return async (dispatch , getState) =>{
+    const userLogin = await axios.post('https://dealer-code.fly.dev/user/singin' , user)
+    console.log(userLogin)
+  }
+}
+
+export const getCursoId = (id) =>{
+  return async (dispatch , getState) =>{
+    
+      const {data} = await axios.get(`https://dealer-code.fly.dev/course/${id}`)
+      dispatch(getCourse(data.name))
+  }
 }

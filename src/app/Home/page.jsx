@@ -1,26 +1,20 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import NavBar from "./components/Nav/NavBar";
-import { useSelector } from "react-redux";
 import { getCursos } from "@/store/reducer/addPagos/agregarPago";
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector } from "react-redux";
 import Link from 'next/link'
 import CardP from './components/Cards/CardP'
 import CardR from './components/Cards/CardR'
 import { ToastContainer } from "react-toastify";
-import { onAuthStateChanged } from "firebase/auth";
-import { FirebaseAuth } from "@/firebase/credenciales";
-import { useRouter } from 'next/navigation'
 
 const Page = () => {
   const [recomendaciones,setRecomendaciones]=useState("")
-   const dispatch = useDispatch()
-   const router = useRouter()
-   /*
-useEffect(() => {
-  dispatch(getCourses(DB))
-   dispatch(getCursos())
-   }, []); */
+  const {Name} = useSelector(state => state.cursoId)
+  console.log(Name)
+  const dispatch = useDispatch()
+  
+
 
   const Courses=useSelector(state=>state.getCursos.cursos)
   if(typeof document !== 'undefined') {
@@ -93,6 +87,22 @@ var db=Courses[numeroAleatorio]
         </div>
       </div>
     </div>
+
+    <div className='flex'>
+  <div className='ml-7 rounded-xl bg-slate-800 '>
+<h1 className='text-2xl m-5 '>Mis Cursos</h1>
+        <Link href="/Home/Course"><div className="flex items-center p-16 m-5 flex-col hover:bg-slate-700" style={{border:"1px", borderStyle:"solid", borderColor:"grey"}}>
+  <h1>Añadir</h1>
+    </div></Link>
+  </div>
+</div>
+<div>
+  <h1 className='text-2xl m-5'>Recomendaciones</h1>
+   <div>
+  {/* {cursos.length ?  <CardR cursos = {cursos}></CardR> : "No hay cursos"} */}
+  </div>
+</div>
+
     </div>
  
   )

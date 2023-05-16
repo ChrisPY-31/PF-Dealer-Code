@@ -4,26 +4,39 @@ import NavBar from "@/app/Home/components/Nav/NavBar";
 import Slider from "../SliderCourse/Slider";
 import Empresas from "../Empresas/Empresas";
 import { useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { FirebaseAuth } from "@/firebase/credenciales";
 import { useRouter } from "next/navigation";
 import RouteOfCourse from "../RouteOfCourse/RouteOfCourse";
 import Footer from "../Footer/Footer";
 import { useDispatch } from "react-redux";
 import { getCursos } from "@/store/reducer/addPagos/agregarPago";
+import { onAuthStateChanged } from "firebase/auth";
+import { FirebaseAuth } from "@/firebase/credenciales";
+import { getRegisterUser } from "@/store/reducer";
 
 const Landing = () => {
   const router = useRouter();
-  let disacth = useDispatch()
+  let dispatch = useDispatch()
   useEffect(() =>{
-    disacth(getCursos())
-    onAuthStateChanged(FirebaseAuth , usuarioFirebase =>{
-      if(usuarioFirebase){
-        return router.push('/Home')
-      }
-    })
-  },[])
 
+    disacth(getCursos())
+  },[])
+  useEffect(() => {
+    onAuthStateChanged(FirebaseAuth, (usuarioFirebase) => {
+      if (usuarioFirebase) {
+        const userGoogle = {
+          name : usuarioFirebase.displayName,
+          correo: usuarioFirebase.email,
+          photo: usuarioFirebase.photoURL,
+          uid: usuarioFirebase.uid
+        }
+        // dispatch(getRegisterUser(userGoogle))
+        return router.push("/Home");
+      } else {
+        return;
+      }
+    });
+  }, []);
+  
   return (
     <div className="min-h-screen ">
       <NavBar></NavBar>

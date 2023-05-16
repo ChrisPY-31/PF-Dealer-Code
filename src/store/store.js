@@ -5,7 +5,7 @@ import { useMemo } from "react";
 import { usuarioSlice } from "./usuario";
 import { cursosPagados } from "./reducer/addPagos/getPagos";
 import { getCursosSlice } from "./reducer/cursos";
-import {getCursosIdSlice} from "./reducer/getCursosId"
+import {getCursoIdSlice} from "./reducer/getCursosId"
 import { postCursosSliceCart } from "./reducer/posCart";
 import { getCompradosSlice } from "./reducer/getComprados";
 import { categoriasSlice } from "./reducer/categorias/categorias";
@@ -17,7 +17,7 @@ export const store = configureStore({
         usuarios: usuarioSlice.reducer,
           cursospagos: cursosPagados.reducer, 
          getCursos: getCursosSlice.reducer,
-         cursoId: getCursosIdSlice.reducer,
+         cursoId: getCursoIdSlice.reducer,
           postCart: postCursosSliceCart.reducer,
          getcomprados: getCompradosSlice.reducer, 
          categorias: categoriasSlice.reducer,
