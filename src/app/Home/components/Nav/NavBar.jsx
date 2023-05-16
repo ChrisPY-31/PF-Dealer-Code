@@ -13,7 +13,6 @@ import Hover from '../cartHover/Hover'
 //aqui esta la navBar que se renderizara en la mayoria de rutas
 export default function NavBar() {
   //esta funcion sirve para resetear todos los cursos
-  
   const [producto, setProducto] = useState(
     JSON.parse(window.localStorage.getItem("producto") || [] )
   )
@@ -66,7 +65,7 @@ useEffect(()=>{
           <BsCart4  className='' />
           
          </div>
-         </Link>}
+         </Link>
       {hover?<Hover></Hover>:null}
   
     

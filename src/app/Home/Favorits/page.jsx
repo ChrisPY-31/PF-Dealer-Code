@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import Link from 'next/link'
 export default function Favorits() {
     const [Fav,setFav]= useState( 
+     
       JSON.parse(window.localStorage.getItem("Fav") || [] )
     )
     const removeItem = (id) => {
@@ -11,6 +12,7 @@ export default function Favorits() {
       window.localStorage.setItem("Fav", JSON.stringify(updatedProducto))
       setFav(updatedProducto)
    }
+
   return (
     <div>
         {Fav.length?Fav.map((f,index)=>(

@@ -27,7 +27,6 @@ const Page = ({params}) => {
           { cursoId !==  null ?   <CardCourse 
             precio = {cursoId.price  }
             titulo={cursoId.title}
-            titulo={cursoId.title}
             instructor={cursoId.instructor}
             descripcion={cursoId.description}
               id = {cursoId.id}
