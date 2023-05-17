@@ -22,7 +22,7 @@ export default function CardC({filter}) {
   {c.price!==0?<h1 className='text-lg font-extrabold text-black'>${c.price}</h1>:<h1 className='mt-20 text-lg font-bold text-black'>Gratis</h1>}
   </div>
   </div>
-  <div>
+  <div className='flex items-end'>
   <Link href="/Detail/[id]" as={`/Detail/${c.id}`}>
   <button className=" bg-green-500 p-2 rounded-xl hover:bg-green-600">Detalle</button>
   </Link>
