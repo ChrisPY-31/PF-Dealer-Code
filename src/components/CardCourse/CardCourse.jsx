@@ -5,6 +5,8 @@ import { FirebaseAuth } from "@/firebase/credenciales";
 import { onAuthStateChanged } from "firebase/auth";
 import { UseLocalStorage } from "@/Comonents/carrito/useLocalStorage";
 import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CardCourse = ({
   image,
@@ -33,7 +35,7 @@ function addFavorite(id){
   const filt= favoritos.find((f)=>f.id===id)
 if(!filt){
 setFavoritos([...favoritos,{image,title, instructor, price, description, id }])
-window.alert("Se agrego correctamente")
+toast.success("Se agrego correctamente")
 }
 }
 
@@ -41,6 +43,7 @@ window.alert("Se agrego correctamente")
 
   return (
     <div className="bg-white h-full rounded-md">
+      <ToastContainer/>
       <div className="">
         <video 
         poster={image} 
@@ -83,12 +86,13 @@ window.alert("Se agrego correctamente")
              {autentication && (
                   <div className="flex items-center">
                     {!(favoritos.find((f)=>f.id===id))?
-                  <Link href="/Home/Favorits">
+                  
                     <button
+                      
                       className="p-2 bg-red-400 ml-4 rounded-md py-2.5"
                       onClick={()=>addFavorite(id)}>
                       🤍
-                    </button></Link>:
+                    </button>:
                     <Link href="/Home/Favorits"><button
                       className="p-2 bg-red-400 ml-4 rounded-md py-2.5">
                       🧡
