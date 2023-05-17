@@ -13,11 +13,13 @@ import Hover from '../cartHover/Hover'
 //aqui esta la navBar que se renderizara en la mayoria de rutas
 export default function NavBar() {
   //esta funcion sirve para resetear todos los cursos
-  const [producto, setProducto] = useState(
-    JSON.parse(window.localStorage.getItem("producto") || [] )
-  )
-useEffect(() => {
-}, [producto])  
+  if (typeof window !== 'undefined') {
+    const [producto, setProducto] = useState(
+      // JSON.parse(window.localStorage.getItem("producto") || [])
+    );
+  }
+// useEffect(() => {
+// }, [producto])  
 const [boolean,setBoolean]=useState(false)
 var [hover, setHover]=useState(false)
 useEffect(()=>{

@@ -41,6 +41,6 @@ export const getCursoId = (id) =>{
   return async (dispatch , getState) =>{
     
       const {data} = await axios.get(`https://dealer-code.fly.dev/course/${id}`)
-      dispatch(getCourse(data.name))
+      dispatch(getCourse(data))
   }
 }

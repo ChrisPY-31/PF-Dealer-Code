@@ -5,76 +5,106 @@ import { useDispatch } from "react-redux";
 import { FirebaseAuth } from "@/firebase/credenciales";
 import { onAuthStateChanged } from "firebase/auth";
 import { UseLocalStorage } from "@/Comonents/carrito/useLocalStorage";
+import { useRouter } from "next/navigation";
 
 const CardCourse = ({ image,id,instructor,description, price, thumbnail, title }) => {
+  let router = useRouter();
+  let [boolean,setBoolean]= useState(false)
   const [autentication, setAutentication] = useState(false);
-
-  let dispacth = useDispatch();
-
-
   let token;
   onAuthStateChanged(FirebaseAuth, (usuarioFirebase) => {
     if (usuarioFirebase) {
       token = usuarioFirebase.accessToken;
-    } else {
-      return router.push("/sing-in");
+      setAutentication(true);
     }
   });
-  const [Fav,setFav]= useState( 
-     
-    JSON.parse(window.localStorage.getItem("Fav") || [] )
-  )
+let [favoritos, setFavoritos] = UseLocalStorage("Fav", [])
   let [producto, setProducto] = UseLocalStorage("producto", [])
-  let [favoritos, setFavoritos] = UseLocalStorage("Fav", [])
 function addFavorite(id){
-const filter= Fav.find((f)=>f.id===id)
+const filter= favoritos.find((f)=>f.id===id) 
 if(!filter){
 setFavoritos([...favoritos,{image,title, instructor, price, description, id }])
+setBoolean(true)
+}else{
+ const updatedProducto  = favoritos.filter(item => item.id !== id) 
+window.localStorage.setItem("Fav", JSON.stringify(updatedProducto))
+setFavoritos(updatedProducto) 
+setBoolean(false)
 }
 }
+
+  
+
   return (
-    <div className="bg-indigo-600 h-full ">
+    <div className="bg-indigo-600 h-full" >
       <div className="">
-        <div className="bg-teal-500 h-52 ">
-          <video
-            poster="https://blog.logrocket.com/wp-content/uploads/2020/08/8-ways-deploy-react-app-free.png"
-            controls
-            autoplay
-          >
-            <source
-              src="https://mp4-b.udemycdn.com/2019-11-11_03-26-28-83ee4f30a513930b69d63e4f5bf9d76f/WebHD_720p.mp4?secure=LmApl1zVZFvc9Ii8-sgKQQ%3D%3D%2C1684264912"
-              type="video/mp4"
-            />
-          </video>
-        </div>
-        <div className="w-11/12 m-auto mt-10 ">
+        <video poster={image} controls >
+          <source
+            src="https://res.cloudinary.com/dbcko47q4/video/upload/v1684004430/l9rk7m9zrajowyhvxyud.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div className="w-11/12 m-auto">
           <div>
             <h4 className="text-2xl">{title}</h4>
             <p className="my-1">
               <span className="text-lg">{price} MX</span>
             </p>
-
             <p>{title}</p>
           </div>
-          <div >
+          <div>
             <div className="flex flex-col justify-between h-14">
               <div className="flex">
-                  <Link href="checkaut/[id]" as={`/checkaut/${id}`} className={!autentication?"py-2.5 w-full  rounded-md text-center": 'w-64 py-2.5 bg-transparent rounded-md text-center'}>
-                    {autentication ? <h1 className="text-black"> ir al curso </h1>: null }
-                    
+                {autentication ? (
+                  <Link
+                    href="checkaut/[id]"
+                    as={`/checkaut/${id}`}
+                    className="w-72 rounded-md text-center bg-teal-400 py-2.5"
+                  >
+                    {" "}
+                    Comprar Curso{" "}
                   </Link>
-                  {!autentication && <div className="flex items-center">Añadir a Favoritos:<button className="p-2 bg-red-400 ml-4 rounded-md" onClick={()=>addFavorite(id)}>🤍</button></div> }
+                ) : (
+                  <h1
+                    className=" text-white w-full py-2.5 bg-teal-400 cursor-pointer rounded-md text-center"
+                    onClick={() => router.push("/sing-up")}
+                  >
+                    Comprar curso
+                  </h1>
+                )}
+
+                  <div className="flex items-center">
+                    {!boolean?<button
+                      className="p-2 bg-red-400 ml-4 rounded-md py-2.5"
+                      onClick={()=>addFavorite(id)}>
+                      🤍
+                    </button>:<button
+                      className="p-2 bg-red-400 ml-4 rounded-md py-2.5"
+                      onClick={()=>addFavorite(id)}>
+                        🧡
+                    </button>}
+                  </div>
               </div>
             </div>
-            {!autentication &&
-            <button onClick={
-              () => setProducto([...producto, {
-                title, instructor,  price, idP: producto.length, id
-              } ])
-            } className="py-2.5 w-full bg-slate-600 rounded-lg">
-            Agregar a la Cesta
-          </button>
-            }
+            {autentication ? (
+              <button
+                onClick={() =>
+                  setProducto([
+                    ...producto,
+                    {
+                      title,
+                      instructor,
+                      price,
+                      idP: producto.length,
+                      id,
+                    },
+                  ])
+                }
+                className="py-2.5 w-full bg-slate-600 rounded-lg"
+              >
+                Agregar a la Cesta
+              </button>
+            ):null}
           </div>
           <div>
             <div>

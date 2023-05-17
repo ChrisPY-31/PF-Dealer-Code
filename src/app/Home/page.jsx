@@ -9,17 +9,14 @@ import CardR from './components/Cards/CardR'
 import { ToastContainer } from "react-toastify";
 import { onAuthStateChanged } from "firebase/auth";
 import { FirebaseAuth } from "@/firebase/credenciales";
-import Course from "../Course/page";
 const Page = () => {
   const [recomendaciones,setRecomendaciones]=useState("")
   const {Name} = useSelector(state => state.cursoId)
   console.log(Name)
   const dispatch = useDispatch()
-  
-
 
   const Courses=useSelector(state=>state.getCursos.cursos)
-  console.log(Courses)
+  console.log("home",Courses)
   if(typeof document !== 'undefined') {
     // you are safe to use the "document" object here
     console.log(document.location.href);

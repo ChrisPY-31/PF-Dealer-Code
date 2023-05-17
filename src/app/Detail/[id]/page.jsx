@@ -17,7 +17,7 @@ const Page = ({params}) => {
      },[])
      let {Detail} = useSelector(state => state.cursoId)
      console.log(Detail)
-     const {/* image ,*/ title , description , instructor , price ,thumbnail} = Detail
+     const { title , description , instructor , price ,thumbnail , image} = Detail
   return (
     <div className="min-h-screen">
       <NavBar />
@@ -39,6 +39,7 @@ const Page = ({params}) => {
           description={description}
           instructor={instructor}
           thumbnail={thumbnail}
+          image={image}
           />:<h2>Loadin...</h2> }
 
           </div>
