@@ -7,6 +7,7 @@ import Learning from "@/components/Learning/Learning";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getCursoId } from "@/store/reducer";
+import Aprendizaje from "@/components/Aprendizaje/Aprendizaje";
 
 
 const Page = ({params}) => {
@@ -28,7 +29,10 @@ const Page = ({params}) => {
             title={title}  
             description={description}  
             instructor={instructor}/>
+
+            <Aprendizaje/>
           </div>
+
           <div className="w-4/12">
 
           { Detail !==  null ?<CardCourse 

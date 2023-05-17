@@ -47,11 +47,11 @@ const page = () => {
 
       <div className=" flex flex-col justify-center items-center h-full">
         <Formik
+        
           initialValues={{ name: "", email: "", password: "" }}
           validationSchema={LoginSchema}
           onSubmit={(values, { setSubmitting }) => {
             registerUser(values.email, values.password);
-            console.log(values.password)
             const newUser = {
               name: values.name,
               email: values.email,
@@ -159,7 +159,7 @@ const page = () => {
                     className="error text-gray-400"
                   />
                 </div>
-                
+
                 <button
                   type="submit"
                   disabled={isSubmitting}
