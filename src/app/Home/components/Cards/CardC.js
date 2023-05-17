@@ -13,7 +13,7 @@ export default function CardC({filter}) {
       
       <div className='flex'>
       <div className='flex items-center p-10'>
-      <img src={c.image} className="w-20 h-20 rounded" alt="img"></img>
+      <img src={c.image?c.image:c.categoryId.image} className="w-20 h-20 rounded" alt="img"></img>
         </div>
       <div className='flex flex-col items-stretch'>
   <h1 className="font-bold text-gray-950 w-96 h-20 pb-11 " key={index}>{c.title}</h1>

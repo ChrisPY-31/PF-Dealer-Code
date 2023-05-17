@@ -38,20 +38,17 @@ export default function Favorits() {
    <Link href="/Detail/[id]" as={`/Detail/${f.id}`}>
   <button className="border border-green-400 bg-green-600 p-2 mt-3 rounded-xl hover:text-green-200 hover:bg-green-950">Detalle</button>
   </Link>
-  
           </div>
         )):<div>
 <h1 className='mt-5 ml-5 font-bold text-3xl text-center'>Aun no has agregado cursos</h1>
 <div className='flex items-center justify-center mt-10'>
-  <Link href="/Course">
-<button className="border border-green-400 bg-green-950 p-2 mt-3 rounded-xl hover:bg-green-600">Explorar Cursos</button>
-</Link>
+
 </div>
         </div>
         }
         <div className='flex items-center justify-center mt-5'>
   <Link href="/Course">
-<button className="border border-green-400 bg-green-950 hover:text-green-800 p-2 mt-3 rounded-xl hover:bg-green-600">Agregar mas</button>
+<button className="border border-green-400 bg-green-950 hover:text-green-800 p-2 mt-3 rounded-xl hover:bg-green-600">Explorar cursos</button>
  </Link>
   </div>
         </div>
