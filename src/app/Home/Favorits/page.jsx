@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import Link from 'next/link'
+import NavBar from '../components/Nav/NavBar'
 export default function Favorits() {
     const [Fav,setFav]= useState( 
      
@@ -15,8 +16,9 @@ export default function Favorits() {
 
   return (
     <div>
+      <NavBar></NavBar>
         {Fav.length?Fav.map((f,index)=>(
-          <div>
+          <div className='bg-red-300'>
             <div className='flex'>
               <button className='p-2 bg-red-950' onClick={()=>removeItem(f.id)}>❌</button>
       <div className='flex items-center p-10 pl-16 pr-16'>{f.imagen}</div>

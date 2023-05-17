@@ -7,7 +7,9 @@ import Link from 'next/link'
 import CardP from './components/Cards/CardP'
 import CardR from './components/Cards/CardR'
 import { ToastContainer } from "react-toastify";
-
+import { onAuthStateChanged } from "firebase/auth";
+import { FirebaseAuth } from "@/firebase/credenciales";
+import Course from "../Course/page";
 const Page = () => {
   const [recomendaciones,setRecomendaciones]=useState("")
   const {Name} = useSelector(state => state.cursoId)
@@ -17,6 +19,7 @@ const Page = () => {
 
 
   const Courses=useSelector(state=>state.getCursos.cursos)
+  console.log(Courses)
   if(typeof document !== 'undefined') {
     // you are safe to use the "document" object here
     console.log(document.location.href);
@@ -87,22 +90,6 @@ var db=Courses[numeroAleatorio]
         </div>
       </div>
     </div>
-
-    <div className='flex'>
-  <div className='ml-7 rounded-xl bg-slate-800 '>
-<h1 className='text-2xl m-5 '>Mis Cursos</h1>
-        <Link href="/Home/Course"><div className="flex items-center p-16 m-5 flex-col hover:bg-slate-700" style={{border:"1px", borderStyle:"solid", borderColor:"grey"}}>
-  <h1>Añadir</h1>
-    </div></Link>
-  </div>
-</div>
-<div>
-  <h1 className='text-2xl m-5'>Recomendaciones</h1>
-   <div>
-  {/* {cursos.length ?  <CardR cursos = {cursos}></CardR> : "No hay cursos"} */}
-  </div>
-</div>
-
     </div>
  
   )

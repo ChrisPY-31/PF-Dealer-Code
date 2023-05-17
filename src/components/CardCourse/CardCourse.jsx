@@ -6,7 +6,7 @@ import { FirebaseAuth } from "@/firebase/credenciales";
 import { onAuthStateChanged } from "firebase/auth";
 import { UseLocalStorage } from "@/Comonents/carrito/useLocalStorage";
 
-const CardCourse = ({ id, price, thumbnail, title }) => {
+const CardCourse = ({ image,id,instructor,description, price, thumbnail, title }) => {
   const [autentication, setAutentication] = useState(false);
 
   let dispacth = useDispatch();
@@ -29,7 +29,7 @@ const CardCourse = ({ id, price, thumbnail, title }) => {
 function addFavorite(id){
 const filter= Fav.find((f)=>f.id===id)
 if(!filter){
-setFavoritos([...favoritos,{image,titulo, instructor, precio, descripcion, id }])
+setFavoritos([...favoritos,{image,title, instructor, price, description, id }])
 }
 }
   return (
@@ -54,7 +54,7 @@ setFavoritos([...favoritos,{image,titulo, instructor, precio, descripcion, id }]
               <span className="text-lg">{price} MX</span>
             </p>
 
-            <p>{titulo}</p>
+            <p>{title}</p>
           </div>
           <div >
             <div className="flex flex-col justify-between h-14">
@@ -69,7 +69,7 @@ setFavoritos([...favoritos,{image,titulo, instructor, precio, descripcion, id }]
             {!autentication &&
             <button onClick={
               () => setProducto([...producto, {
-                titulo, instructor,  precio, idP: producto.length, id
+                title, instructor,  price, idP: producto.length, id
               } ])
             } className="py-2.5 w-full bg-slate-600 rounded-lg">
             Agregar a la Cesta
