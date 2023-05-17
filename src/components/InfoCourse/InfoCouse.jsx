@@ -2,9 +2,9 @@ import React from 'react'
 
 const InfoCouse = ( {title , description ,instructor}) => {
   return (
-    <div className=' h-3/4 flex flex-col justify-around'>
-        <h1 className='text-5xl'>{title}</h1>
-        <p>{description}</p>
+    <div className=' h-1/2 flex flex-col justify-evenly'>
+        <h1 className='text-5xl text-bold'>{title}</h1>
+        <p className='font-medium text-2xl'>{description}</p>
         <div className='flex '>
             <p>puntuacion  </p>
             <p>img de estrellas </p>

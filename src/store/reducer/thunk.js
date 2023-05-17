@@ -26,6 +26,8 @@ import { getCourse , getUserRegister} from "./getCursosId";
 export const getRegisterUser = (user) =>{
     return async (dispatch , getState) =>{
         const userRegister = await axios.post(`https://dealer-code.fly.dev/user/signup`, user)
+        
+        console.log(userRegister.data)
         dispatch(getUserRegister(userRegister.data))
     }
 }
