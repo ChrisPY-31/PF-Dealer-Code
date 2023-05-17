@@ -18,7 +18,7 @@ const Landing = () => {
   let dispatch = useDispatch()
   useEffect(() =>{
 
-    disacth(getCursos())
+    dispatch(getCursos())
   },[])
   useEffect(() => {
     onAuthStateChanged(FirebaseAuth, (usuarioFirebase) => {

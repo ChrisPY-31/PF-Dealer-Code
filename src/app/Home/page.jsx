@@ -7,6 +7,8 @@ import Link from 'next/link'
 import CardP from './components/Cards/CardP'
 import CardR from './components/Cards/CardR'
 import { ToastContainer } from "react-toastify";
+import { onAuthStateChanged } from "firebase/auth";
+import { FirebaseAuth } from "@/firebase/credenciales";
 
 const Page = () => {
   const [recomendaciones,setRecomendaciones]=useState("")
