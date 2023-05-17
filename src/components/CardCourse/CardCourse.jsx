@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { useDispatch } from "react-redux";
 import { FirebaseAuth } from "@/firebase/credenciales";
 import { onAuthStateChanged } from "firebase/auth";
 import { UseLocalStorage } from "@/Comonents/carrito/useLocalStorage";
@@ -16,28 +15,25 @@ const CardCourse = ({
   thumbnail,
   title,
 }) => {
+  let [producto, setProducto] = UseLocalStorage("producto", [])
+let [favoritos,setFavoritos]=UseLocalStorage("Fav", [])
   let router = useRouter();
-  let [boolean, setBoolean] = useState(false);
   const [autentication, setAutentication] = useState(false);
-  let token;
+useEffect(()=>{
   onAuthStateChanged(FirebaseAuth, (usuarioFirebase) => {
     if (usuarioFirebase) {
-      token = usuarioFirebase.accessToken;
       setAutentication(true);
     }
-  });
-let [favoritos, setFavoritos] = UseLocalStorage("Fav", [])
-  let [producto, setProducto] = UseLocalStorage("producto", [])
+  }); 
+},[])
+  
+
+  
 function addFavorite(id){
-const filter= favoritos.find((f)=>f.id===id) 
-if(!filter){
-setBoolean(true)
+  const filt= favoritos.find((f)=>f.id===id)
+if(!filt){
 setFavoritos([...favoritos,{image,title, instructor, price, description, id }])
-}else{
- const updatedProducto  = favoritos.filter(item => item.id !== id) 
-window.localStorage.setItem("Fav", JSON.stringify(updatedProducto))
-setFavoritos(updatedProducto) 
-setBoolean(false)
+window.alert("Se agrego correctamente")
 }
 }
 
@@ -66,7 +62,7 @@ setBoolean(false)
           <div>
             <div className="flex flex-col justify-between h-14">
               <div className="flex">
-                {autentication ? (
+                 {autentication ? ( 
                   <Link
                     href="checkaut/[id]"
                     as={`/checkaut/${id}`}
@@ -75,31 +71,33 @@ setBoolean(false)
                     {" "}
                     Comprar Curso{" "}
                   </Link>
-                ) : (
+                ) : ( 
                   <h1
                     className=" text-white w-full py-2.5 bg-teal-400 cursor-pointer rounded-md text-center"
                     onClick={() => router.push("/sing-up")}
                   >
                     Comprar curso
                   </h1>
-                )}
+               )} 
 
-                {autentication && (
+             {autentication && (
                   <div className="flex items-center">
-                    {!boolean?<button
+                    {!(favoritos.find((f)=>f.id===id))?
+                  <Link href="/Home/Favorits">
+                    <button
                       className="p-2 bg-red-400 ml-4 rounded-md py-2.5"
                       onClick={()=>addFavorite(id)}>
                       🤍
-                    </button>:<button
-                      className="p-2 bg-red-400 ml-4 rounded-md py-2.5"
-                      onClick={()=>addFavorite(id)}>
-                        🧡
-                    </button>}
+                    </button></Link>:
+                    <Link href="/Home/Favorits"><button
+                      className="p-2 bg-red-400 ml-4 rounded-md py-2.5">
+                      🧡
+                    </button></Link>}
                   </div>
-                )}
+                 )} 
               </div>
             </div>
-            {autentication ? (
+          {autentication ? ( 
               <button
                 onClick={() =>
                   setProducto([
@@ -117,7 +115,7 @@ setBoolean(false)
               >
                 Agregar a la Cesta
               </button>
-            ) : null}
+            ) : null} 
           </div>
           <div>
             <div>
