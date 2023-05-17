@@ -7,9 +7,17 @@ import { onAuthStateChanged } from "firebase/auth";
 import { UseLocalStorage } from "@/Comonents/carrito/useLocalStorage";
 import { useRouter } from "next/navigation";
 
-const CardCourse = ({ image,id,instructor,description, price, thumbnail, title }) => {
+const CardCourse = ({
+  image,
+  id,
+  instructor,
+  description,
+  price,
+  thumbnail,
+  title,
+}) => {
   let router = useRouter();
-  let [boolean,setBoolean]= useState(false)
+  let [boolean, setBoolean] = useState(false);
   const [autentication, setAutentication] = useState(false);
   let token;
   onAuthStateChanged(FirebaseAuth, (usuarioFirebase) => {
@@ -18,31 +26,28 @@ const CardCourse = ({ image,id,instructor,description, price, thumbnail, title }
       setAutentication(true);
     }
   });
-let [favoritos, setFavoritos] = UseLocalStorage("Fav", [])
-  let [producto, setProducto] = UseLocalStorage("producto", [])
-function addFavorite(id){
-const filter= favoritos.find((f)=>f.id===id) 
-if(!filter){
-setFavoritos([...favoritos,{image,title, instructor, price, description, id }])
-setBoolean(true)
-}else{
- const updatedProducto  = favoritos.filter(item => item.id !== id) 
-window.localStorage.setItem("Fav", JSON.stringify(updatedProducto))
-setFavoritos(updatedProducto) 
-setBoolean(false)
-}
-}
-
-  
+  let [favoritos, setFavoritos] = UseLocalStorage("Fav", []);
+  let [producto, setProducto] = UseLocalStorage("producto", []);
+  function addFavorite(id) {
+    const filter = favoritos.find((f) => f.id === id);
+    if (!filter) {
+      setFavoritos([
+        ...favoritos,
+        { image, title, instructor, price, description, id },
+      ]);
+      setBoolean(true);
+    } else {
+      const updatedProducto = favoritos.filter((item) => item.id !== id);
+      window.localStorage.setItem("Fav", JSON.stringify(updatedProducto));
+      setFavoritos(updatedProducto);
+      setBoolean(false);
+    }
+  }
 
   return (
-    <div className="bg-white h-full rounded-md" >
+    <div className="bg-white h-full rounded-md">
       <div className="">
-        <video 
-        poster={image} 
-        controls  
-        className="h-52 w-full"
-        >
+        <video poster={image} controls className="h-52 w-full">
           <source
             src="https://res.cloudinary.com/dbcko47q4/video/upload/v1684004430/l9rk7m9zrajowyhvxyud.mp4"
             type="video/mp4"
@@ -54,7 +59,6 @@ setBoolean(false)
             <p className="my-1">
               <span className="text-lg">{price} MX</span>
             </p>
-            <p>{title}</p>
           </div>
           <div>
             <div className="flex flex-col justify-between h-14">
@@ -77,17 +81,25 @@ setBoolean(false)
                   </h1>
                 )}
 
+                {autentication && (
                   <div className="flex items-center">
-                    {!boolean?<button
-                      className="p-2 bg-red-400 ml-4 rounded-md py-2.5"
-                      onClick={()=>addFavorite(id)}>
-                      🤍
-                    </button>:<button
-                      className="p-2 bg-red-400 ml-4 rounded-md py-2.5"
-                      onClick={()=>addFavorite(id)}>
+                    {!boolean ? (
+                      <button
+                        className="p-2 bg-red-400 ml-4 rounded-md py-2.5"
+                        onClick={() => addFavorite(id)}
+                      >
+                        🤍
+                      </button>
+                    ) : (
+                      <button
+                        className="p-2 bg-red-400 ml-4 rounded-md py-2.5"
+                        onClick={() => addFavorite(id)}
+                      >
                         🧡
-                    </button>}
+                      </button>
+                    )}
                   </div>
+                )}
               </div>
             </div>
             {autentication ? (
@@ -108,7 +120,7 @@ setBoolean(false)
               >
                 Agregar a la Cesta
               </button>
-            ):null}
+            ) : null}
           </div>
           <div>
             <div>
