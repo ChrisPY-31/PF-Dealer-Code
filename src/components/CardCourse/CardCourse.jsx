@@ -36,17 +36,21 @@ setBoolean(false)
   
 
   return (
-    <div className="bg-indigo-600 h-full" >
+    <div className="bg-white h-full rounded-md" >
       <div className="">
-        <video poster={image} controls >
+        <video 
+        poster={image} 
+        controls  
+        className="h-52 w-full"
+        >
           <source
             src="https://res.cloudinary.com/dbcko47q4/video/upload/v1684004430/l9rk7m9zrajowyhvxyud.mp4"
             type="video/mp4"
           />
         </video>
-        <div className="w-11/12 m-auto">
-          <div>
-            <h4 className="text-2xl">{title}</h4>
+        <div className="w-11/12 m-auto text-black mt-6">
+          <div className="h-20 flex justify-center flex-col my-5">
+            <h4 className="text-2xl font-medium">{title}</h4>
             <p className="my-1">
               <span className="text-lg">{price} MX</span>
             </p>
@@ -59,14 +63,14 @@ setBoolean(false)
                   <Link
                     href="checkaut/[id]"
                     as={`/checkaut/${id}`}
-                    className="w-72 rounded-md text-center bg-teal-400 py-2.5"
+                    className="w-72 rounded-md text-center bg-teal-600 hover:bg-teal-800 py-2.5 text-white"
                   >
                     {" "}
                     Comprar Curso{" "}
                   </Link>
                 ) : (
                   <h1
-                    className=" text-white w-full py-2.5 bg-teal-400 cursor-pointer rounded-md text-center"
+                    className=" text-white w-full py-2.5 bg-teal-600 hover:bg-teal-800 cursor-pointer rounded-md text-center"
                     onClick={() => router.push("/sing-up")}
                   >
                     Comprar curso
@@ -100,7 +104,7 @@ setBoolean(false)
                     },
                   ])
                 }
-                className="py-2.5 w-full bg-slate-600 rounded-lg"
+                className="py-2.5 w-full bg-slate-600 rounded-lg text-white"
               >
                 Agregar a la Cesta
               </button>
