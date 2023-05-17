@@ -7,9 +7,17 @@ import { onAuthStateChanged } from "firebase/auth";
 import { UseLocalStorage } from "@/Comonents/carrito/useLocalStorage";
 import { useRouter } from "next/navigation";
 
-const CardCourse = ({ image,id,instructor,description, price, thumbnail, title }) => {
+const CardCourse = ({
+  image,
+  id,
+  instructor,
+  description,
+  price,
+  thumbnail,
+  title,
+}) => {
   let router = useRouter();
-  let [boolean,setBoolean]= useState(false)
+  let [boolean, setBoolean] = useState(false);
   const [autentication, setAutentication] = useState(false);
   let token;
   onAuthStateChanged(FirebaseAuth, (usuarioFirebase) => {
@@ -36,9 +44,13 @@ setBoolean(false)
   
 
   return (
-    <div className="bg-white h-full rounded-md" >
+    <div className="bg-white h-full rounded-md">
       <div className="">
-        <video poster={image} controls >
+        <video 
+        poster={image} 
+        controls  
+        className="h-52 w-full"
+        >
           <source
             src="https://res.cloudinary.com/dbcko47q4/video/upload/v1684004430/l9rk7m9zrajowyhvxyud.mp4"
             type="video/mp4"
@@ -72,22 +84,19 @@ setBoolean(false)
                   </h1>
                 )}
 
+                {autentication && (
                   <div className="flex items-center">
-                    {!boolean?
-                    <Link href="/Home/Favorits">
-                    <button
+                    {!boolean?<button
                       className="p-2 bg-red-400 ml-4 rounded-md py-2.5"
                       onClick={()=>addFavorite(id)}>
                       🤍
-                    </button></Link>:
-                     <Link href="/Home/Favorits">
-                    <button
+                    </button>:<button
                       className="p-2 bg-red-400 ml-4 rounded-md py-2.5"
                       onClick={()=>addFavorite(id)}>
-                      🧡
-                    </button>
-                    </Link>}
+                        🧡
+                    </button>}
                   </div>
+                )}
               </div>
             </div>
             {autentication ? (
@@ -108,7 +117,7 @@ setBoolean(false)
               >
                 Agregar a la Cesta
               </button>
-            ):null}
+            ) : null}
           </div>
           <div>
             <div>
