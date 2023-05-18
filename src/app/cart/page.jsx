@@ -11,9 +11,6 @@ function caritoDecompras() {
     useEffect(() => {
        dispach(getCursos())
     }, [])
-
-    let cursosCart = useSelector(state => state.postCart.CursosCard)
-    
   return (
     <div>
       <NavBar/>
