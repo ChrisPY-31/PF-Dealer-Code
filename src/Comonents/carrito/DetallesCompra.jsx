@@ -13,10 +13,10 @@ function DetallesCompra() {
     JSON.parse(localStorage.getItem("producto") || [] )
   )
 
-  let [pCheckauyt, sePckeckaut] = UseLocalStorage("pCheckaut", [])
+  var [pCheckauyt, sePckeckaut] = UseLocalStorage("pCheckaut", [])
 }
 if (typeof producto !== 'undefined') {
-  var sumaPrice = producto.reduce((total, producto) => total + producto.precio, 0 );
+  var sumaPrice = producto.reduce((total, producto) => total + producto.price, 0 );
   console.log(sumaPrice);
   var idp = producto.map(p => p.id)
 }

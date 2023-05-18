@@ -36,7 +36,7 @@ export default function Productos() {
            />
 
            <div>
-             <h3 className="text-sm text-white">{p.titulo}</h3>
+             <h3 className="text-sm text-white">{p.title}</h3>
 
              <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
                <div>
