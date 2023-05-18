@@ -4,7 +4,7 @@ import axios from "axios"
 export const agregarPago = createAsyncThunk(
     "pagos/agregarPago",
     async (datosDelpago) => {
-        const respuesta = await axios.post("http://localhost:3096/post", datosDelpago);
+        const respuesta = await axios.post("https://dealer-code.fly.dev/purchase/stripe", datosDelpago);
         return respuesta.data
     }
 )
@@ -28,8 +28,8 @@ export const crearCurso = createAsyncThunk(
 
 export const cursosPagos = createAsyncThunk(
     "cursosPagos/ccursosPagos",
-    async (token) => {
-        const respuesta = await axios.get("http://localhost:3096/post", token);
+    async () => {
+        const respuesta = await axios.get("https://dealer-code.fly.dev/purchase/getPagos",);
         return respuesta.data
     }
 )

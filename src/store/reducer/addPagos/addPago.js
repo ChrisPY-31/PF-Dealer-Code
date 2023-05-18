@@ -5,6 +5,8 @@ const initialState = {
     pagos: []
 }
 
+
+
 export const pasarela = createSlice({
     name: "pagos",
     initialState,
@@ -15,7 +17,7 @@ export const pasarela = createSlice({
      },
      extraReducers:  (builder) => {
         builder.addCase(agregarPago.fulfilled, (state, action) => {
-           state.pagos.push(action.payload)
+           state.pagos = action.payload
         })
      }
 })

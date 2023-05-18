@@ -4,15 +4,16 @@ import { useSelector } from 'react-redux'
 function Pagos() {
 
   const Courses=useSelector(state=>state.getCursos.cursos)
-  const CursosPagos=useSelector(state=>state.pagos.pagos)
+  const CursosPagos=useSelector(state=>state.cursosPagados.cursopagos)
   
   let cursos = []
+  let [cursosP, seCursosP] = UseLocalStorage("cursosP", [])
 
   Courses.forEach(c => {
     let id = c.id
     CursosPagos.forEach(i => {
       if(i === id) {
-        cursos.push(c)
+       seCursosP([...cursosP, c])
       }
     })
   });
@@ -23,7 +24,7 @@ function Pagos() {
      <div >
       <h1 className='text-xl  font-bold'>Tu historial de pagos</h1>
      </div>
-       {  cursos && cursos.length ? cursos.map(c => (
+       {  cursosP && cursosP.length ? cursosP.map(c => (
         <section>
         <div class="relative mx-auto max-w-screen-xl px-4 py-8">
           <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
@@ -46,7 +47,7 @@ function Pagos() {
               <div class="mt-2 flex justify-between">
                 <div class="max-w-[35ch] space-y-2">
                   <h1 class="text-xl font-bold sm:text-2xl">
-                   {c.titulo}
+                   {c.title}
                   </h1>
       
                   <p class="text-sm">Curso Intensivo</p>
