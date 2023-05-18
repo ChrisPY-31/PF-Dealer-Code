@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FirebaseAuth } from "@/firebase/credenciales";
 import { onAuthStateChanged } from "firebase/auth";
-import { UseLocalStorage } from "@/Comonents/carrito/useLocalStorage";
+import { UseLocalStorage } from "../../Comonents/carrito/UseLocalStorage";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
