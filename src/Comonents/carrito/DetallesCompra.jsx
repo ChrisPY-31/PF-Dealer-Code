@@ -1,6 +1,4 @@
 "use client"
-
-import { getCursosId } from "@/store/reducer/addPagos/agregarPago";
 import Link from "next/link";
 import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux";
