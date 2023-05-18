@@ -2,7 +2,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { FirebaseAuth } from "@/firebase/credenciales";
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import { useState } from "react"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { crearCurso } from "@/store/reducer/addPagos/agregarPago";
 
 const urlRegExp = /(http|https?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_.~#?&//=]*)/;
@@ -12,7 +12,7 @@ function Create() {
 
 
 
-
+let categorias = useSelector(state => state. categorias.categorias)
 
 
 let initiavalue = {
@@ -83,11 +83,12 @@ let dispach = useDispatch()
           console.log(usuarioFirebase);
           if (usuarioFirebase) {
             dispach(crearCurso({
-              titulo: valores.titulo, 
+              title: valores.titulo, 
               instructor: valores.nombre,
-               video: valores.urlvideo,
+              thumbnail: valores.urlvideo,
                 descripcion: valores.description,
                 price: valores.precio,
+                categoryId: valores.categorias,
                 token: usuarioFirebase.accessToken
               }))
           } 
@@ -162,12 +163,13 @@ let dispach = useDispatch()
                     <option value="categorias">
                       categorias
                     </option>
-                    <option value="react">
-                      React
+                   {categorias && categorias.length ? categorias.map(c => (
+                       <>
+                        <option value={c.id}>
+                      {c.title}
                     </option>
-                    <option value="next js">
-                      Next 
-                    </option>
+                       </>
+                   )): null}
                    </Field>
                    { <ErrorMessage name="categorias" component={() => (
                  <span className=" text-red-700 text-base ml-3">{errors.categorias}</span>
