@@ -6,31 +6,46 @@ import Addressed from "@/components/Addressed/Addressed";
 import Learning from "@/components/Learning/Learning";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import {getCursosId} from "../../../store/reducer/addPagos/agregarPago"
+import { getCursoId } from "@/store/reducer";
+import Aprendizaje from "@/components/Aprendizaje/Aprendizaje";
+
 
 const Page = ({params}) => {
     let {id} = params
      let dispatch = useDispatch()
      useEffect(() => {
-      dispatch(getCursosId(id))
+      dispatch(getCursoId(id))
      },[])
-     let cursoId = useSelector(state => state.cursoId.Detail)
-     console.log(cursoId);
+     let {Detail} = useSelector(state => state.cursoId)
+     console.log(Detail)
+     const { title , description , instructor , price ,thumbnail , image} = Detail
   return (
     <div className="min-h-screen">
       <NavBar />
       <section className="w-3/4 m-auto ">
         <div className="w-full flex mt-16 gap-10 ">
           <div className="w-2/3">
-            <InfoCouse />
+            <InfoCouse 
+            title={title}  
+            description={description}  
+            instructor={instructor}/>
+
+            <Aprendizaje/>
           </div>
+
           <div className="w-4/12">
-          { cursoId !==  null ?   <CardCourse 
-            precio = {cursoId.price  }
-            titulo={cursoId.title}
-            instructor={cursoId.instructor}
-            id = {cursoId.id}
-            /> : <h2>Loadin...</h2> }
+
+          { Detail !==  null ?<CardCourse 
+          id={id} 
+          title={title}
+          price={price}
+          //image={image}
+          description={description}
+          instructor={instructor}
+          thumbnail={thumbnail}
+          image={image}
+          />:<h2>Loadin...</h2> }
+
           </div>
         </div>
         <Addressed />

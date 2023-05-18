@@ -1,27 +1,45 @@
 "use client";
 import React from "react";
-import NavLanding from "../NavLanding/NavLanding";
+import NavBar from "@/app/Home/components/Nav/NavBar";
 import Slider from "../SliderCourse/Slider";
 import Empresas from "../Empresas/Empresas";
 import { useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { FirebaseAuth } from "@/firebase/credenciales";
 import { useRouter } from "next/navigation";
 import RouteOfCourse from "../RouteOfCourse/RouteOfCourse";
 import Footer from "../Footer/Footer";
 import { useDispatch } from "react-redux";
 import { getCursos } from "@/store/reducer/addPagos/agregarPago";
+import { onAuthStateChanged } from "firebase/auth";
+import { FirebaseAuth } from "@/firebase/credenciales";
+import { getRegisterUser } from "@/store/reducer";
 
 const Landing = () => {
   const router = useRouter();
-  let disacth = useDispatch()
+  let dispatch = useDispatch()
   useEffect(() =>{
-    disacth(getCursos())
-  },[])
 
+    dispatch(getCursos())
+  },[])
+  useEffect(() => {
+    onAuthStateChanged(FirebaseAuth, (usuarioFirebase) => {
+      if (usuarioFirebase) {
+        const userGoogle = {
+          name : usuarioFirebase.displayName,
+          correo: usuarioFirebase.email,
+          photo: usuarioFirebase.photoURL,
+          uid: usuarioFirebase.uid
+        }
+        // dispatch(getRegisterUser(userGoogle))
+        return router.push("/Home");
+      } else {
+        return;
+      }
+    });
+  }, []);
+  
   return (
     <div className="min-h-screen ">
-      <NavLanding />
+      <NavBar></NavBar>
       <section className=" text-white">
         <div className="mx-auto max-w-screen-xl px-4 pt-12 lg:flex lg:h-1/2 ">
           <div className="mx-auto max-w-3xl text-center">

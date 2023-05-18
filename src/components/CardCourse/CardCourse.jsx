@@ -1,90 +1,153 @@
-'use client'
+"use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { useDispatch } from "react-redux";
-import { PostCursoscart } from "@/store/reducer/addPagos/agregarPago";
 import { FirebaseAuth } from "@/firebase/credenciales";
 import { onAuthStateChanged } from "firebase/auth";
 import { UseLocalStorage } from "@/Comonents/carrito/useLocalStorage";
+import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-
-
-
-const CardCourse = ({titulo, instructor,  categoria, precio, descripcion, id }) => {
-  const [autentication , setAutentication] = useState(false)
-  
-  let dispacth = useDispatch()
-
-  let token;
-  onAuthStateChanged(FirebaseAuth, (usuarioFirebase) => {
-    
-    if (usuarioFirebase) {
-       token = usuarioFirebase.accessToken
-       console.log(token)
-    } else {
-      return router.push("/sing-in");
-    }
-  });
-
-  
-
+const CardCourse = ({
+  image,
+  id,
+  instructor,
+  description,
+  price,
+  thumbnail,
+  title,
+}) => {
   let [producto, setProducto] = UseLocalStorage("producto", [])
-  let [pCheckauyt, sePckeckaut] = UseLocalStorage("pCheckaut", [])
-
+let [favoritos,setFavoritos]=UseLocalStorage("Fav", [])
+  let router = useRouter();
+  const [autentication, setAutentication] = useState(false);
+useEffect(()=>{
+  onAuthStateChanged(FirebaseAuth, (usuarioFirebase) => {
+    if (usuarioFirebase) {
+      setAutentication(true);
+    }
+  }); 
+},[])
   
 
+  
+function addFavorite(id){
+  const filt= favoritos.find((f)=>f.id===id)
+if(!filt){
+setFavoritos([...favoritos,{image,title, instructor, price, description, id }])
+toast.success("Se agrego correctamente")
+}
+}
+
+  
 
   return (
-    <div className="bg-indigo-600 ">
+    <div className="bg-white h-full rounded-md">
+      <ToastContainer/>
       <div className="">
-        <div className="bg-teal-500 h-52 ">
-          <img src="https://blog.logrocket.com/wp-content/uploads/2020/08/8-ways-deploy-react-app-free.png" alt="" /></div> 
-        <div className="w-11/12 m-auto mt-10 ">
+        <video 
+        poster={image} 
+        controls  
+        className="h-52 w-full"
+        >
+          <source
+            src="https://res.cloudinary.com/dbcko47q4/video/upload/v1684004430/l9rk7m9zrajowyhvxyud.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div className="w-11/12 m-auto text-black mt-6">
           <div>
-            <h4>{titulo}</h4>
-            <p>
-             <span> {precio} US</span>
-              <span>Descuento</span>
+            <h4 className="text-2xl">{title}</h4>
+            <p className="my-1">
+              <span className="text-lg">{price} MX</span>
             </p>
-            <p>{titulo}</p>
           </div>
-          <div >
+          <div>
             <div className="flex flex-col justify-between h-14">
               <div className="flex">
-                  <Link href="/checkaut" onClick={ () => sePckeckaut([ {
-                titulo, instructor,  precio, id
-              } ])} className={!autentication?"py-2.5 w-full  rounded-md text-center": 'w-64 py-2.5 bg-transparent rounded-md text-center'}>
-                    {autentication ? <h1  className="text-black"> ir al curso </h1>: null }
-                    
+                 {autentication ? ( 
+                  <Link
+                  onClick={ () => sePckeckaut([ {
+                    titulo, instructor,  precio, id
+                  } ])}
+                    href="checkaut"
+                    className="w-72 rounded-md text-center bg-teal-400 py-2.5"
+                  >
+                    {" "}
+                    Comprar Curso{" "}
                   </Link>
-                  {!autentication && <Link href="/Favorits"><button className="px-4 py-2 bg-red-400 ml-4 rounded-md" >Fav</button></Link> }
+                ) : ( 
+                  <h1
+                    className=" text-white w-full py-2.5 bg-teal-400 cursor-pointer rounded-md text-center"
+                    onClick={() => router.push("/sing-up")}
+                  >
+                    Comprar curso
+                  </h1>
+               )} 
+
+             {autentication && (
+                  <div className="flex items-center">
+                    {!(favoritos.find((f)=>f.id===id))?
+                  
+                    <button
+                      
+                      className="p-2 bg-red-400 ml-4 rounded-md py-2.5"
+                      onClick={()=>addFavorite(id)}>
+                      🤍
+                    </button>:
+                    <Link href="/Home/Favorits"><button
+                      className="p-2 bg-red-400 ml-4 rounded-md py-2.5">
+                      🧡
+                    </button></Link>}
+                  </div>
+                 )} 
               </div>
             </div>
-            {!autentication &&
-            <button onClick={
-              () => setProducto([...producto, {
-                titulo, instructor,  precio, idP: producto.length, id
-              } ])
-            } className="py-2.5 w-full bg-slate-600 rounded-lg">
-            Agregar a la Cesta
-          </button>
-            }
-            
+          {autentication ? ( 
+              <button
+                onClick={() =>
+                  setProducto([
+                    ...producto,
+                    {
+                      title,
+                      instructor,
+                      price,
+                      idP: producto.length,
+                      id,
+                    },
+                  ])
+                }
+                className="py-2.5 w-full bg-slate-600 rounded-lg"
+              >
+                Agregar a la Cesta
+              </button>
+            ) : null} 
           </div>
           <div>
-            <h2>{descripcion}</h2>
             <div>
-              <div>
-                <p>image</p>
-                <p>Certificado final del curso</p>
+              <div className="flex my-4">
+                <img
+                  className="w-7 "
+                  src="https://cdn-icons-png.flaticon.com/512/2912/2912761.png"
+                  alt="certificado imagen"
+                />
+                <p className="ml-4">Certificado final del curso</p>
               </div>
-              <div>
-                <p>image</p>
-                <p>7 horas del curso</p>
+              <div className="flex my-4">
+                <img
+                  className="w-7 "
+                  src="https://cdn-icons-png.flaticon.com/512/1170/1170696.png"
+                  alt="video"
+                />
+                <p className="ml-4">7 horas del curso</p>
               </div>
-              <div>
-                <p>image</p>
-                <p>Recursos descargables</p>
+              <div className="flex my-4">
+                <img
+                  className="w-7 "
+                  src="https://cdn-icons-png.flaticon.com/512/724/724933.png"
+                  alt="descargables"
+                />
+                <p className="ml-4">Recursos descargables</p>
               </div>
             </div>
           </div>

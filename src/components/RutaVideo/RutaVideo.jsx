@@ -4,7 +4,7 @@ import { useState } from "react";
 import Comentarios from "../Comentarios/Comentarios";
 import RutaCourse from "../RutaCourse/RutaCourse";
 
-const RutaVideo = () => {
+const RutaVideo = ( {setVideoId} ) => {
   const [modulo , setModulo] = useState(false)
   return (
     <div className=" w-full ">
@@ -15,7 +15,7 @@ const RutaVideo = () => {
         </div>  
       </div>
       <div className=" m-auto w-10/12 mt-8">
-          {!modulo? <RutaCourse/> : <Comentarios/> }
+          {!modulo? <RutaCourse setVideoId={setVideoId} /> : <Comentarios/> }
       </div>
     </div>
   );

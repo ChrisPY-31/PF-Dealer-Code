@@ -1,36 +1,43 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import NavBar from "./components/Nav/NavBar";
-import { useSelector } from "react-redux";
 import { getCursos } from "@/store/reducer/addPagos/agregarPago";
-import { useDispatch } from "react-redux";
-import Link from 'next/link'
-import CardP from './components/Cards/CardP'
-import CardR from './components/Cards/CardR'
-import { ToastContainer } from "react-toastify";
-
+import { useDispatch, useSelector } from "react-redux";
+import Link from "next/link";
+import CardP from "./components/Cards/CardP";
+import CardR from "./components/Cards/CardR";
+import { ToastContainer, toast } from "react-toastify";
+import { onAuthStateChanged } from "firebase/auth";
+import { FirebaseAuth } from "@/firebase/credenciales";
 
 const Page = () => {
   const [recomendaciones,setRecomendaciones]=useState("")
-   const dispatch = useDispatch()
-   /*
-useEffect(() => {
-  dispatch(getCourses(DB))
-   dispatch(getCursos())
-   }, []); */
+  const {Name} = useSelector(state => state.cursoId)
+  console.log(Name)
+  const dispatch = useDispatch()
+  
+
 
   const Courses=useSelector(state=>state.getCursos.cursos)
   if(typeof document !== 'undefined') {
     // you are safe to use the "document" object here
     console.log(document.location.href);
-}
-useEffect(() => {
-  dispatch(getCursos())
+  }
+  useEffect(() => {
+    dispatch(getCursos());
+    onAuthStateChanged(
+      FirebaseAuth,
+      (usuarioFirebase) => {
+        if (!usuarioFirebase) {
+          return router.push("/");
+        } 
+      },
+      []
+    );
 
-  // you are safe to use the 'document' object here
-  document.title = 'Dealer Code';
-}, []);
-
+    // you are safe to use the 'document' object here
+    document.title = "Dealer Code";
+  }, []);
   function Recomendaciones() {
     var push = [];
     if (Courses.length > 3) {
@@ -44,13 +51,11 @@ useEffect(() => {
     }
   }
 
-
-const numeroAleatorio = Math.floor(Math.random() * Courses.length);
-if(!recomendaciones){
-  Recomendaciones()
-}
-var db=Courses[numeroAleatorio]
- 
+  const numeroAleatorio = Math.floor(Math.random() * Courses.length);
+  if (!recomendaciones) {
+    Recomendaciones();
+  }
+  var db = Courses[numeroAleatorio];
 
   return (
     <div>
@@ -88,9 +93,7 @@ var db=Courses[numeroAleatorio]
       </div>
     </div>
     </div>
- 
-  )
-}
-
+  );
+};
 
 export default Page;

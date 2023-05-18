@@ -5,7 +5,7 @@ import {BsCart4} from "react-icons/bs"
 import {BsPersonCircle} from "react-icons/bs"
 import {MdOutlineKeyboardArrowDown} from"react-icons/md"
 import Image from 'next/image'
-import Logo from "../../src/Imagenes/Logo.png"
+import Logo from "../../Imagenes/Logo.png"
 export default function NavBar() {
   return (
 
