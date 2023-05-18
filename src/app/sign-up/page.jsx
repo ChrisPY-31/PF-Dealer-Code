@@ -199,7 +199,7 @@ const page = () => {
                 <p className="text-end mt-2 mr-5">
                   tienes cuenta {}
                   <Link
-                    href="sing-in"
+                    href="sign-in"
                     className="cursor-pointer text-blue-400 "
                   >
                     ¿Inicia sesion?

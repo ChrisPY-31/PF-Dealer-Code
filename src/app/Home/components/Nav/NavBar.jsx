@@ -11,7 +11,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { FirebaseAuth } from '@/firebase/credenciales'
 import Hover from '../cartHover/Hover'
 //aqui esta la navBar que se renderizara en la mayoria de rutas
-export default function NavBar() {
+export default function NavBar( {dashboard} ) {
   //esta funcion sirve para resetear todos los cursos
   if (typeof window !== 'undefined') {
     const [producto, setProducto] = useState(
@@ -84,7 +84,7 @@ useEffect(()=>{
               <BsPersonCircle/>
             </div>
             {/*aqui se renderiza el menu*/}
-             <Menu/></div>  }
+             <Menu dashboard={dashboard}/></div>  }
         </div>
     </div>
   )

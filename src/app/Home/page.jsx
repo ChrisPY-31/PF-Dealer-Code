@@ -9,14 +9,14 @@ import CardR from "./components/Cards/CardR";
 import { ToastContainer, toast } from "react-toastify";
 import { onAuthStateChanged } from "firebase/auth";
 import { FirebaseAuth } from "@/firebase/credenciales";
+import { useRouter } from "next/navigation";
 
 
 const Page = () => {
   const [recomendaciones, setRecomendaciones] = useState("");
   const { Name } = useSelector((state) => state.cursoId);
-  console.log(Name);
   const dispatch = useDispatch();
-
+  const router = useRouter()
   const Courses = useSelector((state) => state.getCursos.cursos);
   const {dashboard} = useSelector(state => state.cursoId)
   console.log(dashboard)
@@ -60,10 +60,9 @@ const Page = () => {
 
   return (
     <div>
-    {dashboard === 'admin'?<h1>Hola</h1>:<h1>Loco</h1>}
       <div>
         <ToastContainer />
-        <NavBar />
+        <NavBar dashboard={dashboard}/>
         <div>
           <div>
             <h1 className="mt-5 ml-5 text-2xl">Curso Destacado</h1>

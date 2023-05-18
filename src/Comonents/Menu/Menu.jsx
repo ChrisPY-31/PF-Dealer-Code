@@ -6,7 +6,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-function Menu() {
+function Menu({ dashboard }) {
   const router = useRouter();
   let [menu, setMenu] = useState(false);
   const handleClick = async () => {
@@ -47,17 +47,19 @@ function Menu() {
               </span>
             </Link>
 
-            <Link href="/Administrador">
-              <span className="block cursor-pointer px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-                Volverse Administrador
-              </span>
-            </Link>
-
-            <Link href="/HomeAdmin" legacyBehavior>
-              <span className="block cursor-pointer px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-                Opciones de administrador
-              </span>
-            </Link>
+            {dashboard === "admin" ? (
+              <Link href="/HomeAdmin" legacyBehavior>
+                <span className="block cursor-pointer px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+                  Opciones de administrador
+                </span>
+              </Link>
+            ) : (
+              <Link href="/Administrador">
+                <span className="block cursor-pointer px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+                  Volverse Administrador
+                </span>
+              </Link>
+            )}
 
             <Link href="/Favorits" legacyBehavior>
               <span className="block px-4 py-3 text-sm cursor-pointer text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
