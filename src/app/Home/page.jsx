@@ -17,6 +17,7 @@ const Page = () => {
   const dispatch = useDispatch();
   const router = useRouter()
   const Courses = useSelector((state) => state.getCursos.cursos);
+  console.log(Courses)
   const {dashboard} = useSelector(state => state.cursoId)
   if (typeof document !== "undefined") {
     // you are safe to use the "document" object here
