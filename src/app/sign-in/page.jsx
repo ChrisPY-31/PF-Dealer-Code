@@ -140,7 +140,7 @@ const Page = () => {
             </button>
             <div className="mt-5 mr-5 flex justify-between w-full space-x-reverse ">
               <div>
-                {}
+                { }
               </div>
               <p className="">
                 No tienes cuenta {}
