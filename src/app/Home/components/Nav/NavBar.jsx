@@ -61,7 +61,7 @@ useEffect(()=>{
           
         <div className="flex flex-wrap items-center">
          {!boolean? <Link
-                    href="/sing-in"
+                    href="/sign-in"
                     className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow"
                   >
                     
@@ -78,7 +78,7 @@ useEffect(()=>{
       {hover?<Hover></Hover>:null}
         
     
-      {!boolean?<Link href="/sing-up"><button className="rounded-md m-0.5 bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600">Registrarse</button></Link>:
+      {!boolean?<Link href="/sign-up"><button className="rounded-md m-0.5 bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600">Registrarse</button></Link>:
       <div className='flex items-center'>
       <div className="flex flex-wrap items-center p-2 rounded-xl">
               <BsPersonCircle/>

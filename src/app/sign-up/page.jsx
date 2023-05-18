@@ -10,9 +10,26 @@ import { getRegisterUser } from "@/store/reducer";
 import githudAuth from "@/functions/githudLogin";
 import { singInWithGoogle } from "@/functions/AuthWithGoogle";
 import { ToastContainer } from "react-toastify";
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { FirebaseApp, FirebaseAuth } from "@/firebase/credenciales";
+import { getFirestore , doc , getDoc} from 'firebase/firestore'
+import { useRouter } from "next/navigation";
+import { getDashboard } from "@/store/reducer/getCursosId";
 
 const page = () => {
   const dispatch = useAppDispatch();
+  const router = useRouter()
+  const firestore = getFirestore(FirebaseApp)
+
+  const getRol = async (uid) =>{
+    const docuRef = doc(firestore , `usuarios/${uid}`)
+    const docuCifrada = await getDoc(docuRef)
+    const infoFinal = docuCifrada.data().rol
+    dispatch(getDashboard(infoFinal))
+    return 
+  }
+
 
   const LoginSchema = Yup.object().shape({
     email: Yup.string()
@@ -26,6 +43,17 @@ const page = () => {
       )
       .required("Este campo es obligatorio"),
   });
+
+  useEffect(() =>{
+    onAuthStateChanged(FirebaseAuth , (usuarioFirebase) =>{
+      if(usuarioFirebase){
+        getRol(usuarioFirebase.uid)
+        router.push('/Home')
+
+        return 
+      }
+    })
+  },[])
   return (
     <div className="h-screen">
       <ToastContainer></ToastContainer>
@@ -51,7 +79,8 @@ const page = () => {
           initialValues={{ name: "", email: "", password: "" }}
           validationSchema={LoginSchema}
           onSubmit={(values, { setSubmitting }) => {
-            registerUser(values.email, values.password);
+            let rol = 'user'
+            registerUser(values.email, values.password ,rol);
             const newUser = {
               name: values.name,
               email: values.email,

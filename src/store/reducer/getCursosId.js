@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState ={
    Detail:[],
-   Name:''
+   Name:'',
+   dashboard:''
 }
 
 export const getCursoIdSlice = createSlice({
@@ -14,10 +15,14 @@ export const getCursoIdSlice = createSlice({
         },
         getUserRegister:(state , action) =>{
             state.Name = action.payload
+        },
+        getDashboard: (state , action) =>{
+            console.log(action.payload)
+            state.dashboard = action.payload
         }
     }
 });
 
 
 // Action creators are generated for each case reducer function
-export const { getCourse , getUserRegister} = getCursoIdSlice.actions;
+export const { getCourse , getUserRegister , getDashboard} = getCursoIdSlice.actions;

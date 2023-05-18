@@ -77,7 +77,7 @@ toast.success("Se agrego correctamente")
                 ) : ( 
                   <h1
                     className=" text-white w-full py-2.5 bg-teal-400 cursor-pointer rounded-md text-center"
-                    onClick={() => router.push("/sing-up")}
+                    onClick={() => router.push("/sign-up")}
                   >
                     Comprar curso
                   </h1>
