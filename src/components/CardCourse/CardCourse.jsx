@@ -19,6 +19,7 @@ const CardCourse = ({
 }) => {
   let [producto, setProducto] = UseLocalStorage("producto", [])
 let [favoritos,setFavoritos]=UseLocalStorage("Fav", [])
+let [pCheckauyt, sePckeckaut] = UseLocalStorage("pCheckaut", [])
   let router = useRouter();
   const [autentication, setAutentication] = useState(false);
 useEffect(()=>{
@@ -67,8 +68,10 @@ toast.success("Se agrego correctamente")
               <div className="flex">
                  {autentication ? ( 
                   <Link
-                    href="checkaut/[id]"
-                    as={`/checkaut/${id}`}
+                  onClick={ () => sePckeckaut([ {
+                    title, instructor,  price, id
+                  } ])}
+                    href="/checkaut"
                     className="w-72 rounded-md text-center bg-teal-400 py-2.5"
                   >
                     {" "}

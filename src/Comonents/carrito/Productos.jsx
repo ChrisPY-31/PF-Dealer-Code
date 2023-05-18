@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react'
 
 export default function Productos() {
- 
-  const [producto, setProducto] = useState(
-    JSON.parse(window.localStorage.getItem("producto") || [] )
+  if (typeof localStorage !== 'undefined') {
+  var [producto, setProducto] = useState(
+    JSON.parse(localStorage.getItem("producto") || [] )
   )
+}
  
  
  const removeItem = (id) => {
     const updatedProducto  = producto.filter(item => item.id !== id) 
-    window.localStorage.setItem("producto", JSON.stringify(updatedProducto))
+    if (typeof localStorage !== 'undefined') {
+   localStorage.setItem("producto", JSON.stringify(updatedProducto))
     setProducto(updatedProducto)
+    }
  }
  
   return (
@@ -24,7 +27,7 @@ export default function Productos() {
 
       <div className="mt-8">
         <ul className="space-y-4">
-         { producto.length ? producto.map(p => (
+         { producto&&producto.length ? producto.map(p => (
            <li className="flex items-center gap-4">
            <img
              src="https://i.pinimg.com/564x/14/77/9d/14779d4968d4999239dc8264fdd026cc.jpg"
@@ -33,7 +36,7 @@ export default function Productos() {
            />
 
            <div>
-             <h3 className="text-sm text-white">{p.titulo}</h3>
+             <h3 className="text-sm text-white">{p.title}</h3>
 
              <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
                <div>
@@ -50,7 +53,7 @@ export default function Productos() {
 
            <div className="flex flex-1 items-center justify-end gap-2">
 
-             <button onClick={() => removeItem(p.idP) }  className="text-gray-600 transition hover:text-red-600">
+             <button onClick={() => removeItem(p.id) }  className="text-gray-600 transition hover:text-red-600">
                <span className="sr-only text-white">Remove item</span>
 
                <svg
