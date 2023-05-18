@@ -40,9 +40,9 @@ function Menu() {
             </span>
            </Link >
 
-            <Link href="/adminUser" legacyBehavior>
+            <Link href="/HomeAdmin" legacyBehavior>
             <span className="block cursor-pointer px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-                Crear un Curso
+                Opciones de administrador
             </span>
             </Link>
 

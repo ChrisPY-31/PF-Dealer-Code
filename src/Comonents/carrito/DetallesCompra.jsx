@@ -8,16 +8,18 @@ import { UseLocalStorage } from "./UseLocalStorage";
 // revirt
 function DetallesCompra() {
    let dispacth = useDispatch()
-  const [producto, setProducto] = useState(
-    JSON.parse(window.localStorage.getItem("producto") || [] )
+   if (typeof localStorage !== 'undefined') {
+  var [producto, setProducto] =useState(
+    JSON.parse(localStorage.getItem("producto") || [] )
   )
 
   let [pCheckauyt, sePckeckaut] = UseLocalStorage("pCheckaut", [])
-
-  let sumaPrice = producto.reduce((total, producto) => total + producto.precio, 0 );
+}
+if (typeof producto !== 'undefined') {
+  var sumaPrice = producto.reduce((total, producto) => total + producto.precio, 0 );
   console.log(sumaPrice);
-  let idp = producto.map(p => p.id)
-  
+  var idp = producto.map(p => p.id)
+}
   useEffect(() => {
 
   }, [producto])

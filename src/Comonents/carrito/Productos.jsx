@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react'
 
 export default function Productos() {
- 
-  const [producto, setProducto] = useState(
-    JSON.parse(window.localStorage.getItem("producto") || [] )
+  if (typeof localStorage !== 'undefined') {
+  var [producto, setProducto] = useState(
+    JSON.parse(localStorage.getItem("producto") || [] )
   )
+}
  
  
  const removeItem = (id) => {
     const updatedProducto  = producto.filter(item => item.id !== id) 
-    window.localStorage.setItem("producto", JSON.stringify(updatedProducto))
+    if (typeof localStorage !== 'undefined') {
+   localStorage.setItem("producto", JSON.stringify(updatedProducto))
     setProducto(updatedProducto)
+    }
  }
  
   return (
@@ -24,7 +27,7 @@ export default function Productos() {
 
       <div className="mt-8">
         <ul className="space-y-4">
-         { producto.length ? producto.map(p => (
+         { producto&&producto.length ? producto.map(p => (
            <li className="flex items-center gap-4">
            <img
              src="https://i.pinimg.com/564x/14/77/9d/14779d4968d4999239dc8264fdd026cc.jpg"
