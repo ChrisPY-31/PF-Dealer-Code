@@ -23,7 +23,7 @@ function Pagos() {
      <div >
       <h1 className='text-xl  font-bold'>Tu historial de pagos</h1>
      </div>
-       {cursos.length ? cursos.map(c => (
+       {  cursos && cursos.length ? cursos.map(c => (
         <section>
         <div class="relative mx-auto max-w-screen-xl px-4 py-8">
           <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
