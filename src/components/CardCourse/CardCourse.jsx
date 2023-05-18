@@ -36,10 +36,27 @@ function addFavorite(id){
   const filt= favoritos.find((f)=>f.id===id)
 if(!filt){
 setFavoritos([...favoritos,{image,title, instructor, price, description, id }])
-toast.success("Se agrego correctamente")
+toast.success("Se agrego correctamente",{
+  position:'bottom-right' 
+})
 }
 }
 
+const handleProducto = (title , instructor , price , id) =>{
+  toast.success('Se agrego correctamente' ,{
+    position: 'bottom-right'
+  })
+  setProducto([
+    ...producto,
+    {
+      title,
+      instructor,
+      price,
+      idP: producto.length,
+      id,
+    },
+  ])
+}
   
 
   return (
@@ -106,18 +123,7 @@ toast.success("Se agrego correctamente")
             </div>
           {autentication ? ( 
               <button
-                onClick={() =>
-                  setProducto([
-                    ...producto,
-                    {
-                      title,
-                      instructor,
-                      price,
-                      idP: producto.length,
-                      id,
-                    },
-                  ])
-                }
+                onClick={()=>handleProducto(title , instructor , price , id)}
                 className="py-2.5 w-full bg-slate-600 rounded-lg"
               >
                 Agregar a la Cesta
