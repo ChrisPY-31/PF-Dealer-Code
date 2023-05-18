@@ -67,8 +67,10 @@ toast.success("Se agrego correctamente")
               <div className="flex">
                  {autentication ? ( 
                   <Link
-                    href="checkaut/[id]"
-                    as={`/checkaut/${id}`}
+                  onClick={ () => sePckeckaut([ {
+                    titulo, instructor,  precio, id
+                  } ])}
+                    href="checkaut"
                     className="w-72 rounded-md text-center bg-teal-400 py-2.5"
                   >
                     {" "}

@@ -17,23 +17,31 @@ let ChechautForm = () => {
     let element = useElements()
 
   let dispach = useDispatch()
-  if (typeof localStorage !== 'undefined') {
-  var [producto, setProducto] =useState(
-    JSON.parse(localStorage.getItem("producto") || [] )
-  )}
-  if (typeof localStorage !== 'undefined') {
- var [pCheckauyt, sePckeckaut] =useState(
-    JSON.parse(localStorage.getItem("pCheckaut") || [] )
+  
+  const [producto, setProducto] = useState(
+    JSON.parse(window.localStorage.getItem("producto") || [] )
   )
-}
 
-if (typeof producto !== 'undefined') {
- var compra = producto.length  > 0 ? producto : pCheckauyt
+  let [pCheckauyt, sePckeckaut] = useState(
+    JSON.parse(window.localStorage.getItem("pCheckaut") || [] )
+  )
+
+
+ let compra = producto.length  > 0 ? producto : pCheckauyt
  console.log(compra);
  var sumaPrice = compra.reduce((total, producto) => total + producto.precio, 0 );
   console.log(sumaPrice);
-  var idCursos = compra.map(p => p.id)
-}
+  let idCursos = compra.map(i => i.id)
+ console.log(idCursos);
+  const removeItem = (idCursos) => {
+   idCursos.forEach(e => {
+    var updatedProducto  =  pCheckaut.filter(item => item.id !== e) 
+    if(typeof localStorage !== undefined){
+    localStorage.setItem("pCheckaut", JSON.stringify(updatedProducto))
+    sePckeckaut(updatedProducto)}
+   });
+ }
+  
   
     return (
       <div className="text-white flex justify-center items-center gap-20 ml-5 ">
@@ -86,6 +94,7 @@ if (typeof producto !== 'undefined') {
                     nombre: valores.nombre,
                     idCursos: idCursos
                             }))
+                            removeItem(idCursos)
                         } 
                       });
                    

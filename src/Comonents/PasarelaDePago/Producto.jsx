@@ -1,6 +1,9 @@
+import { useState } from "react";
+
 
 
 function Producto() {
+<<<<<<< HEAD
   if (typeof localStorage !== 'undefined') {
   var [producto, setProducto] = useState(
     JSON.parse(localStorage.getItem("producto") || [] )
@@ -9,11 +12,23 @@ function Producto() {
 if (typeof localStorage !== 'undefined') {
   var [pCheckauyt, sePckeckaut] = useState(
     JSON.parse(localStorage.getItem("pCheckaut") || [] )
+=======
+
+ 
+
+  let [pCheckauyt, sePckeckaut] = useState(
+    JSON.parse(window.localStorage.getItem("pCheckaut") || [] )
+>>>>>>> main
   )
 }
 
+<<<<<<< HEAD
 if (typeof producto !== 'undefined') {
  var compra = producto.length  > 0 ? producto : pCheckauyt
+=======
+
+ let compra =  pCheckauyt
+>>>>>>> main
  console.log(compra);
  var sumaPrice = compra.reduce((total, producto) => total + producto.precio, 0 );
   console.log(sumaPrice);
