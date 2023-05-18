@@ -1,21 +1,23 @@
 
 
 function Producto() {
-
-  const [producto, setProducto] = useState(
-    JSON.parse(window.localStorage.getItem("producto") || [] )
+  if (typeof localStorage !== 'undefined') {
+  var [producto, setProducto] = useState(
+    JSON.parse(localStorage.getItem("producto") || [] )
   )
-
-  let [pCheckauyt, sePckeckaut] = useState(
-    JSON.parse(window.localStorage.getItem("pCheckaut") || [] )
+}
+if (typeof localStorage !== 'undefined') {
+  var [pCheckauyt, sePckeckaut] = useState(
+    JSON.parse(localStorage.getItem("pCheckaut") || [] )
   )
+}
 
-
- let compra = producto.length  > 0 ? producto : pCheckauyt
+if (typeof producto !== 'undefined') {
+ var compra = producto.length  > 0 ? producto : pCheckauyt
  console.log(compra);
- let sumaPrice = compra.reduce((total, producto) => total + producto.precio, 0 );
+ var sumaPrice = compra.reduce((total, producto) => total + producto.precio, 0 );
   console.log(sumaPrice);
-
+}
   return (
     <div className=" py-12 md:py-24">
     <div className="mx-auto max-w-lg space-y-8 px-4 lg:px-8">
@@ -31,7 +33,7 @@ function Producto() {
       <div>
         <div className="flow-root">
           <ul className="-my-4 divide-y divide-gray-100">
-           {compra.length ? compra.map( p => (
+           {compra&&compra.length ? compra.map( p => (
              <li className="flex items-center gap-4 py-4">
              <img
                src="https://i.pinimg.com/564x/32/9a/d8/329ad85f4ab2047cae13d582274f9270.jpg"

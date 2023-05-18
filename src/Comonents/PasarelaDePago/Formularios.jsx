@@ -17,22 +17,23 @@ let ChechautForm = () => {
     let element = useElements()
 
   let dispach = useDispatch()
-  
-  const [producto, setProducto] = useState(
-    JSON.parse(window.localStorage.getItem("producto") || [] )
+  if (typeof localStorage !== 'undefined') {
+  var [producto, setProducto] =useState(
+    JSON.parse(localStorage.getItem("producto") || [] )
+  )}
+  if (typeof localStorage !== 'undefined') {
+ var [pCheckauyt, sePckeckaut] =useState(
+    JSON.parse(localStorage.getItem("pCheckaut") || [] )
   )
+}
 
-  let [pCheckauyt, sePckeckaut] = useState(
-    JSON.parse(window.localStorage.getItem("pCheckaut") || [] )
-  )
-
-
- let compra = producto.length  > 0 ? producto : pCheckauyt
+if (typeof producto !== 'undefined') {
+ var compra = producto.length  > 0 ? producto : pCheckauyt
  console.log(compra);
- let sumaPrice = compra.reduce((total, producto) => total + producto.precio, 0 );
+ var sumaPrice = compra.reduce((total, producto) => total + producto.precio, 0 );
   console.log(sumaPrice);
-  let idCursos = compra.map(p => p.id)
-  
+  var idCursos = compra.map(p => p.id)
+}
   
     return (
       <div className="text-white flex justify-center items-center gap-20 ml-5 ">

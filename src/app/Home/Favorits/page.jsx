@@ -4,13 +4,17 @@ import { useSelector } from 'react-redux'
 import Link from 'next/link'
 import NavBar from '../components/Nav/NavBar'
 export default function Favorits() {
-    const [Fav,setFav]= useState( 
-      JSON.parse(window.localStorage.getItem("Fav") || [] )
+  if (typeof localStorage !== 'undefined') {
+    var [Fav,setFav]= useState( 
+      JSON.parse(localStorage.getItem("Fav") || [] )
     )
+  }
     const removeItem = (id) => {
       const updatedProducto  = Fav.filter(item => item.id !== id) 
-      window.localStorage.setItem("Fav", JSON.stringify(updatedProducto))
+      if (typeof localStorage !== 'undefined') {
+      localStorage.setItem("Fav", JSON.stringify(updatedProducto))
       setFav(updatedProducto)
+      }
    }
   return (
     <div>
@@ -18,7 +22,7 @@ export default function Favorits() {
       <h1 className='mt-5 ml-5 font-bold text-3xl'>Mis Favoritos</h1>
       <div>
 
-        {Fav.length?Fav.map((f,index)=>(
+        {Fav&&Fav.length?Fav.map((f,index)=>(
           
           <div className='flex justify-between items-end m-5 p-3 bg-transparent border border-tarawera-600 hover:bg-tarawera-900'>   
             <div className='flex'>           

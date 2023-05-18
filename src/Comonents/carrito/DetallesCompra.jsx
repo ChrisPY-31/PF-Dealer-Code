@@ -7,14 +7,16 @@ import { useDispatch } from "react-redux";
 // revirt
 function DetallesCompra() {
    let dispacth = useDispatch()
-  const [producto, setProducto] = useState(
-    JSON.parse(window.localStorage.getItem("producto") || [] )
+   if (typeof localStorage !== 'undefined') {
+  var [producto, setProducto] =useState(
+    JSON.parse(localStorage.getItem("producto") || [] )
   )
-
-  let sumaPrice = producto.reduce((total, producto) => total + producto.precio, 0 );
+}
+if (typeof producto !== 'undefined') {
+  var sumaPrice = producto.reduce((total, producto) => total + producto.precio, 0 );
   console.log(sumaPrice);
-  let idp = producto.map(p => p.id)
-  
+  var idp = producto.map(p => p.id)
+}
   useEffect(() => {
 
   }, [producto])
@@ -36,7 +38,7 @@ function DetallesCompra() {
             </div>
 
             <div className="flex justify-end  " >
-             <Link href={`/checkaut/${idp[0]}`} className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600" >
+             <Link href={`/checkaut/${idp?ipd[0]:null}`} className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600" >
              Checkout
              </Link>
             </div>
