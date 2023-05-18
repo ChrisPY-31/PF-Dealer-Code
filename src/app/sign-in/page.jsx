@@ -5,26 +5,43 @@ import Image from "next/image";
 import Logo from "../../Imagenes/Logo.png";
 import githudAuth from "@/functions/githudLogin";
 import { ToastContainer } from "react-toastify";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import loginWithEmailPassword from "@/functions/login";
-import { useAppDispatch } from "@/store";
-import { getUserSignIn } from "@/store/reducer";
+import { onAuthStateChanged } from "firebase/auth";
+import { FirebaseApp, FirebaseAuth } from "@/firebase/credenciales";
+import { getFirestore,doc, getDoc } from "firebase/firestore";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { getDashboard } from "@/store/reducer/getCursosId";
 
 const Page = () => {
+  const router = useRouter()
+  const dispatch = useDispatch()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
-  const dispatch = useAppDispatch()
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const LoginUser = {
-      email,
-      password,
-    };
-    dispatch(getUserSignIn(LoginUser));
-    loginWithEmailPassword(email, password)
-
+    loginWithEmailPassword(email, password);
   };
+  const firestore = getFirestore(FirebaseApp)
+
+  const getRol = async (uid) => {
+    const docuRef = doc(firestore, `usuarios/${uid}`);
+    const docuCifrada = await getDoc(docuRef);
+    const infoFinal = docuCifrada.data().rol;
+    dispatch(getDashboard(infoFinal));
+    return;
+  };
+  useEffect(() => {
+    onAuthStateChanged(FirebaseAuth, (usuarioFirebase) => {
+      if (usuarioFirebase) {
+        getRol(usuarioFirebase.uid);
+        router.push('/Home')
+        return;
+      }
+    });
+  }, []);
 
   return (
     <div className="h-screen">
@@ -121,13 +138,17 @@ const Page = () => {
             >
               Iniciar sesión
             </button>
-
-            <p className="text-end mt-2 mr-5">
-              No tienes cuenta {}
-              <Link href="sing-up" className="cursor-pointer text-blue-400 ">
-                Registrate
-              </Link>
-            </p>
+            <div className="mt-5 mr-5 flex justify-between w-full space-x-reverse ">
+              <div>
+                { }
+              </div>
+              <p className="">
+                No tienes cuenta {}
+                <Link href="sign-up" className="cursor-pointer text-blue-400 ">
+                  Registrate
+                </Link>
+              </p>
+            </div>
           </form>
         </div>
       </div>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FirebaseAuth } from "@/firebase/credenciales";
 import { onAuthStateChanged } from "firebase/auth";
-import { UseLocalStorage } from "@/Comonents/carrito/useLocalStorage";
+import { UseLocalStorage } from "../../Comonents/carrito/UseLocalStorage";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,6 +19,7 @@ const CardCourse = ({
 }) => {
   let [producto, setProducto] = UseLocalStorage("producto", [])
 let [favoritos,setFavoritos]=UseLocalStorage("Fav", [])
+let [pCheckauyt, sePckeckaut] = UseLocalStorage("pCheckaut", [])
   let router = useRouter();
   const [autentication, setAutentication] = useState(false);
 useEffect(()=>{
@@ -35,10 +36,27 @@ function addFavorite(id){
   const filt= favoritos.find((f)=>f.id===id)
 if(!filt){
 setFavoritos([...favoritos,{image,title, instructor, price, description, id }])
-toast.success("Se agrego correctamente")
+toast.success("Se agrego correctamente",{
+  position:'bottom-right' 
+})
 }
 }
 
+const handleProducto = (title , instructor , price , id) =>{
+  toast.success('Se agrego correctamente' ,{
+    position: 'bottom-right'
+  })
+  setProducto([
+    ...producto,
+    {
+      title,
+      instructor,
+      price,
+      idP: producto.length,
+      id,
+    },
+  ])
+}
   
 
   return (
@@ -68,9 +86,9 @@ toast.success("Se agrego correctamente")
                  {autentication ? ( 
                   <Link
                   onClick={ () => sePckeckaut([ {
-                    titulo, instructor,  precio, id
+                    title, instructor,  price, id
                   } ])}
-                    href="checkaut"
+                    href="/checkaut"
                     className="w-72 rounded-md text-center bg-teal-400 py-2.5"
                   >
                     {" "}
@@ -79,7 +97,7 @@ toast.success("Se agrego correctamente")
                 ) : ( 
                   <h1
                     className=" text-white w-full py-2.5 bg-teal-400 cursor-pointer rounded-md text-center"
-                    onClick={() => router.push("/sing-up")}
+                    onClick={() => router.push("/sign-up")}
                   >
                     Comprar curso
                   </h1>
@@ -105,18 +123,7 @@ toast.success("Se agrego correctamente")
             </div>
           {autentication ? ( 
               <button
-                onClick={() =>
-                  setProducto([
-                    ...producto,
-                    {
-                      title,
-                      instructor,
-                      price,
-                      idP: producto.length,
-                      id,
-                    },
-                  ])
-                }
+                onClick={()=>handleProducto(title , instructor , price , id)}
                 className="py-2.5 w-full bg-slate-600 rounded-lg"
               >
                 Agregar a la Cesta

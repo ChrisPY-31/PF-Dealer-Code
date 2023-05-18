@@ -13,33 +13,30 @@ import { onAuthStateChanged } from "firebase/auth";
 let stipePromise = loadStripe("pk_test_51N3WCTG4n6v6zt1DCpKO742a1RORPW5iGwRMf3A1UgkNXuKHXPhTnIJeP9iEnlqlXKUAJ028VgOM9rpPMho3Aplk00FLkHnUtO")
 
 let ChechautForm = () => {
-    let stripe = useStripe()
-    let element = useElements()
-
-  let dispach = useDispatch()
-  
- 
-
-  let [pCheckaut, sePckeckaut] = useState(
-    JSON.parse(window.localStorage.getItem("pCheckaut") || [] )
-  )
-
-
- let compra =  pCheckaut
- console.log(compra);
- let sumaPrice = compra.reduce((total, producto) => total + producto.precio, 0 );
-  console.log(sumaPrice);
-  let idCursos = compra.map(i => i.id)
- console.log(idCursos);
-  const removeItem = (idCursos) => {
-   idCursos.forEach(e => {
-    const updatedProducto  =  pCheckaut.filter(item => item.id !== e) 
-    window.localStorage.setItem("pCheckaut", JSON.stringify(updatedProducto))
-    sePckeckaut(updatedProducto)
-   });
- }
-  
-  
+  let stripe = useStripe()
+  let element = useElements()
+let dispach = useDispatch()
+if(typeof localStorage !== "undefined"){
+var [pCheckaut, sePckeckaut] = useState(
+  JSON.parse(localStorage.getItem("pCheckaut") || [] )
+)
+}
+if(typeof pCheckaut !== "undefined"){
+var compra =  pCheckaut
+console.log(compra);
+var sumaPrice = compra.reduce((total, producto) => total + producto.precio, 0 );
+console.log(sumaPrice);
+var idCursos = compra.map(i => i.id)
+console.log(idCursos);
+}
+const removeItem = (idCursos) => {
+ idCursos.forEach(e => {
+  const updatedProducto  =  pCheckaut.filter(item => item.id !== e) 
+if(typeof pCheckaut !== "undefined"){
+  localStorage.setItem("pCheckaut", JSON.stringify(updatedProducto))
+  sePckeckaut(updatedProducto)}
+   });
+ }
     return (
       <div className="text-white flex justify-center items-center gap-20 ml-5 ">
             <div className="w-1/2  ">

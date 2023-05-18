@@ -11,7 +11,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { FirebaseAuth } from '@/firebase/credenciales'
 import Hover from '../cartHover/Hover'
 //aqui esta la navBar que se renderizara en la mayoria de rutas
-export default function NavBar() {
+export default function NavBar( {dashboard} ) {
   //esta funcion sirve para resetear todos los cursos
   if (typeof window !== 'undefined') {
     const [producto, setProducto] = useState(
@@ -61,7 +61,7 @@ useEffect(()=>{
           
         <div className="flex flex-wrap items-center">
          {!boolean? <Link
-                    href="/sing-in"
+                    href="/sign-in"
                     className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow"
                   >
                     
@@ -78,13 +78,13 @@ useEffect(()=>{
       {hover?<Hover></Hover>:null}
         
     
-      {!boolean?<Link href="/sing-up"><button className="rounded-md m-0.5 bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600">Registrarse</button></Link>:
+      {!boolean?<Link href="/sign-up"><button className="rounded-md m-0.5 bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600">Registrarse</button></Link>:
       <div className='flex items-center'>
       <div className="flex flex-wrap items-center p-2 rounded-xl">
               <BsPersonCircle/>
             </div>
             {/*aqui se renderiza el menu*/}
-             <Menu/></div>  }
+             <Menu dashboard={dashboard}/></div>  }
         </div>
     </div>
   )
