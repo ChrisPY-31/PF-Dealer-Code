@@ -14,6 +14,12 @@ import { cursosPagos, getComprados } from "@/store/reducer/addPagos/agregarPago"
 
 const Sidebar = () => {
   let dispacth = useDispatch()
+  const [userData , setUserData] =  useState({
+    nombre:'',
+    email:'',
+    photo:''
+  })
+  console.log(userData)
   let [whatInfo, setWhatInfo] = useState({
     pago: null,
     edict: null,
@@ -39,7 +45,11 @@ const Sidebar = () => {
     onAuthStateChanged(FirebaseAuth, (usuarioFirebase) => {
      
       if (usuarioFirebase) {
-        console.log(usuarioFirebase.accessToken);
+        setUserData({
+          nombre:usuarioFirebase.displayName,
+          email:usuarioFirebase.email,
+          photo:usuarioFirebase.photoURL
+        })
         dispacth(getComprados({cookie: usuarioFirebase.accessToken}))
       } 
     });
@@ -52,15 +62,17 @@ const Sidebar = () => {
           <div className="h-20 flex items-center pl-2">
             <div className="w-full flex items-center gap-x-4">
               <img
-                src="https://randomuser.me/api/portraits/women/79.jpg"
+                src={userData.photo?userData.photo:'https://i.pinimg.com/originals/57/3c/32/573c32824478f4dfc0e7f5f6ba68c192.jpg'}
                 className="w-10 h-10 rounded-full"
               />
               <div>
                 <span className="block text-white text-sm font-semibold">
-                  Alivika tony
+                  {userData.nombre}
+                </span>
+                <span>
+                {userData.email}
                 </span>
               </div>
-              <div className="relative flex-1 text-right"></div>
             </div>
           </div>
           <div className="overflow-auto">

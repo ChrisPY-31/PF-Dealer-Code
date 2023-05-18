@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import CardP from "./components/Cards/CardP";
 import CardR from "./components/Cards/CardR";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer} from "react-toastify";
 import { onAuthStateChanged } from "firebase/auth";
 import { FirebaseAuth } from "@/firebase/credenciales";
 import { useRouter } from "next/navigation";
@@ -14,15 +14,12 @@ import { useRouter } from "next/navigation";
 
 const Page = () => {
   const [recomendaciones, setRecomendaciones] = useState("");
-  const { Name } = useSelector((state) => state.cursoId);
   const dispatch = useDispatch();
   const router = useRouter()
   const Courses = useSelector((state) => state.getCursos.cursos);
   const {dashboard} = useSelector(state => state.cursoId)
-  console.log(dashboard)
   if (typeof document !== "undefined") {
     // you are safe to use the "document" object here
-    console.log(document.location.href);
   }
   useEffect(() => {
     dispatch(getCursos());

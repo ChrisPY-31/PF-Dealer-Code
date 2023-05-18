@@ -138,12 +138,10 @@ const Page = () => {
             >
               Iniciar sesión
             </button>
-            <div className="mt-5 mr-5 flex justify-between w-full">
-              <select id="rol" className="text-black">
-                <option value="admin">Administrador</option>
-                <option value="user">Usuario</option>
-              </select>
-
+            <div className="mt-5 mr-5 flex justify-between w-full space-x-reverse ">
+              <div>
+                {}
+              </div>
               <p className="">
                 No tienes cuenta {}
                 <Link href="sign-up" className="cursor-pointer text-blue-400 ">
