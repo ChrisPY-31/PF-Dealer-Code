@@ -1,17 +1,17 @@
+import { useState } from "react";
+
 
 
 function Producto() {
 
-  const [producto, setProducto] = useState(
-    JSON.parse(window.localStorage.getItem("producto") || [] )
-  )
+ 
 
   let [pCheckauyt, sePckeckaut] = useState(
     JSON.parse(window.localStorage.getItem("pCheckaut") || [] )
   )
 
 
- let compra = producto.length  > 0 ? producto : pCheckauyt
+ let compra =  pCheckauyt
  console.log(compra);
  let sumaPrice = compra.reduce((total, producto) => total + producto.precio, 0 );
   console.log(sumaPrice);

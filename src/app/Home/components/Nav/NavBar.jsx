@@ -11,11 +11,7 @@ import { SearchInput } from '../Search/searchInput'
 export default function NavBar() {
   //esta funcion sirve para resetear todos los cursos
   
-  const [producto, setProducto] = useState(
-    // JSON.parse(window.localStorage.getItem("producto") || [] )
-  )
-useEffect(() => {
-}, [producto]) 
+
   return (
     <div className=" flex flex-wrap items-center justify-around shadow-amber-50 shadow p-1">
        <Image className="absolute p-0 left-0" src={Logo} alt="Logo" width={80} height={80}></Image>
@@ -45,7 +41,6 @@ useEffect(() => {
         <div className="flex flex-wrap items-center">
          <Link href="/cart">
          <div className='mr-5 p-1 rounded-xl hover:bg-tarawera-600 flex '>
-          { producto.length > 0  ?  <span className='text-[8px] mt-2 text-red-700   '> {producto.length} </span> : null }
           
           <BsCart4  className='' />
           

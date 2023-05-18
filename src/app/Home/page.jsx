@@ -30,6 +30,7 @@ useEffect(() => {
   // you are safe to use the 'document' object here
   document.title = 'Dealer Code';
 }, []);
+
   function Recomendaciones() {
     var push = [];
     if (Courses.length > 3) {

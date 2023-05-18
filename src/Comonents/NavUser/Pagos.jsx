@@ -3,8 +3,21 @@ import { useSelector } from 'react-redux'
 
 function Pagos() {
 
+  const Courses=useSelector(state=>state.getCursos.cursos)
+  const CursosPagos=useSelector(state=>state.pagos.pagos)
+  
+  let cursos = []
 
-  let cursos = useSelector(state => state.getcomprados.comprados)
+  Courses.forEach(c => {
+    let id = c.id
+    CursosPagos.forEach(i => {
+      if(i === id) {
+        cursos.push(c)
+      }
+    })
+  });
+
+ 
   return (
     <div classNameName='w-full h-96 flex flex-col'> 
      <div >
@@ -108,16 +121,6 @@ function Pagos() {
               </div>
       
               <div class="mt-3">
-                <fieldset>
-                  <legend class="mb-1 text-sm font-medium">Fecha de pago</legend>
-                 <span className='text-base'>  12/03/2022</span>
-                </fieldset>
-      
-                <fieldset class="mt-2">
-                  <legend class="mb-1 text-sm font-medium">Metodos de pagos</legend>
-      
-                    <span className='text-base'>1234*********</span>
-                </fieldset>
       
                 <div class="mt-3 flex gap-4">
                   <span

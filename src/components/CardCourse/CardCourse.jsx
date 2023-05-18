@@ -51,10 +51,10 @@ const CardCourse = ({titulo, instructor,  categoria, precio, descripcion, id }) 
           <div >
             <div className="flex flex-col justify-between h-14">
               <div className="flex">
-                  <Link href="/checkaut" className={!autentication?"py-2.5 w-full  rounded-md text-center": 'w-64 py-2.5 bg-transparent rounded-md text-center'}>
-                    {autentication ? <h1 onClick={ () => sePckeckaut([ {
+                  <Link href="/checkaut" onClick={ () => sePckeckaut([ {
                 titulo, instructor,  precio, id
-              } ])} className="text-black"> ir al curso </h1>: null }
+              } ])} className={!autentication?"py-2.5 w-full  rounded-md text-center": 'w-64 py-2.5 bg-transparent rounded-md text-center'}>
+                    {autentication ? <h1  className="text-black"> ir al curso </h1>: null }
                     
                   </Link>
                   {!autentication && <Link href="/Favorits"><button className="px-4 py-2 bg-red-400 ml-4 rounded-md" >Fav</button></Link> }

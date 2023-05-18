@@ -18,20 +18,26 @@ let ChechautForm = () => {
 
   let dispach = useDispatch()
   
-  const [producto, setProducto] = useState(
-    JSON.parse(window.localStorage.getItem("producto") || [] )
-  )
+ 
 
-  let [pCheckauyt, sePckeckaut] = useState(
+  let [pCheckaut, sePckeckaut] = useState(
     JSON.parse(window.localStorage.getItem("pCheckaut") || [] )
   )
 
 
- let compra = producto.length  > 0 ? producto : pCheckauyt
+ let compra =  pCheckaut
  console.log(compra);
  let sumaPrice = compra.reduce((total, producto) => total + producto.precio, 0 );
   console.log(sumaPrice);
-  let idCursos = compra.map(p => p.id)
+  let idCursos = compra.map(i => i.id)
+ console.log(idCursos);
+  const removeItem = (idCursos) => {
+   idCursos.forEach(e => {
+    const updatedProducto  =  pCheckaut.filter(item => item.id !== e) 
+    window.localStorage.setItem("pCheckaut", JSON.stringify(updatedProducto))
+    sePckeckaut(updatedProducto)
+   });
+ }
   
   
     return (
@@ -85,6 +91,7 @@ let ChechautForm = () => {
                     nombre: valores.nombre,
                     idCursos: idCursos
                             }))
+                            removeItem(idCursos)
                         } 
                       });
                    

@@ -50,7 +50,7 @@ export default function Productos() {
 
            <div className="flex flex-1 items-center justify-end gap-2">
 
-             <button onClick={() => removeItem(p.idP) }  className="text-gray-600 transition hover:text-red-600">
+             <button onClick={() => removeItem(p.id) }  className="text-gray-600 transition hover:text-red-600">
                <span className="sr-only text-white">Remove item</span>
 
                <svg
